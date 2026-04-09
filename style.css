@@ -5,19 +5,19 @@
 
 /* ── TOKENS ── */
 :root {
-  --bg:       #1e1428;
-  --surface:  #261a34;
-  --surface2: #30213f;
-  --surface3: #3a2a4c;
-  --border:   rgba(255,255,255,0.07);
-  --border2:  rgba(255,255,255,0.14);
-  --accent:   #c9a84c;
-  --green:    #6abf7a;
-  --red:      #d4706a;
-  --orange:   #d4913a;
-  --text:     #f0ebf8;
-  --text2:    #b8a8cc;
-  --text3:    #6a5880;
+  --bg:       #77C3EC;
+  --surface:  #89CFF0;
+  --surface2: #9DD4F5;
+  --surface3: #B8E1F3;
+  --border:   rgba(30,80,130,0.15);
+  --border2:  rgba(20,60,110,0.25);
+  --accent:   #1a4a7a;
+  --green:    #1a7a4a;
+  --red:      #a03030;
+  --orange:   #8a5010;
+  --text:     #0d2a45;
+  --text2:    #2c5070;
+  --text3:    #5a80a0;
   --sw:       240px;
 }
 
@@ -120,7 +120,7 @@ body {
   transition: all .15s;
   text-align: center;
 }
-.lb.active { background: var(--accent); color: var(--bg); }
+.lb.active { background: var(--accent); color: #fff; }
 
 /* ── MAIN / PAGES ── */
 #main { flex: 1; height: 100vh; overflow: hidden; position: relative; }
@@ -311,7 +311,7 @@ p strong { color: var(--text); font-weight: 500; }
   transition: all .18s ease;
 }
 .pill:hover { border-color: var(--accent); color: var(--accent); }
-.pill.active { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+.pill.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
 
 /* ── COMPARISON CARDS ── */
 .cc { background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; padding: 18px; text-align: center; transition: border-color .18s; }
@@ -575,7 +575,7 @@ input[type="range"].fpr::-webkit-slider-thumb {
 .ni.active { transform: translateX(3px); }
 
 .card { transition: all .22s ease; }
-.card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
+.card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(20,60,110,.18); }
 
 .stat-cell { transition: background .2s ease; }
 .stat-cell:hover { background: var(--surface3); }
@@ -587,8 +587,8 @@ input[type="range"].fpr::-webkit-slider-thumb {
 .cc:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
 
 .pill { transition: all .2s ease; }
-.pill:hover { transform: translateY(-1px); box-shadow: 0 3px 12px rgba(212,168,67,.2); }
-.pill.active { box-shadow: 0 3px 14px rgba(212,168,67,.25); }
+.pill:hover { transform: translateY(-1px); box-shadow: 0 3px 12px rgba(26,74,122,.2); }
+.pill.active { box-shadow: 0 3px 14px rgba(26,74,122,.25); }
 
 .icard { transition: all .2s ease; }
 .icard:hover { border-color: var(--border2); transform: translateY(-2px); }
