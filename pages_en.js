@@ -16,7 +16,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
     <div class="stat-cell"><div class="sv">3.1M</div><div class="sl">Foreign-born residents in NYC</div><div class="ss">ACS 2023 · 36.8% of population</div></div>
     <div class="stat-cell"><div class="sv">44.3%</div><div class="sl">of NYC's labor force is foreign-born</div><div class="ss">2.38x the national average</div></div>
     <div class="stat-cell"><div class="sv">$103B</div><div class="sl">Taxes paid by immigrants each year</div><div class="ss">NYC metro area · American Immigration Council 2023</div></div>
-    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">Current USI, near the zero threshold</div><div class="ss">Based on 2025 enforcement levels</div></div>
+    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">Current USI — 10-year projection</div><div class="ss">Based on 2025 enforcement levels</div></div>
   </div>
   <div class="g2" style="margin-bottom:24px">
     <div>
@@ -27,7 +27,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
     </div>
     <div>
       <div class="callout">
-        <p>Under current enforcement, net international migration has dropped to about <strong>66,000/yr</strong>. The minimum needed to prevent population loss is <strong>56,612</strong>. The USI is currently near <strong>zero</strong>.</p>
+        <p>Under current enforcement, net international migration has dropped to about <strong>66,000/yr</strong>. The minimum needed to prevent population loss is <strong>56,612</strong>. The 10-year USI projection is currently near <strong>zero</strong>.</p>
       </div>
       <div class="meter-wrap">
         <div class="meter-track" style="overflow:visible">
@@ -126,13 +126,13 @@ mkPage('model',false,`<div class="ph">
     <div class="wcard"><div class="wcard-num">0.17</div><div class="wcard-dim">wₕ — Housing (penalty)</div><div class="wcard-desc">Immigrant households accounted for 25% of U.S. household formation between 2019 and 2023. Because increased density is a cost, this component is subtracted rather than added.</div><div class="wcard-src">25.0 / 149.9 = 0.17 · Harvard JCHS 2024</div></div>
   </div>
   <div class="card" style="text-align:center;border-color:rgba(232,197,71,.2)">
-    <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">The Urban Stability Index, scaled x10</div>$$\\text{USI} = \\underbrace{5.3}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3.0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1.7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">Above zero means growth. Below zero means decline. Zero means the city is holding steady.</div></div>
+    <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">The Urban Stability Index — 10-year projection, scaled x10</div>$$\\text{USI} = \\underbrace{5.3}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3.0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1.7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">Above zero means growth. Below zero means decline. Zero means the city is holding steady.</div></div>
   </div>
 </div>`),
 mkPage('scenarios',false,`<div class="ph">
   <div class="ph-label">Scenarios</div>
   <h1>Four immigration levels,<br>four outcomes</h1>
-  <p>Domestic out-migration and natural increase are held constant across all four scenarios. Only net annual international migration changes.</p>
+  <p>Each scenario projects 10 years forward. Domestic out-migration and natural increase are held constant. Only net annual international migration changes.</p>
 </div>
 <div class="pc">
   <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===1)).join('')}</div>
@@ -155,7 +155,7 @@ mkPage('scenarios',false,`<div class="ph">
           <tr><td>2034 labor force</td><td class="col-high">4,879,070</td><td class="col-pre2025">4,487,756</td><td class="col-current">3,941,070</td><td class="col-restrict">3,619,070</td></tr>
           <tr><td>Sₚ 10-yr population growth</td><td class="col-high pos">+17.48%</td><td class="col-pre2025 pos">+10.66%</td><td class="col-current pos">+1.14%</td><td class="col-restrict neg">-4.46%</td></tr>
           <tr><td>Sₗ 10-yr labor force growth</td><td class="col-high pos">+20.09%</td><td class="col-pre2025 pos">+10.45%</td><td class="col-current neg">-3.00%</td><td class="col-restrict neg">-10.93%</td></tr>
-          <tr class="hl"><td>USI (x10)</td><td class="col-high pos">+1.36</td><td class="col-pre2025 pos">+0.82</td><td class="col-current neu">+0.05</td><td class="col-restrict neg">-0.40</td></tr>
+          <tr class="hl"><td>USI — 10-yr projection (x10)</td><td class="col-high pos">+1.36</td><td class="col-pre2025 pos">+0.82</td><td class="col-current neu">+0.05</td><td class="col-restrict neg">-0.40</td></tr>
         </tbody>
       </table>
     </div>
@@ -198,14 +198,14 @@ mkPage('explorer',false,`<div class="ph">
 mkPage('map',false,`<div class="ph">
   <div class="ph-label">Map & Projections</div>
   <h1>Geographic distribution</h1>
-  <p>USI estimated for each community district based on its foreign-born share and housing density. Scenario projections are shown alongside.</p>
+  <p>10-year USI projection estimated for each community district based on its foreign-born share and housing density. Scenario projections are shown alongside.</p>
 </div>
 <div class="pc" style="padding-top:24px">
   <div class="map-layout" style="margin-bottom:24px">
     <div class="map-left">
       <div id="map"></div>
       <div class="map-legend">
-        <div class="ml-title">USI Scale</div>
+        <div class="ml-title">USI — 10-yr projection</div>
         <div class="ml-item"><div class="ml-color" style="background:#2d8653"></div><span>+0.8 and above</span></div>
         <div class="ml-item"><div class="ml-color" style="background:#9acd32"></div><span>+0.4 to +0.8</span></div>
         <div class="ml-item"><div class="ml-color" style="background:#e67e22"></div><span>0 to +0.4</span></div>
@@ -215,7 +215,7 @@ mkPage('map',false,`<div class="ph">
     </div>
     <div class="map-right">
       <div class="mrp-section">
-        <div class="mrp-title">Borough USI</div>
+        <div class="mrp-title">Borough USI (10-year)</div>
         <div id="boroMini"></div>
       </div>
       <div class="mrp-section">

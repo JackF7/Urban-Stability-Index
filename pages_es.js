@@ -17,7 +17,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
     <div class="stat-cell"><div class="sv">3,1M</div><div class="sl">Residentes nacidos en el extranjero en NYC</div><div class="ss">ACS 2023 · 36,8% de la población</div></div>
     <div class="stat-cell"><div class="sv">44,3%</div><div class="sl">Proporción de la fuerza laboral nacida en el extranjero</div><div class="ss">2,38 veces el promedio nacional</div></div>
     <div class="stat-cell"><div class="sv">$103B</div><div class="sl">Impuestos pagados por inmigrantes anualmente</div><div class="ss">Área metropolitana · American Immigration Council 2023</div></div>
-    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">IEU actual, cerca de cero</div><div class="ss">Bajo la trayectoria de aplicación actual</div></div>
+    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">IEU actual — proyección a 10 años</div><div class="ss">Bajo la trayectoria de aplicación actual</div></div>
   </div>
   <div class="g2" style="margin-bottom:24px">
     <div>
@@ -27,7 +27,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
       <button onclick="goPage('argument')" style="margin-top:6px;padding:9px 18px;background:var(--accent);color:var(--bg);border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Crimson Pro',serif">Leer el argumento</button>
     </div>
     <div>
-      <div class="callout"><p>Bajo la política actual, la migración internacional neta ha caído a <strong>66.000/año</strong>, apenas por encima del umbral de equilibrio de <strong>56.612</strong>. El IEU es efectivamente <strong>cero</strong>.</p></div>
+      <div class="callout"><p>Bajo la política actual, la migración internacional neta ha caído a <strong>66.000/año</strong>, apenas por encima del umbral de equilibrio de <strong>56.612</strong>. La proyección del IEU a 10 años es actualmente cerca de <strong>cero</strong>.</p></div>
       <div class="meter-wrap">
         <div class="meter-track" style="overflow:visible">
           <div id="hMFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width 1.2s cubic-bezier(.16,1,.3,1);"></div>
@@ -127,14 +127,14 @@ mkPage('model',false,`<div class="ph">
     <div class="wcard"><div class="wcard-num">0,17</div><div class="wcard-dim">wₕ — Vivienda (penalización)</div><div class="wcard-desc">Los hogares inmigrantes representaron el 25% de la formación de hogares en EE.UU. entre 2019 y 2023. Dado que el aumento de densidad es un costo, este componente se resta en lugar de sumarse.</div><div class="wcard-src">25,0 / 149,9 = 0,17 · Harvard JCHS 2024</div></div>
   </div>
   <div class="card" style="text-align:center;border-color:rgba(232,197,71,.2)">
-    <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">El Índice de Estabilidad Urbana · escalado ×10</div>$$\\text{IEU} = \\underbrace{5{,}4}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3{,}0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1{,}7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">IEU &gt; 0 = crecimiento &nbsp;·&nbsp; IEU = 0 = estasis &nbsp;·&nbsp; IEU &lt; 0 = declive</div></div>
+    <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">El Índice de Estabilidad Urbana — proyección a 10 años, escalado ×10</div>$$\\text{IEU} = \\underbrace{5{,}4}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3{,}0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1{,}7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">IEU &gt; 0 = crecimiento &nbsp;·&nbsp; IEU = 0 = estasis &nbsp;·&nbsp; IEU &lt; 0 = declive</div></div>
   </div>
 </div>`),
 // ESCENARIOS
 mkPage('scenarios',false,`<div class="ph">
   <div class="ph-label">Escenarios</div>
   <h1>Cuatro niveles de inmigración,<br>cuatro resultados</h1>
-  <p>La emigración doméstica y el crecimiento natural se mantienen constantes en los cuatro escenarios. Solo cambia la migración internacional neta anual.</p>
+  <p>Cada escenario proyecta 10 años hacia adelante. La emigración doméstica y el crecimiento natural se mantienen constantes. Solo cambia la migración internacional neta anual.</p>
 </div>
 <div class="pc">
   <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===1)).join('')}</div>
@@ -157,7 +157,7 @@ mkPage('scenarios',false,`<div class="ph">
           <tr><td>Fuerza laboral 2034</td><td class="col-high">4.879.070</td><td class="col-pre2025">4.487.756</td><td class="col-current">3.941.070</td><td class="col-restrict">3.619.070</td></tr>
           <tr><td>Sₚ crecimiento 10 años</td><td class="col-high pos">+17,48%</td><td class="col-pre2025 pos">+10,66%</td><td class="col-current pos">+1,14%</td><td class="col-restrict neg">−4,46%</td></tr>
           <tr><td>Sₗ crecimiento laboral 10 años</td><td class="col-high pos">+20,09%</td><td class="col-pre2025 pos">+10,45%</td><td class="col-current neg">−3,00%</td><td class="col-restrict neg">−10,93%</td></tr>
-          <tr class="hl"><td>IEU (×10)</td><td class="col-high pos">+1,36</td><td class="col-pre2025 pos">+0,82</td><td class="col-current neu">+0,05</td><td class="col-restrict neg">−0,40</td></tr>
+          <tr class="hl"><td>IEU — proy. 10 años (×10)</td><td class="col-high pos">+1,36</td><td class="col-pre2025 pos">+0,82</td><td class="col-current neu">+0,05</td><td class="col-restrict neg">−0,40</td></tr>
         </tbody>
       </table>
     </div>
@@ -202,14 +202,14 @@ mkPage('explorer',false,`<div class="ph">
 mkPage('map',false,`<div class="ph">
   <div class="ph-label">Mapa y proyecciones</div>
   <h1>Distribución geográfica</h1>
-  <p>IEU estimado para cada distrito comunitario según su proporción de nacidos en el extranjero y densidad habitacional. Las proyecciones por escenario se muestran junto al mapa.</p>
+  <p>Proyección del IEU a 10 años para cada distrito comunitario, estimada según la proporción de nacidos en el extranjero y la densidad habitacional. Las proyecciones por escenario se muestran junto al mapa.</p>
 </div>
 <div class="pc" style="padding-top:24px">
   <div class="map-layout" style="margin-bottom:24px">
     <div class="map-left">
       <div id="map"></div>
       <div class="map-legend">
-        <div class="ml-title">Escala IEU</div>
+        <div class="ml-title">IEU — proy. 10 años</div>
         <div class="ml-item"><div class="ml-color" style="background:#2d8653"></div><span>≥ +0,8</span></div>
         <div class="ml-item"><div class="ml-color" style="background:#9acd32"></div><span>+0,4–0,8</span></div>
         <div class="ml-item"><div class="ml-color" style="background:#e67e22"></div><span>0–+0,4</span></div>
@@ -219,7 +219,7 @@ mkPage('map',false,`<div class="ph">
     </div>
     <div class="map-right">
       <div class="mrp-section">
-        <div class="mrp-title">IEU por borough</div>
+        <div class="mrp-title">IEU por borough (10 años)</div>
         <div id="boroMini"></div>
       </div>
       <div class="mrp-section">
