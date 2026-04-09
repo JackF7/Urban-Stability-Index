@@ -30,10 +30,16 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
         <p>Under current enforcement, net international migration has dropped to about <strong>66,000/yr</strong>. The minimum needed to prevent population loss is <strong>56,612</strong>. The USI is currently near <strong>zero</strong>.</p>
       </div>
       <div class="meter-wrap">
-        <div class="meter-title">Where current policy sits relative to break-even</div>
-        <div class="meter-track"><div class="meter-fill" id="hMFill" style="width:0%"></div><div class="meter-thresh" id="hMThresh" style="left:22.6%"><span>Break-even: 56,612</span></div></div>
-        <div class="meter-labels"><span>0</span><span style="color:var(--red)">Decline</span><span style="color:var(--green)">Growth</span><span>250k</span></div>
-        <div class="meter-status" id="hMStatus" style="background:rgba(245,166,35,.07);color:var(--orange)">66,000 arrivals/yr, 9,388 above the break-even point.</div>
+        <div class="meter-track" style="overflow:visible">
+          <div id="hMFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width 1.2s cubic-bezier(.16,1,.3,1);"></div>
+          <div id="hMFill_above" style="position:absolute;top:0;height:100%;width:0%;background:var(--green);border-radius:0 4px 4px 0;transition:width 1.2s cubic-bezier(.16,1,.3,1),left 1.2s cubic-bezier(.16,1,.3,1);display:none;"></div>
+          <div id="hMFill_dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--text);border:2px solid var(--bg);z-index:20;transition:left 1.2s cubic-bezier(.16,1,.3,1);left:0%;"></div>
+          <div style="position:absolute;top:-5px;bottom:-5px;left:22.6%;width:2px;background:var(--text);opacity:.5;z-index:10;"></div>
+          <span style="position:absolute;top:-20px;left:22.6%;transform:translateX(-50%);font-size:9px;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;">Min. needed: 56,612</span>
+        </div>
+        <div class="meter-labels" style="margin-top:10px"><span>0</span><span>250k</span></div>
+      </div>
+      <div class="meter-status" id="hMStatus" style="background:rgba(201,168,76,.08);color:var(--orange);border-left:3px solid var(--orange)">66,000 <span style="opacity:.6">(2025)</span> arrivals/yr</div>
       </div>
     </div>
   </div>
@@ -77,10 +83,16 @@ mkPage('argument',false,`<div class="ph">
   <h2>The break-even threshold</h2>
   <p>The minimum number of net international arrivals needed to prevent population loss is 56,612 per year. That figure comes from subtracting natural increase (34,627) from the domestic outflow (91,239). Under the current enforcement trajectory, net arrivals have fallen to about 66,000, only 9,388 above that line.</p>
   <div class="meter-wrap">
-    <div class="meter-title">Net international migration vs. the break-even point</div>
-    <div class="meter-track"><div class="meter-fill" id="mFill" style="width:0%"></div><div class="meter-thresh" id="mThresh" style="left:22.6%"><span>Break-even: 56,612</span></div></div>
-    <div class="meter-labels"><span>0 arrivals/yr</span><span style="color:var(--red)">Decline</span><span style="color:var(--green)">Growth</span><span>250,000/yr</span></div>
-    <div class="meter-status" id="mStatus" style="background:rgba(245,166,35,.07);color:var(--orange)">Current: 66,000 arrivals/yr, 9,388 above the break-even point.</div>
+        <div class="meter-track" style="overflow:visible">
+          <div id="mFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width 1.2s cubic-bezier(.16,1,.3,1);"></div>
+          <div id="mFill_above" style="position:absolute;top:0;height:100%;width:0%;background:var(--green);border-radius:0 4px 4px 0;transition:width 1.2s cubic-bezier(.16,1,.3,1),left 1.2s cubic-bezier(.16,1,.3,1);display:none;"></div>
+          <div id="mFill_dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--text);border:2px solid var(--bg);z-index:20;transition:left 1.2s cubic-bezier(.16,1,.3,1);left:0%;"></div>
+          <div style="position:absolute;top:-5px;bottom:-5px;left:22.6%;width:2px;background:var(--text);opacity:.5;z-index:10;"></div>
+          <span style="position:absolute;top:-20px;left:22.6%;transform:translateX(-50%);font-size:9px;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;">Min. needed: 56,612</span>
+        </div>
+        <div class="meter-labels" style="margin-top:10px"><span>0 arrivals/yr</span><span>250,000/yr</span></div>
+      </div>
+      <div class="meter-status" id="mStatus" style="background:rgba(201,168,76,.08);color:var(--orange);border-left:3px solid var(--orange)">Current: 66,000 <span style="opacity:.6">(2025)</span> arrivals/yr</div>
   </div>
   <div class="footnote">Greg David, "Immigration to NYC Plummeted as Trump Crackdown Took Hold," The CITY, March 26, 2026, citing U.S. Census Bureau Vintage 2025.</div>
 </div>`),
@@ -109,12 +121,12 @@ mkPage('model',false,`<div class="ph">
   <h2 style="margin-bottom:12px">Where the weights come from</h2>
   <p style="margin-bottom:16px">Each weight reflects immigration's measured share of that dimension. The three raw figures (80.6, 44.3, 25.0) are normalized to sum to 1.0 by dividing each by their total of 149.9.</p>
   <div class="g3" style="margin-bottom:16px">
-    <div class="wcard"><div class="wcard-num">0.54</div><div class="wcard-dim">wₚ — Population</div><div class="wcard-desc">In 2023-24, international immigration accounted for 80.6% of all positive population inputs: 144,098 out of (144,098 + 34,627). That share normalizes to 0.54.</div><div class="wcard-src">80.6 / 149.9 = 0.54 · Census Vintage 2024</div></div>
+    <div class="wcard"><div class="wcard-num">0.53</div><div class="wcard-dim">wₚ — Population</div><div class="wcard-desc">In 2023-24, international immigration accounted for 80.6% of all positive population inputs: 144,098 out of (144,098 + 34,627). That share normalizes to 0.53.</div><div class="wcard-src">80.6 / 149.9 = 0.53 · Census Vintage 2024</div></div>
     <div class="wcard"><div class="wcard-num">0.30</div><div class="wcard-dim">wₗ — Labor</div><div class="wcard-desc">Foreign-born workers make up 44.3% of NYC's labor force, more than twice the 18.6% national figure. Immigrants are disproportionately working-age and have higher participation rates.</div><div class="wcard-src">44.3 / 149.9 = 0.30 · NYS Comptroller 2024</div></div>
     <div class="wcard"><div class="wcard-num">0.17</div><div class="wcard-dim">wₕ — Housing (penalty)</div><div class="wcard-desc">Immigrant households accounted for 25% of U.S. household formation between 2019 and 2023. Because increased density is a cost, this component is subtracted rather than added.</div><div class="wcard-src">25.0 / 149.9 = 0.17 · Harvard JCHS 2024</div></div>
   </div>
   <div class="card" style="text-align:center;border-color:rgba(232,197,71,.2)">
-    <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">The Urban Stability Index, scaled x10</div>$$\\text{USI} = \\underbrace{5.4}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3.0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1.7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">Above zero means growth. Below zero means decline. Zero means the city is holding steady.</div></div>
+    <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">The Urban Stability Index, scaled x10</div>$$\\text{USI} = \\underbrace{5.3}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3.0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1.7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">Above zero means growth. Below zero means decline. Zero means the city is holding steady.</div></div>
   </div>
 </div>`),
 mkPage('scenarios',false,`<div class="ph">
@@ -177,7 +189,7 @@ mkPage('explorer',false,`<div class="ph">
     </div>
     <div class="ctrl-section">
       <h3>USI Weights</h3>
-      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₚ — Population weight</span><span class="ctrl-val" id="v-wp">0.54</span></div><input type="range" id="s-wp" min="0.1" max="0.8" step="0.01" value="0.54"><div class="ctrl-marks"><span>0.1</span><span>0.45</span><span>0.8</span></div></div>
+      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₚ — Population weight</span><span class="ctrl-val" id="v-wp">0.54</span></div><input type="range" id="s-wp" min="0.1" max="0.8" step="0.01" value="0.53"><div class="ctrl-marks"><span>0.1</span><span>0.45</span><span>0.8</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₗ — Labor weight</span><span class="ctrl-val" id="v-wl">0.30</span></div><input type="range" id="s-wl" min="0.1" max="0.7" step="0.01" value="0.30"><div class="ctrl-marks"><span>0.1</span><span>0.4</span><span>0.7</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₕ — Housing penalty</span><span class="ctrl-val" id="v-wh">0.17</span></div><input type="range" id="s-wh" min="0.05" max="0.5" step="0.01" value="0.17"><div class="ctrl-marks"><span>0.05</span><span>0.28</span><span>0.5</span></div></div>
     </div>
@@ -214,8 +226,15 @@ mkPage('map',false,`<div class="ph">
           <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Margin</span><span style="font-family:'DM Mono',monospace;font-size:11px" class="pos">+87,486</span></div>
         </div>
         <div class="meter-wrap" style="margin-top:12px">
-          <div class="meter-track"><div class="meter-fill" id="mapMFill" style="width:0%"></div><div class="meter-thresh" style="left:22.6%"><span>56,612</span></div></div>
-          <div class="meter-labels"><span>0</span><span>250k</span></div>
+          <div class="meter-track" style="overflow:visible">
+            <div id="mapMFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width .6s ease;"></div>
+            <div id="mapMFill_above" style="position:absolute;top:0;height:100%;width:0%;background:var(--green);border-radius:0 4px 4px 0;transition:width .6s ease,left .6s ease;display:none;"></div>
+            <div id="mapMFill_dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:var(--text);border:2px solid var(--bg);z-index:20;transition:left .6s ease;left:0%;"></div>
+            <div style="position:absolute;top:-4px;bottom:-4px;left:22.6%;width:2px;background:var(--text);opacity:.5;z-index:10;"></div>
+            <span style="position:absolute;top:-18px;left:22.6%;transform:translateX(-50%);font-size:9px;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;">56,612</span>
+          </div>
+          <div class="meter-labels" style="margin-top:10px"><span>0</span><span>250k</span></div>
+        </div>
         </div>
       </div>
     </div>

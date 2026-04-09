@@ -29,10 +29,16 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
     <div>
       <div class="callout"><p>Bajo la política actual, la migración internacional neta ha caído a <strong>66.000/año</strong>, apenas por encima del umbral de equilibrio de <strong>56.612</strong>. El IEU es efectivamente <strong>cero</strong>.</p></div>
       <div class="meter-wrap">
-        <div class="meter-title">Dónde se sitúa la política actual respecto al umbral de equilibrio</div>
-        <div class="meter-track"><div class="meter-fill" id="hMFill" style="width:0%"></div><div class="meter-thresh" id="hMThresh" style="left:22.6%"><span>Equilibrio: 56.612</span></div></div>
-        <div class="meter-labels"><span>0</span><span style="color:var(--red)">← Declive</span><span style="color:var(--green)">Crecimiento →</span><span>250k</span></div>
-        <div class="meter-status" id="hMStatus" style="background:rgba(245,166,35,.07);color:var(--orange)">66.000 llegadas/año, 9.388 por encima del umbral de equilibrio.</div>
+        <div class="meter-track" style="overflow:visible">
+          <div id="hMFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width 1.2s cubic-bezier(.16,1,.3,1);"></div>
+          <div id="hMFill_above" style="position:absolute;top:0;height:100%;width:0%;background:var(--green);border-radius:0 4px 4px 0;transition:width 1.2s cubic-bezier(.16,1,.3,1),left 1.2s cubic-bezier(.16,1,.3,1);display:none;"></div>
+          <div id="hMFill_dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--text);border:2px solid var(--bg);z-index:20;transition:left 1.2s cubic-bezier(.16,1,.3,1);left:0%;"></div>
+          <div style="position:absolute;top:-5px;bottom:-5px;left:22.6%;width:2px;background:var(--text);opacity:.5;z-index:10;"></div>
+          <span style="position:absolute;top:-20px;left:22.6%;transform:translateX(-50%);font-size:9px;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;">Mín. necesario: 56.612</span>
+        </div>
+        <div class="meter-labels" style="margin-top:10px"><span>0</span><span>250k</span></div>
+      </div>
+      <div class="meter-status" id="hMStatus" style="background:rgba(201,168,76,.08);color:var(--orange);border-left:3px solid var(--orange)">66.000 <span style="opacity:.6">(2025)</span> llegadas/año</div>
       </div>
     </div>
   </div>
@@ -77,10 +83,16 @@ mkPage('argument',false,`<div class="ph">
   <h2>El umbral de equilibrio</h2>
   <p>El número mínimo de llegadas internacionales netas necesarias para evitar la pérdida de población es 56.612 al año. Esa cifra resulta de restar el crecimiento natural (34.627) de la salida doméstica (91.239). Con la trayectoria de aplicación actual, las llegadas netas han caído a unos 66.000, apenas 9.388 por encima de ese umbral.</p>
   <div class="meter-wrap">
-    <div class="meter-title">Migración internacional neta vs. umbral de equilibrio</div>
-    <div class="meter-track"><div class="meter-fill" id="mFill" style="width:0%"></div><div class="meter-thresh" id="mThresh" style="left:22.6%"><span>Equilibrio: 56.612</span></div></div>
-    <div class="meter-labels"><span>0 llegadas/año</span><span style="color:var(--red)">← Declive</span><span style="color:var(--green)">Crecimiento →</span><span>250.000/año</span></div>
-    <div class="meter-status" id="mStatus" style="background:rgba(245,166,35,.07);color:var(--orange)">Política actual: 66.000/año, 9.388 por encima del umbral de equilibrio.</div>
+        <div class="meter-track" style="overflow:visible">
+          <div id="mFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width 1.2s cubic-bezier(.16,1,.3,1);"></div>
+          <div id="mFill_above" style="position:absolute;top:0;height:100%;width:0%;background:var(--green);border-radius:0 4px 4px 0;transition:width 1.2s cubic-bezier(.16,1,.3,1),left 1.2s cubic-bezier(.16,1,.3,1);display:none;"></div>
+          <div id="mFill_dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--text);border:2px solid var(--bg);z-index:20;transition:left 1.2s cubic-bezier(.16,1,.3,1);left:0%;"></div>
+          <div style="position:absolute;top:-5px;bottom:-5px;left:22.6%;width:2px;background:var(--text);opacity:.5;z-index:10;"></div>
+          <span style="position:absolute;top:-20px;left:22.6%;transform:translateX(-50%);font-size:9px;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;">Mín. necesario: 56.612</span>
+        </div>
+        <div class="meter-labels" style="margin-top:10px"><span>0 llegadas/año</span><span>250.000/año</span></div>
+      </div>
+      <div class="meter-status" id="mStatus" style="background:rgba(201,168,76,.08);color:var(--orange);border-left:3px solid var(--orange)">66.000 <span style="opacity:.6">(2025)</span> llegadas/año</div>
   </div>
   <div class="footnote">Greg David, "Immigration to NYC Plummeted as Trump Crackdown Took Hold," The CITY, 26 de marzo de 2026, citando el Census Bureau Vintage 2025.</div>
 </div>`),
@@ -110,7 +122,7 @@ mkPage('model',false,`<div class="ph">
   <h2 style="margin-bottom:12px">De dónde vienen los pesos</h2>
   <p style="margin-bottom:16px">Cada peso refleja la participación medida de la inmigración en esa dimensión. Las tres cifras brutas (80,6, 44,3, 25,0) se normalizan para sumar 1,0 dividiendo cada una entre su total de 149,9.</p>
   <div class="g3" style="margin-bottom:16px">
-    <div class="wcard"><div class="wcard-num">0,54</div><div class="wcard-dim">wₚ — Población</div><div class="wcard-desc">En 2023-24, la inmigración internacional representó el 80,6% de todos los aportes positivos de población: 144.098 de (144.098 + 34.627). Esa proporción se normaliza a 0,54.</div><div class="wcard-src">80,6 / 149,9 = 0,54 · Census Vintage 2024</div></div>
+    <div class="wcard"><div class="wcard-num">0,53</div><div class="wcard-dim">wₚ — Población</div><div class="wcard-desc">En 2023-24, la inmigración internacional representó el 80,6% de todos los aportes positivos de población: 144.098 de (144.098 + 34.627). Esa proporción se normaliza a 0,53.</div><div class="wcard-src">80,6 / 149,9 = 0,53 · Census Vintage 2024</div></div>
     <div class="wcard"><div class="wcard-num">0,30</div><div class="wcard-dim">wₗ — Fuerza laboral</div><div class="wcard-desc">Los trabajadores nacidos en el extranjero representan el 44,3% de la fuerza laboral de NYC, más del doble del promedio nacional del 18,6%. Los inmigrantes son desproporcionadamente jóvenes y tienen tasas de participación más altas.</div><div class="wcard-src">44,3 / 149,9 = 0,30 · Contralor del Estado de NY 2024</div></div>
     <div class="wcard"><div class="wcard-num">0,17</div><div class="wcard-dim">wₕ — Vivienda (penalización)</div><div class="wcard-desc">Los hogares inmigrantes representaron el 25% de la formación de hogares en EE.UU. entre 2019 y 2023. Dado que el aumento de densidad es un costo, este componente se resta en lugar de sumarse.</div><div class="wcard-src">25,0 / 149,9 = 0,17 · Harvard JCHS 2024</div></div>
   </div>
@@ -180,7 +192,7 @@ mkPage('explorer',false,`<div class="ph">
     </div>
     <div class="ctrl-section">
       <h3>Pesos del IEU</h3>
-      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₚ — Peso poblacional</span><span class="ctrl-val" id="v-wp">0,54</span></div><input type="range" id="s-wp" min="0.1" max="0.8" step="0.01" value="0.54"><div class="ctrl-marks"><span>0,1</span><span>0,45</span><span>0,8</span></div></div>
+      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₚ — Peso poblacional</span><span class="ctrl-val" id="v-wp">0,54</span></div><input type="range" id="s-wp" min="0.1" max="0.8" step="0.01" value="0.53"><div class="ctrl-marks"><span>0,1</span><span>0,45</span><span>0,8</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₗ — Peso laboral</span><span class="ctrl-val" id="v-wl">0,30</span></div><input type="range" id="s-wl" min="0.1" max="0.7" step="0.01" value="0.30"><div class="ctrl-marks"><span>0,1</span><span>0,4</span><span>0,7</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">wₕ — Penalización vivienda</span><span class="ctrl-val" id="v-wh">0,17</span></div><input type="range" id="s-wh" min="0.05" max="0.5" step="0.01" value="0.17"><div class="ctrl-marks"><span>0,05</span><span>0,28</span><span>0,5</span></div></div>
     </div>
@@ -218,8 +230,15 @@ mkPage('map',false,`<div class="ph">
           <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Margen</span><span style="font-family:'DM Mono',monospace;font-size:11px" class="pos">+87.486</span></div>
         </div>
         <div class="meter-wrap" style="margin-top:12px">
-          <div class="meter-track"><div class="meter-fill" id="mapMFill" style="width:0%"></div><div class="meter-thresh" style="left:22.6%"><span>56.612</span></div></div>
-          <div class="meter-labels"><span>0</span><span>250k</span></div>
+          <div class="meter-track" style="overflow:visible">
+            <div id="mapMFill_below" style="position:absolute;left:0;top:0;height:100%;width:0%;background:var(--red);border-radius:4px 0 0 4px;transition:width .6s ease;"></div>
+            <div id="mapMFill_above" style="position:absolute;top:0;height:100%;width:0%;background:var(--green);border-radius:0 4px 4px 0;transition:width .6s ease,left .6s ease;display:none;"></div>
+            <div id="mapMFill_dot" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:10px;height:10px;border-radius:50%;background:var(--text);border:2px solid var(--bg);z-index:20;transition:left .6s ease;left:0%;"></div>
+            <div style="position:absolute;top:-4px;bottom:-4px;left:22.6%;width:2px;background:var(--text);opacity:.5;z-index:10;"></div>
+            <span style="position:absolute;top:-18px;left:22.6%;transform:translateX(-50%);font-size:9px;font-family:'DM Mono',monospace;color:var(--text2);white-space:nowrap;">56.612</span>
+          </div>
+          <div class="meter-labels" style="margin-top:10px"><span>0</span><span>250k</span></div>
+        </div>
         </div>
       </div>
     </div>

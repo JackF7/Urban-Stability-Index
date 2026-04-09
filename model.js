@@ -6,7 +6,7 @@
 // MODEL CORE
 // ═══════════════════════════════════════════════════
 const BASE={pop:8204035,lf:4063000,units:3706562,Pi:3093845,Pn:5164190,H0:(3093845+5164190)/3706562,natInc:34627,domOut:-91239,newUnits:20000,lfp_intl:.70,lfp_avg:.64};
-let W={p:.54,l:.30,h:.17};
+let W={p:.53,l:.30,h:.17};
 const SCALE=10;
 const SC={
   high:   {mi:200000,label:'High Immigration',      labelES:'Alta Inmigración',   color:'#3ecf8e'},
@@ -162,26 +162,36 @@ function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 // ═══════════════════════════════════════════════════
 const BEVEN=56612,MAXMI=250000;
 function updateMeter(mi,fillId,threshId,statusId){
-  const fill=document.getElementById(fillId),thresh=document.getElementById(threshId),status=document.getElementById(statusId);
-  if(!fill)return;
-  const pct=Math.min(100,mi/MAXMI*100),tPct=(BEVEN/MAXMI*100).toFixed(1);
-  if(thresh)thresh.style.left=tPct+'%';
-  fill.style.width=pct+'%';
+  const belowEl=document.getElementById(fillId+'_below'),aboveEl=document.getElementById(fillId+'_above'),dotEl=document.getElementById(fillId+'_dot'),status=document.getElementById(statusId);
+  if(!belowEl)return;
+  const pct=Math.min(100,mi/MAXMI*100);
+  const tPct=BEVEN/MAXMI*100;
   const above=mi-BEVEN;
   const isES=lang==='es';
+  // Below portion always fills up to threshold or current, whichever is less
+  belowEl.style.width=Math.min(pct,tPct)+'%';
+  // Above portion only if mi > BEVEN
+  if(aboveEl){
+    if(mi>BEVEN){aboveEl.style.width=(pct-tPct)+'%';aboveEl.style.left=tPct+'%';aboveEl.style.display='block';}
+    else{aboveEl.style.display='none';}
+  }
+  // Dot position
+  if(dotEl){dotEl.style.left=pct+'%';}
   if(mi>=BEVEN){
-    fill.style.background=`linear-gradient(90deg,#b03a2e 0%,#e67e22 ${tPct}%,#2d8653 ${tPct}%,#2d8653 100%)`;
-    if(status){status.style.background='rgba(62,207,142,.07)';status.style.color='#3ecf8e';
-      status.innerHTML=above>50000
-        ?(isES?`${mi.toLocaleString()} llegadas/año — <strong>${above.toLocaleString()} sobre el umbral</strong>. La ciudad está creciendo.`:`${mi.toLocaleString()} arrivals/yr — <strong>${above.toLocaleString()} above break-even</strong>. City is growing.`)
-        :(isES?`${mi.toLocaleString()} llegadas/año — <strong>${above.toLocaleString()} sobre el umbral</strong>. Marginal — cualquier escalada arriesga la contracción.`:`${mi.toLocaleString()} arrivals/yr — <strong>${above.toLocaleString()} above break-even</strong>. Marginal — escalation risks contraction.`);
+    if(status){
+      const col=above>50000?'var(--green)':'var(--orange)';
+      const bg=above>50000?'rgba(106,191,122,.08)':'rgba(201,168,76,.08)';
+      status.style.background=bg;status.style.color=col;status.style.borderLeftColor=col;
+      status.innerHTML=isES
+        ?`${mi.toLocaleString()} <span style="opacity:.6">(2025)</span> llegadas/año`
+        :`${mi.toLocaleString()} <span style="opacity:.6">(2025)</span> arrivals/yr`;
     }
   } else {
-    fill.style.background='#b03a2e';
-    if(status){status.style.background='rgba(241,96,96,.07)';status.style.color='#f16060';
+    if(status){
+      status.style.background='rgba(212,112,106,.08)';status.style.color='var(--red)';status.style.borderLeftColor='var(--red)';
       status.innerHTML=isES
-        ?`${mi.toLocaleString()} llegadas/año — <strong>${Math.abs(above).toLocaleString()} por debajo del umbral</strong>. La población está disminuyendo.`
-        :`${mi.toLocaleString()} arrivals/yr — <strong>${Math.abs(above).toLocaleString()} below break-even</strong>. Population is declining.`;
+        ?`${mi.toLocaleString()} llegadas/año`
+        :`${mi.toLocaleString()} arrivals/yr`;
     }
   }
 }
