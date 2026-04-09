@@ -437,9 +437,9 @@
     <a href="#twentieth" class="toc-link">Siglo XX</a>
     <div class="toc-section">Contemporáneo</div>
     <a href="#economic" class="toc-link">Estabilización económica</a>
-    <a href="#fertility" class="toc-link">Fertility & Growth</a>
-    <a href="#policy" class="toc-link">Policy & Deportations</a>
-    <div class="toc-section">El Modelo</div>
+    <a href="#fertility" class="toc-link">Fertilidad y crecimiento</a>
+    <a href="#policy" class="toc-link">Política y deportaciones</a>
+    <div class="toc-section">El modelo</div>
     <a href="#math" class="toc-link">Análisis matemático</a>
     <a href="#bibliography" class="toc-link">Bibliografía</a>
   </div>
@@ -718,30 +718,67 @@ const observer = new IntersectionObserver(entries => {
 sections.forEach(s => observer.observe(s));
 </script>
 
+
 <style>
-  @keyframes pageEnter {
-    from { opacity: 0; transform: translateY(22px) scale(0.985); }
-    to   { opacity: 1; transform: translateY(0)    scale(1); }
+  @keyframes _curtainDown {
+    from { height: 0;    top: 0; }
+    to   { height: 100%; top: 0; }
   }
-  @keyframes pageExit {
-    0%   { opacity: 1; transform: translateY(0)     scale(1)    rotate(0deg); box-shadow: none; }
-    40%  { opacity: 1; transform: translateY(-6px)  scale(0.99) rotate(-0.3deg); }
-    100% { opacity: 0; transform: translateY(-16px) scale(0.96) rotate(-0.6deg); }
+  @keyframes _curtainUp {
+    from { height: 100%; top: 0; }
+    to   { height: 0;    top: 100%; }
   }
-  body { animation: pageEnter 0.5s cubic-bezier(0.16,1,0.3,1) both; }
-  body.exiting { animation: pageExit 0.42s cubic-bezier(0.4,0,1,1) forwards; pointer-events: none; }
+  #_curtain {
+    position: fixed; left: 0; top: 0; width: 100%;
+    background: #2a3d2a; z-index: 99999;
+    height: 0; pointer-events: none;
+  }
+  #_curtain.down { animation: _curtainDown 0.38s cubic-bezier(0.4,0,1,1) forwards; }
+  #_curtain.up   { animation: _curtainUp   0.38s cubic-bezier(0,0,0.6,1) forwards; }
+  body { opacity: 0; }
+  body.ready { opacity: 1; transition: none; }
 </style>
+<div id="_curtain"></div>
 <script>
 (function(){
-  function go(url){
-    document.body.classList.add('exiting');
-    setTimeout(function(){ window.location.href = url; }, 440);
+  var curtain = document.getElementById('_curtain');
+
+  // Reveal page — curtain wipes up
+  function revealPage() {
+    document.body.classList.add('ready');
+    curtain.style.height = '100%';
+    curtain.style.top = '0';
+    curtain.style.animation = 'none';
+    curtain.offsetHeight; // reflow
+    curtain.classList.add('up');
   }
-  document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('a[href]').forEach(function(a){
+
+  // Navigate — curtain drops, then load new page
+  function navigateTo(url) {
+    curtain.style.height = '0';
+    curtain.style.top = '0';
+    curtain.style.animation = 'none';
+    curtain.offsetHeight;
+    curtain.classList.remove('up');
+    curtain.classList.add('down');
+    setTimeout(function() { window.location.href = url; }, 400);
+  }
+
+  // On load: always do the reveal wipe
+  window.addEventListener('load', function() {
+    setTimeout(revealPage, 30);
+  });
+
+  // Intercept paper/index navigation links
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href]').forEach(function(a) {
       var h = a.getAttribute('href');
-      if(h && !h.startsWith('http') && !h.startsWith('#') && (h.includes('paper') || h.includes('index'))){
-        a.addEventListener('click', function(e){ e.preventDefault(); go(h); });
+      if (h && !h.startsWith('http') && !h.startsWith('#') &&
+          (h.includes('paper') || h.includes('index'))) {
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          navigateTo(h);
+        });
       }
     });
   });
