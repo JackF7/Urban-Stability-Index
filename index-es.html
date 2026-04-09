@@ -138,53 +138,5 @@
 
 
 
-<style>
-  #_curtain {
-    position: fixed; left: 0; top: 0; width: 100%; height: 100%;
-    background: #2a3d2a; z-index: 99999;
-    transform: translateY(-100%);
-    pointer-events: none;
-    transition: transform 0.38s cubic-bezier(0.4,0,1,1);
-  }
-  #_curtain.drop { transform: translateY(0); }
-  #_curtain.rise { transition: transform 0.38s cubic-bezier(0,0,0.6,1); transform: translateY(100%); }
-</style>
-<div id="_curtain"></div>
-<script>
-(function(){
-  var curtain = document.getElementById('_curtain');
-  var navigating = false;
-
-  function navigateTo(url) {
-    if (navigating) return;
-    navigating = true;
-    curtain.classList.add('drop');
-    setTimeout(function(){ window.location.href = url; }, 420);
-  }
-
-  // On page load: curtain starts covering, then rises away
-  curtain.style.transition = 'none';
-  curtain.style.transform = 'translateY(0)';
-  curtain.offsetHeight;
-  curtain.style.transition = '';
-  setTimeout(function(){
-    curtain.classList.add('rise');
-  }, 40);
-
-  document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('a[href]').forEach(function(a){
-      var h = a.getAttribute('href');
-      if(h && !h.startsWith('http') && !h.startsWith('#') &&
-         (h.includes('paper') || h.includes('index'))){
-        a.addEventListener('click', function(e){
-          e.preventDefault();
-          navigateTo(h);
-        });
-      }
-    });
-  });
-})();
-</script>
-
 </body>
 </html>
