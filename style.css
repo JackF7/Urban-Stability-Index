@@ -5,19 +5,19 @@
 
 /* ── TOKENS ── */
 :root {
-  --bg:       #1a2e1a;
-  --surface:  #213021;
-  --surface2: #2a3d2a;
-  --surface3: #334533;
+  --bg:       #1e1428;
+  --surface:  #261a34;
+  --surface2: #30213f;
+  --surface3: #3a2a4c;
   --border:   rgba(255,255,255,0.07);
   --border2:  rgba(255,255,255,0.14);
-  --accent:   #d4a843;
+  --accent:   #c9a84c;
   --green:    #6abf7a;
   --red:      #d4706a;
   --orange:   #d4913a;
-  --text:     #f0ebe0;
-  --text2:    #a8b8a0;
-  --text3:    #566050;
+  --text:     #f0ebf8;
+  --text2:    #b8a8cc;
+  --text3:    #6a5880;
   --sw:       240px;
 }
 
@@ -46,7 +46,7 @@ body {
 }
 .sb-brand { padding: 26px 22px 20px; border-bottom: 1px solid var(--border); }
 .sb-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 14px;
   font-weight: 800;
   color: var(--text);
@@ -575,7 +575,7 @@ input[type="range"].fpr::-webkit-slider-thumb {
 .ni.active { transform: translateX(3px); }
 
 .card { transition: all .22s ease; }
-.card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.3); }
+.card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,.4); }
 
 .stat-cell { transition: background .2s ease; }
 .stat-cell:hover { background: var(--surface3); }
