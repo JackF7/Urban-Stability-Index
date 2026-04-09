@@ -719,63 +719,46 @@ sections.forEach(s => observer.observe(s));
 </script>
 
 
+
 <style>
-  @keyframes _curtainDown {
-    from { height: 0;    top: 0; }
-    to   { height: 100%; top: 0; }
-  }
-  @keyframes _curtainUp {
-    from { height: 100%; top: 0; }
-    to   { height: 0;    top: 100%; }
-  }
   #_curtain {
-    position: fixed; left: 0; top: 0; width: 100%;
+    position: fixed; left: 0; top: 0; width: 100%; height: 100%;
     background: #2a3d2a; z-index: 99999;
-    height: 0; pointer-events: none;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: transform 0.38s cubic-bezier(0.4,0,1,1);
   }
-  #_curtain.down { animation: _curtainDown 0.38s cubic-bezier(0.4,0,1,1) forwards; }
-  #_curtain.up   { animation: _curtainUp   0.38s cubic-bezier(0,0,0.6,1) forwards; }
-  body { opacity: 0; }
-  body.ready { opacity: 1; transition: none; }
+  #_curtain.drop { transform: translateY(0); }
+  #_curtain.rise { transition: transform 0.38s cubic-bezier(0,0,0.6,1); transform: translateY(100%); }
 </style>
 <div id="_curtain"></div>
 <script>
 (function(){
   var curtain = document.getElementById('_curtain');
+  var navigating = false;
 
-  // Reveal page — curtain wipes up
-  function revealPage() {
-    document.body.classList.add('ready');
-    curtain.style.height = '100%';
-    curtain.style.top = '0';
-    curtain.style.animation = 'none';
-    curtain.offsetHeight; // reflow
-    curtain.classList.add('up');
-  }
-
-  // Navigate — curtain drops, then load new page
   function navigateTo(url) {
-    curtain.style.height = '0';
-    curtain.style.top = '0';
-    curtain.style.animation = 'none';
-    curtain.offsetHeight;
-    curtain.classList.remove('up');
-    curtain.classList.add('down');
-    setTimeout(function() { window.location.href = url; }, 400);
+    if (navigating) return;
+    navigating = true;
+    curtain.classList.add('drop');
+    setTimeout(function(){ window.location.href = url; }, 420);
   }
 
-  // On load: always do the reveal wipe
-  window.addEventListener('load', function() {
-    setTimeout(revealPage, 30);
-  });
+  // On page load: curtain starts covering, then rises away
+  curtain.style.transition = 'none';
+  curtain.style.transform = 'translateY(0)';
+  curtain.offsetHeight;
+  curtain.style.transition = '';
+  setTimeout(function(){
+    curtain.classList.add('rise');
+  }, 40);
 
-  // Intercept paper/index navigation links
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href]').forEach(function(a) {
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('a[href]').forEach(function(a){
       var h = a.getAttribute('href');
-      if (h && !h.startsWith('http') && !h.startsWith('#') &&
-          (h.includes('paper') || h.includes('index'))) {
-        a.addEventListener('click', function(e) {
+      if(h && !h.startsWith('http') && !h.startsWith('#') &&
+         (h.includes('paper') || h.includes('index'))){
+        a.addEventListener('click', function(e){
           e.preventDefault();
           navigateTo(h);
         });
