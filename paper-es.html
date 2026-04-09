@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Tesis — Índice de Estabilidad Urbana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false})"></script>
+  <style>
+        :root {
+      --bg:       #f2ede2;
+      --surface:  #e8e2d4;
+      --surface2: #faf7f0;
+      --surface3: #ffffff;
+      --border:   rgba(60,80,50,0.12);
+      --border2:  rgba(40,60,35,0.2);
+      --accent:   #3a7a3a;
+      --accent2:  #2d6e2d;
+      --text:     #1a2a18;
+      --text2:    #4a6044;
+      --text3:    #8a9e82;
+      --toc-w:    230px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Crimson Pro', serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── TOC SIDEBAR ── */
+    #toc {
+      width: var(--toc-w);
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      z-index: 100;
+    }
+    #toc::-webkit-scrollbar { width: 3px; }
+    #toc::-webkit-scrollbar-thumb { background: var(--border); }
+    .toc-header {
+      padding: 24px 18px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toc-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text3);
+      text-decoration: none;
+      margin-bottom: 14px;
+      transition: color .15s;
+    }
+    .toc-back:hover { color: var(--accent); }
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -.02em;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .toc-sub { font-size: 10px; color: var(--text3); }
+    .toc-nav { padding: 12px 10px; flex: 1; }
+    .toc-section {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text3);
+      padding: 8px 8px 4px;
+      margin-top: 8px;
+    }
+    .toc-link {
+      display: block;
+      padding: 6px 8px;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text2);
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all .15s;
+      line-height: 1.4;
+      margin-bottom: 1px;
+    }
+    .toc-link:hover { background: var(--surface2); color: var(--text); }
+    .toc-link.active { background: rgba(232,197,71,.1); color: var(--accent); }
+    .toc-footer {
+      padding: 14px 18px;
+      border-top: 1px solid var(--border);
+    }
+    .lang-row {
+      display: flex;
+      border: 1px solid var(--border2);
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .lb {
+      flex: 1; padding: 5px;
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      font-weight: 500;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text3);
+      transition: all .15s;
+      text-align: center;
+    }
+    .lb.active { background: var(--accent); color: var(--bg); }
+    .dl-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      width: 100%;
+      padding: 9px;
+      background: rgba(26,107,191,.08);
+      border: 1px solid rgba(26,107,191,.2);
+      border-radius: 7px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'Crimson Pro', serif;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .18s;
+    }
+    .dl-btn:hover { background: rgba(232,197,71,.15); border-color: var(--accent); }
+
+    /* ── MAIN CONTENT ── */
+    #content {
+      margin-left: var(--toc-w);
+      flex: 1;
+      max-width: calc(var(--toc-w) + var(--content-w) + 80px);
+    }
+
+    /* ── HERO ── */
+    .paper-hero {
+      padding: 72px 64px 56px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+    .paper-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(26,107,191,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--accent);
+      margin-bottom: 18px;
+      opacity: .85;
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(14px, 1.8vw, 20px);
+      font-weight: 400;
+      color: var(--text3);
+      letter-spacing: -.01em;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .meta-chip {
+      padding: 5px 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 11px;
+      color: var(--text2);
+      font-family: 'DM Mono', monospace;
+    }
+
+    /* ── SECTIONS ── */
+    .paper-section {
+      padding: 56px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .paper-section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--accent);
+      margin-bottom: 10px;
+      opacity: .75;
+      font-family: 'DM Mono', monospace;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .subsection-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -.02em;
+      margin-top: 36px;
+      margin-bottom: 14px;
+    }
+
+    /* ── PROSE ── */
+    .prose p {
+      font-size: 17px;
+      color: var(--text2);
+      line-height: 1.82;
+      font-weight: 300;
+      margin-bottom: 18px;
+      max-width: 65ch;
+    }
+    .prose p strong { color: var(--text); font-weight: 500; }
+    .prose p em { color: var(--text); font-style: italic; }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      margin: 32px 0;
+      padding: 24px 28px;
+      border-left: 3px solid var(--accent);
+      background: rgba(26,107,191,.05);
+      border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p {
+      font-size: 16px !important;
+      font-weight: 400 !important;
+      color: var(--text) !important;
+      line-height: 1.65 !important;
+      margin-bottom: 0 !important;
+      font-style: italic;
+    }
+
+    /* ── FOOTNOTE ── */
+    .fn {
+      font-size: 11px;
+      color: var(--text3);
+      font-family: 'DM Mono', monospace;
+      line-height: 1.6;
+      margin-top: 4px;
+    }
+    sup { font-size: 9px; color: var(--accent); font-family: 'DM Mono', monospace; }
+
+    /* ── STAT CALLOUT ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 28px 0;
+    }
+    .stat-cell { background: var(--surface2); padding: 20px 18px; }
+    .sv {
+      font-family: 'Syne', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -.03em;
+      margin-bottom: 5px;
+      line-height: 1;
+    }
+    .sl { font-size: 12px; color: var(--text2); line-height: 1.4; }
+    .ss { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--text3); margin-top: 4px; }
+
+    /* ── EQUATION BOX ── */
+    .eqbox {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 22px 28px;
+      margin: 24px 0;
+      overflow-x: auto;
+    }
+    .eqlabel {
+      font-size: 9px;
+      font-family: 'DM Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: 14px;
+      opacity: .8;
+    }
+    .eqnote {
+      font-size: 11px;
+      color: var(--text3);
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .katex { color: var(--text) !important; font-size: 1.05em; }
+    .katex-display { margin: .7em 0; overflow-x: auto; }
+    .var-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 16px;
+    }
+    .var-table th {
+      text-align: left;
+      padding: 7px 10px;
+      font-size: 9px;
+      font-family: 'DM Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text3);
+      border-bottom: 1px solid var(--border);
+    }
+    .var-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text2);
+      font-size: 12px;
+    }
+    .var-table tr:last-child td { border-bottom: none; }
+    .var-table td:first-child { font-family: 'DM Mono', monospace; color: var(--accent); font-size: 11px; }
+
+    /* ── DRAFT NOTICE ── */
+    .draft-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 20px;
+      background: rgba(192,57,43,.05);
+      border: 1px solid rgba(192,57,43,.15);
+      border-radius: 8px;
+      margin: 28px 0;
+    }
+    .draft-notice-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .draft-notice p { font-size: 13px !important; color: var(--text3) !important; margin-bottom: 0 !important; font-style: italic; }
+
+    /* ── BIBLIOGRAPHY ── */
+    .bib-entry {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+    .bib-entry:last-child { border-bottom: none; }
+    .bib-entry a { color: var(--accent); text-decoration: none; font-size: 11px; font-family: 'DM Mono', monospace; }
+    .bib-entry a:hover { text-decoration: underline; }
+
+    /* ── MOBILE ── */
+    #mob-bar {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 50px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      z-index: 200;
+    }
+    #mob-bar button { background: transparent; border: none; color: var(--text2); cursor: pointer; }
+
+    @media (max-width: 900px) {
+      #toc { display: none; position: fixed; top: 50px; left: 0; bottom: 0; z-index: 300; transform: translateX(-100%); transition: transform .3s; }
+      #toc.open { display: flex; transform: translateX(0); }
+      #mob-bar { display: flex; }
+      #content { margin-left: 0; padding-top: 50px; }
+      .paper-hero, .paper-section { padding: 32px 20px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="mob-bar">
+  <span style="font-family:'Syne',sans-serif;font-size:13px;font-weight:800;letter-spacing:-.02em;">La Tesis</span>
+  <button onclick="document.getElementById('toc').classList.toggle('open')">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</div>
+
+<nav id="toc">
+  <div class="toc-header">
+    <a href="index-es.html" class="toc-back">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      Volver al modelo
+    </a>
+    <div class="toc-title">Índice de<br>Estabilidad Urbana</div>
+    <div class="toc-sub">Forester · Fordham 2026</div>
+  </div>
+  <div class="toc-nav">
+    <div class="toc-section">La Tesis</div>
+    <a href="#abstract" class="toc-link active">Resumen</a>
+    <a href="#intro" class="toc-link">Introducción</a>
+    <div class="toc-section">Historia</div>
+    <a href="#industrial" class="toc-link">Nueva York industrial</a>
+    <a href="#twentieth" class="toc-link">Siglo XX</a>
+    <div class="toc-section">Contemporáneo</div>
+    <a href="#economic" class="toc-link">Estabilización económica</a>
+    <a href="#fertility" class="toc-link">Fertility & Growth</a>
+    <a href="#policy" class="toc-link">Policy & Deportations</a>
+    <div class="toc-section">El Modelo</div>
+    <a href="#math" class="toc-link">Análisis matemático</a>
+    <a href="#bibliography" class="toc-link">Bibliografía</a>
+  </div>
+  <div class="toc-footer">
+    <div class="lang-row">
+      <button class="lb" onclick="window.location.href='paper.html'">EN</button>
+      <button class="lb active" onclick="window.location.href='paper-es.html'">ES</button>
+    </div>
+    <a href="Senior_Thesis_Draft__Forester_.pdf" target="_blank" class="dl-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Descargar PDF
+    </a>
+  </div>
+</nav>
+
+<div id="content">
+
+  <!-- HERO -->
+  <div class="paper-hero" id="top">
+    <div class="hero-label">Tesis de Honor · Universidad de Fordham · Primavera de 2026</div>
+    <div class="hero-title">Motores de estabilidad</div>
+    <div class="hero-subtitle">Inmigración y transformación demográfica en la ciudad de Nueva York</div>
+    <div class="hero-meta">
+      <span class="meta-chip">Jack Forester</span>
+      <span class="meta-chip">Dr. Carey Kasten</span>
+      <span class="meta-chip">Mathematics</span>
+      <span class="meta-chip">Computer Science</span>
+      <span class="meta-chip">Spanish</span>
+    </div>
+  </div>
+
+  <!-- ABSTRACT -->
+  <div class="paper-section" id="abstract">
+    <div class="section-label">§ 1</div>
+    <div class="section-title">Resumen</div>
+    <div class="prose">
+      <p>La ciudad de Nueva York ha estado marcada por la inmigración a lo largo de su historia. Desde la expansión industrial del siglo XIX hasta los desafíos demográficos actuales, las comunidades inmigrantes han desempeñado un papel fundamental en el sostenimiento de la población, la fuerza laboral y la economía de la ciudad.</p>
+      <p>Esta tesis examina la inmigración como una fuerza estabilizadora en Nueva York, argumentando que la migración ha contribuido consistentemente a que la ciudad se adapte a la disminución de la natalidad, los cambios económicos y las fluctuaciones en la demanda laboral. La tesis comienza analizando la relación histórica entre la inmigración y el crecimiento industrial, destacando el papel de la mano de obra inmigrante y la importancia de la isla Ellis en el desarrollo de Nueva York.</p>
+      <p>Finalmente, la tesis presenta un marco matemático para modelar la estabilidad demográfica y laboral bajo diferentes escenarios de inmigración. Al integrar la natalidad, la migración y la participación laboral, el modelo demuestra cómo la inmigración sigue funcionando como un motor clave de la estabilidad demográfica y económica en la ciudad de Nueva York.</p>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div class="paper-section" id="intro">
+    <div class="section-label">§ 2</div>
+    <div class="section-title">Introducción</div>
+    <div class="prose">
+      <p>Los Estados Unidos se enfrentan a una paradoja demográfica: su población está envejeciendo y su tasa de natalidad está disminuyendo, pero sus principales ciudades siguen bajo una presión constante debido a la escasez de vivienda, la desaceleración del crecimiento del empleo y los patrones migratorios desiguales. Entre estas ciudades, Nueva York se destaca como un microcosmos del país. Al núcleo de estas dinámicas se encuentran la migración, la fertilidad, la vivienda y la economía, factores que influyen en la estabilización o desestabilización de la población.</p>
+      <div class="draft-notice">
+        <div class="draft-notice-icon">✎</div>
+        <p>Esta sección está en proceso y se ampliará en la tesis final.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRIAL NEW YORK -->
+  <div class="paper-section" id="industrial">
+    <div class="section-label">§ 3</div>
+    <div class="section-title">Inmigración y la construcción de la Nueva York industrial</div>
+    <div class="prose">
+      <p>Desde su fundación, los Estados Unidos, y particularmente la ciudad de Nueva York, han sido moldeados por flujos continuos de inmigrantes que proporcionaron la mano de obra y las bases culturales de una economía urbana en desarrollo. La primera ola significativa de inmigración comenzó en el siglo XIX, alrededor de la década de 1840. Desde ese momento hasta 1889, más de 14 millones de inmigrantes entraron a los Estados Unidos, con más del 70% provenientes de Alemania, Irlanda y el Reino Unido.<sup>1</sup> Las tasas de inmigración aumentaron de manera constante: 1.713.251 personas inmigraron entre 1841 y 1850, mientras que 5.246.613 llegaron entre 1881 y 1890.<sup>2</sup></p>
+
+      <div class="stat-row">
+        <div class="stat-cell"><div class="sv">14M+</div><div class="sl">Inmigrantes entraron a EE.UU., 1840–1889</div><div class="ss">70%+ de Alemania, Irlanda y el Reino Unido</div></div>
+        <div class="stat-cell"><div class="sv">85%</div><div class="sl">De los trabajadores industriales estadounidenses eran inmigrantes o sus hijos en 1900</div><div class="ss">National Park Service, 2003</div></div>
+        <div class="stat-cell"><div class="sv">84%</div><div class="sl">De todas las llegadas de inmigrantes a EE.UU. pasaron por la isla Ellis, 1900–1924</div><div class="ss">U.S. Census Bureau</div></div>
+      </div>
+
+      <p>Después de la Guerra Civil, durante la Segunda Revolución Industrial, los Estados Unidos se transformaron de una sociedad mayormente rural en una economía urbana e industrial. Los inmigrantes fueron una fuerza motriz. Para 1900, el 85% de los trabajadores industriales estadounidenses eran inmigrantes o hijos de inmigrantes.<sup>3</sup> La población de EE.UU. en 1880 era de 50.155.783, con inmigrantes que comprendían casi siete millones. Cuarenta años después, en 1920, la población se había más que duplicado a 105.710.620, con un aumento similar en el número de inmigrantes a poco menos de catorce millones.<sup>4</sup></p>
+
+      <p>En 1920, de los 105 millones de estadounidenses, 23 millones eran hijos de inmigrantes, lo que significa que más de un tercio de la población podía atribuirse a los inmigrantes.<sup>6</sup> Sus contribuciones combinadas permitieron que los Estados Unidos satisficieran las demandas crecientes de la producción en masa y la expansión urbana. La inmigración de principios del siglo XX fue, por lo tanto, tanto un fenómeno demográfico como una fuerza impulsora del desarrollo económico del país.</p>
+
+      <div class="pull-quote">
+        <p>"En 1900, tres de cada cuatro personas en muchas de las principales ciudades estadounidenses eran inmigrantes o hijos de inmigrantes."</p>
+      </div>
+
+      <p>Durante la era industrial, la gente entraba al país por diversos puertos de entrada, con el principal punto de acceso en la isla Ellis. Ubicada en el puerto de Nueva York cerca de la Estatua de la Libertad, la isla Ellis procesó a más de doce millones de inmigrantes y fue la estación de inmigración más grande y activa del país desde 1892 hasta 1924.<sup>7</sup> Entre 1900 y 1924, la isla Ellis recibió a más del 84% de los nuevos residentes del país. El siguiente puerto más grande, Boston, recibió poco más del 6%.<sup>8</sup> La isla Ellis se situaba en el corazón del sistema de inmigración estadounidense, sirviendo como la puerta de entrada para la fuerza laboral que impulsó la rápida industrialización de la nación.</p>
+
+      <p>La segunda mitad del siglo XIX presenció diversas calamidades económicas y agrícolas en muchas partes del mundo, lo que impulsó migraciones masivas. Un ejemplo notable fue el apogeo de la emigración irlandesa durante la Gran Hambruna de 1845–1852, cuando casi dos millones de personas emigraron a los Estados Unidos.<sup>12</sup> Estos patrones demuestran lo que comúnmente se conoce como factores de empuje y atracción: las dificultades económicas y la persecución empujaban a las personas a abandonar sus lugares de origen, mientras que la promesa de oportunidad y prosperidad las atraía hacia las ciudades en crecimiento de América.</p>
+    </div>
+  </div>
+
+  <!-- TWENTIETH CENTURY -->
+  <div class="paper-section" id="twentieth">
+    <div class="section-label">§ 4</div>
+    <div class="section-title">La ciudad de Nueva York en el siglo XX</div>
+    <div class="prose">
+      <p>Si bien la ciudad de Nueva York ha sido durante mucho tiempo un imán para los inmigrantes, los factores que impulsan la migración hacia la ciudad están en constante cambio. La Nueva York del siglo XIX difiere enormemente de la ciudad actual; sin embargo, pese a sus dinámicas cambiantes, su identidad como ciudad de inmigrantes ha perdurado. A lo largo de los siglos XX y XXI, la población inmigrante de Nueva York se ha hecho cada vez más diversa, reflejando patrones migratorios globales más amplios. Hoy en día, la ciudad da la bienvenida a recién llegados de todo el mundo, con un aumento particular proveniente de América Latina, junto con llegadas desde Europa, África y Asia.</p>
+      <div class="draft-notice">
+        <div class="draft-notice-icon">✎</div>
+        <p>Sección sobre inmigración del siglo XX se añadirá en la tesis final.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECONOMIC STABILIZATION -->
+  <div class="paper-section" id="economic">
+    <div class="section-label">§ 5</div>
+    <div class="section-title">Estabilización económica</div>
+    <div class="prose">
+      <p>Actualmente, más de tres millones de inmigrantes llaman a Nueva York su hogar, lo que representa casi el 40% de la población de la ciudad. A partir de 2022, los tres principales países de nacimiento de los residentes extranjeros de Nueva York son la República Dominicana, China y México.<sup>13</sup> En 2023, Nueva York contaba con casi dos millones de trabajadores nacidos en el extranjero mayores de dieciséis años, el 44,3% de la fuerza laboral total de la ciudad, más del doble del promedio nacional del 18,6%.<sup>14</sup></p>
+
+      <div class="stat-row">
+        <div class="stat-cell"><div class="sv">3M+</div><div class="sl">Inmigrantes en la ciudad de Nueva York, ~40% de la población</div><div class="ss">Mayor's Office of Immigrant Affairs, 2024</div></div>
+        <div class="stat-cell"><div class="sv">44,3%</div><div class="sl">De la fuerza laboral de NYC nació en el extranjero</div><div class="ss">2,38 veces el promedio nacional del 18,6%</div></div>
+        <div class="stat-cell"><div class="sv">$103B</div><div class="sl">Impuestos pagados por inmigrantes en el área metropolitana de NYC en 2023</div><div class="ss">American Immigration Council, 2025</div></div>
+      </div>
+
+      <p>En 2023, los inmigrantes en el estado de Nueva York tenían más probabilidades de estar empleados que los ciudadanos nacidos en EE.UU.<sup>15</sup> Investigaciones de la Kellogg School of Management encontraron que los inmigrantes tienen un 80% más de probabilidad de iniciar un negocio en los Estados Unidos, creando más empleos y mejorando los resultados económicos.<sup>16</sup> Estos hallazgos contradicen la idea de que los inmigrantes quitan empleos a los ciudadanos estadounidenses. En realidad, ayudan a ampliar el mercado laboral.</p>
+
+      <div class="pull-quote">
+        <p>La inmigración tiene un efecto multiplicador en la economía: los inmigrantes ocupan puestos de trabajo mientras que al mismo tiempo los crean.</p>
+      </div>
+
+      <p>Más allá de sus contribuciones laborales, los inmigrantes neoyorquinos impulsan un crecimiento económico significativo a través de los impuestos. Según el American Immigration Council, los inmigrantes en el área metropolitana de Nueva York pagaron $103.300 millones en impuestos en 2023.<sup>17</sup> Cuatro ciudades del norte del estado de Nueva York (Siracusa, Utica, Buffalo y Rochester) han experimentado un resurgimiento poblacional y económico gracias a la inmigración.<sup>18</sup> A nivel federal, una reducción del 10% en los solicitantes de asilo por año causaría una pérdida estimada de $1.500 millones en ingresos fiscales y $8.900 millones en la economía en cinco años.<sup>19</sup></p>
+
+      <p>La ausencia de la inmigración también presenta conclusiones claras. Durante la última década, la fuerza laboral principal de EE.UU. (de 25 a 54 años) no habría experimentado crecimiento y a veces habría disminuido sin la inmigración. En 2014, la fuerza laboral principal habría registrado una disminución del 2,6%, pero la inmigración compensó este descenso, manteniendo un crecimiento del 6,8%.<sup>20</sup> Ejemplos históricos, como la recuperación económica posterior a la pandemia, mostraron que el aumento de la inmigración coincidió con tasas de desempleo históricamente bajas para los trabajadores nacidos en EE.UU., lo que indica que no existe un conflicto inherente entre la llegada de inmigrantes y el empleo doméstico.<sup>21</sup></p>
+    </div>
+  </div>
+
+  <!-- FERTILITY -->
+  <div class="paper-section" id="fertility">
+    <div class="section-label">§ 6</div>
+    <div class="section-title">Fertilidad y crecimiento poblacional</div>
+    <div class="prose">
+      <p>El número de nacimientos y la tasa de fertilidad total en los Estados Unidos han estado disminuyendo durante décadas. Para que una población mantenga estabilidad a largo plazo, la tasa de fertilidad debe mantenerse alrededor de 2,1 hijos por mujer. En 1990, la tasa de fertilidad de EE.UU. era de aproximadamente 2,1; para 2023 había disminuido a 1,62 hijos por mujer.<sup>23</sup> A medida que la fertilidad disminuye, la inmigración internacional se convierte en una fuerza estabilizadora cada vez más crítica.</p>
+
+      <div class="stat-row">
+        <div class="stat-cell"><div class="sv">1,62</div><div class="sl">Tasa de fertilidad total de EE.UU. en 2023, desde 2,1 en 1990</div><div class="ss">National Center for Health Statistics, 2025</div></div>
+        <div class="stat-cell"><div class="sv">1,88</div><div class="sl">Tasa de fertilidad de mujeres nacidas en el extranjero en EE.UU., 2025</div><div class="ss">Mayor que las nativas, aún por debajo del nivel de reemplazo</div></div>
+        <div class="stat-cell"><div class="sv">100%</div><div class="sl">Del crecimiento poblacional de EE.UU. atribuible a la inmigración, 2022–2023</div><div class="ss">Migration Policy Institute, 2025</div></div>
+      </div>
+
+      <p>La inmigración como forma de estabilización poblacional no es un concepto nuevo. En numerosos países, incluyendo Italia, Alemania y Mónaco, la inmigración neta ha revertido la pérdida de población en este siglo. En Italia, donde la tasa de fertilidad es solo de 1,3 hijos por mujer, la población aumentó en 2.689.200 entre 2000 y 2020; sin inmigración, habría disminuido en 1.576.100.<sup>25</sup></p>
+
+      <p>Aunque la inmigración actúa como una fuerza estabilizadora, es solo un remedio parcial. A medida que las tasas de fertilidad nativas disminuyen, los países requerirán niveles de inmigración cada vez mayores para contrarrestar la tendencia. En 2025, la tasa de fertilidad de las mujeres nacidas en el extranjero en los Estados Unidos es de 1,88, ligeramente superior a la tasa total de 1,62, pero aún por debajo del nivel de reemplazo de 2,1. Debido al descenso de la tasa de natalidad, todo el crecimiento poblacional en los Estados Unidos entre 2022 y 2023 podría atribuirse a la inmigración.<sup>26</sup></p>
+    </div>
+  </div>
+
+  <!-- POLICY -->
+  <div class="paper-section" id="policy">
+    <div class="section-label">§ 7</div>
+    <div class="section-title">Política, deportaciones y migración</div>
+    <div class="prose">
+      <p>Los flujos migratorios no ocurren en un vacío político. La ley federal determina cuántas personas pueden inmigrar en un año determinado. Las políticas más liberales permiten mayores vías de inmigración, mientras que las más conservadoras restringen el movimiento y aumentan la vigilancia fronteriza. La política gubernamental desempeña por tanto un papel central a la hora de determinar si la inmigración funciona como un motor de estabilidad o una fuente de volatilidad demográfica.</p>
+
+      <p>Durante el primer mandato del presidente George W. Bush, los ataques del 11 de septiembre marcaron un punto de inflexión, dando lugar a políticas migratorias más estrictas y medidas discriminatorias. Tras los ataques, el Departamento de Estado de EE.UU. dejó de emitir visados a hombres en edad laboral de países de mayoría musulmana durante un mes, y se introdujeron entrevistas obligatorias y toma de huellas dactilares para todos los solicitantes. Los visados turísticos y de negocios cayeron en 2,6 millones — una disminución del 44% — para 2003.<sup>29</sup></p>
+
+      <p>Uno de los cambios más significativos de la administración Bush fue la creación del Departamento de Seguridad Nacional y, con él, la Oficina de Inmigración y Control de Aduanas, ahora conocida como ICE.<sup>30</sup> El 4 de julio de 2025, tras la aprobación de la One Big Beautiful Bill Act, ICE se convirtió en la agencia federal de cumplimiento de la ley más grande y mejor financiada en la historia de EE.UU.</p>
+
+      <div class="pull-quote">
+        <p>En el año fiscal 2025, la frontera entre EE.UU. y México registró solo 444.000 encuentros con migrantes. El año anterior fueron 2,1 millones.</p>
+      </div>
+
+      <p>La administración del presidente Obama deportó a más de 3,1 millones de personas durante sus ocho años en el cargo. La primera administración Trump deportó a 932.000.<sup>35</sup> A diferencia de Trump, Obama intentó ofrecer más vías legales para los inmigrantes, especialmente a través de DACA en 2012, que proporcionó protección temporal contra la deportación a inmigrantes indocumentados que llegaron al país siendo niños.<sup>36</sup></p>
+
+      <p>En enero de 2024, bajo la presidencia de Biden, el número de "entradas probables" se situaba en aproximadamente 124.000. Para febrero de 2025, esa cifra era cero.<sup>37</sup> Antes de que el reloj marcara las 12:01 del día de inauguración de Trump, la Oficina de Aduanas y Protección Fronteriza anunció el fin de la aplicación CBP One, que permitía programar citas migratorias en ocho puntos de entrada de la frontera suroeste.<sup>38</sup> Como resultado, los encuentros en la frontera entre EE.UU. y México en el año fiscal 2025 cayeron a 444.000, desde los 2,1 millones del año anterior.<sup>39</sup></p>
+    </div>
+  </div>
+
+  <!-- MATHEMATICAL ANALYSIS -->
+  <div class="paper-section" id="math">
+    <div class="section-label">§ 8</div>
+    <div class="section-title">Análisis matemático y estabilidad</div>
+    <div class="prose">
+      <p>Podemos traducir los datos demográficos históricos y actuales en modelos matemáticos formales para analizar cómo la inmigración ha desempeñado roles estabilizadores con respecto a la población, la fuerza laboral y la vivienda de Nueva York. El marco diferencia entre residentes nacidos en el extranjero y en EE.UU., cuantifica los efectos de la fertilidad por debajo del nivel de reemplazo e incorpora la inmigración como fuerza estabilizadora.</p>
+    </div>
+
+    <div class="subsection-title">I. Modelo de Población</div>
+    <div class="eqbox">
+      <div class="eqlabel">Ecuación diferencial de población</div>
+      $$\frac{dP}{dt} = b_n P_n(t) + b_i P_i(t) - D(t) + M(t)$$
+      <div class="eqnote">La población es estable cuando dP/dt = 0, o equivalentemente cuando M(t) = D(t) − bₙPₙ(t) − bᵢPᵢ(t)</div>
+    </div>
+    <table class="var-table">
+      <thead><tr><th>Variable</th><th>Definición</th></tr></thead>
+      <tbody>
+        <tr><td>P(t)</td><td>Población total en el tiempo t</td></tr>
+        <tr><td>Pₙ(t)</td><td>Población nacida en el país</td></tr>
+        <tr><td>Pᵢ(t)</td><td>Población nacida en el extranjero</td></tr>
+        <tr><td>bₙ / bᵢ</td><td>Tasas de natalidad anuales per cápita, nativos e inmigrantes</td></tr>
+        <tr><td>D(t)</td><td>Total de muertes</td></tr>
+        <tr><td>M(t)</td><td>Migración neta (internacional menos doméstica)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="subsection-title">Estabilidad poblacional</div>
+    <div class="prose">
+      <p>Sea S(t₀, tf) el cociente de estabilidad poblacional:</p>
+    </div>
+    <div class="eqbox">
+      $$S(t_0, t_f) = \frac{P(t_f)}{P(t_0)}$$
+      <div class="eqnote">S &lt; 1 = decreciendo · S = 1 = estable · S &gt; 1 = creciendo</div>
+    </div>
+
+    <div class="subsection-title">Validación histórica: 1990–2000</div>
+    <div class="prose">
+      <p>En 1990, la población total de Nueva York era de 7.322.564. Diez años después había aumentado a 8.008.278, dando S(1990, 2000) ≈ 1,094, un aumento del 9,4%. Entre 1990 y 2000, la ciudad registró 1.185.987 nacimientos y 685.282 muertes, un crecimiento natural de 500.705. Resolviendo para la migración neta:</p>
+    </div>
+    <div class="eqbox">
+      <div class="eqlabel">Resolviendo la migración neta, 1990–2000</div>
+      $$8{,}008{,}278 = 7{,}322{,}564 + 1{,}185{,}987 - 685{,}282 + M \implies M = 185{,}009$$
+    </div>
+    <div class="prose">
+      <p>Al mismo tiempo, la población nacida en el extranjero creció en 788.101, de 2.082.931 a 2.871.032.<sup>41</sup> Dado que el aumento de la población nacida en el extranjero superó el crecimiento neto total, la inmigración más que compensó la importante emigración doméstica. No fue simplemente un factor contribuyente, sino el principal motor del crecimiento demográfico de Nueva York hacia finales del siglo XX.</p>
+    </div>
+
+    <div class="subsection-title">II. Modelo de Fuerza Laboral</div>
+    <div class="eqbox">
+      <div class="eqlabel">Ecuación diferencial de la fuerza laboral</div>
+      $$\frac{dL_t}{dt} = E_n(t)L_n(t) + E_i(t)L_i(t) + I_L(t) - \Delta L_D(t)$$
+      <div class="eqnote">La fuerza laboral es estable cuando la inmigración neta compensa la desgaste laboral</div>
+    </div>
+
+    <div class="subsection-title">III. Modelo de Presión sobre la Vivienda</div>
+    <div class="eqbox">
+      $$H(t) = \frac{P_n(t) + P_i(t)}{U(t)}$$
+      <div class="eqnote">H(t) = personas por unidad de vivienda. Un H(t) creciente indica que el crecimiento poblacional supera la oferta de vivienda.</div>
+    </div>
+
+    <div class="subsection-title">El Índice de Estabilidad Urbana</div>
+    <div class="prose">
+      <p>El IEU combina los tres componentes en un único índice ponderado, premiando el crecimiento de población y fuerza laboral mientras penaliza la presión sobre la vivienda. Los pesos reflejan la participación empírica de la inmigración en cada dimensión, normalizados para sumar 1,0.</p>
+    </div>
+    <div class="eqbox">
+      <div class="eqlabel">Índice de Estabilidad Urbana · Escalado ×10</div>
+      $$\text{USI}(t_0, t_f) = \underbrace{5.4}_{w_p} \cdot S_p \;+\; \underbrace{3.0}_{w_l} \cdot S_l \;-\; \underbrace{1.7}_{w_h} \cdot S_H$$
+      <div class="eqnote">IEU &gt; 0 = crecimiento · IEU = 0 = estasis · IEU &lt; 0 = declive</div>
+    </div>
+    <div class="prose">
+      <p>El modelo interactivo en este sitio permite explorar las proyecciones del IEU bajo cuatro escenarios de política, desde alta inmigración hasta restricción sostenida, con controles deslizantes para todos los parámetros.</p>
+      <p style="margin-top:8px"><a href="index-es.html" style="color:var(--accent);text-decoration:none;font-size:13px;font-weight:500;">← Explorar el modelo interactivo</a></p>
+    </div>
+  </div>
+
+  <!-- BIBLIOGRAPHY -->
+  <div class="paper-section" id="bibliography">
+    <div class="section-label">Fuentes</div>
+    <div class="section-title">Bibliografía</div>
+    <div class="bib-entry">American Immigration Council. <em>Immigrants in the New York Metro Area.</em> 2025. <a href="https://map.americanimmigrationcouncil.org/locations/new-york" target="_blank">↗</a></div>
+    <div class="bib-entry">Azoulay, Pierre, Benjamin Jones, J. Daniel Kim, and Javier Miranda. "Immigrants to the U.S. Create More Jobs than They Take." <em>Kellogg Insight,</em> October 5, 2020. <a href="https://insight.kellogg.northwestern.edu/article/immigrants-to-the-u-s-create-more-jobs-than-they-take" target="_blank">↗</a></div>
+    <div class="bib-entry">Batalova, Jeanne. "Frequently Requested Statistics on Immigrants and Immigration in the United States." <em>Migration Policy Institute,</em> March 12, 2025. <a href="https://www.migrationpolicy.org/article/frequently-requested-statistics-immigrants-and-immigration-united-states" target="_blank">↗</a></div>
+    <div class="bib-entry">Bier, David J. "The 9/11 Legacy for Immigration." <em>The Independent Review</em> 26, no. 2 (2021). <a href="https://www.jstor.org/stable/48647350" target="_blank">↗</a></div>
+    <div class="bib-entry">Brookings Institution. "100 Days of Immigration under the Second Trump Administration." <a href="https://www.brookings.edu/articles/100-days-of-immigration-under-the-second-trump-administration" target="_blank">↗</a></div>
+    <div class="bib-entry">Clemens, Michael A. <em>The Economic and Fiscal Effects on the United States from Reduced Numbers of Refugees and Asylum Seekers.</em> Washington, DC: Center for Global Development, 2022.</div>
+    <div class="bib-entry">Driscoll, Anne K., and Brady E. Hamilton. <em>Effects of Age-Specific Fertility Trends on Overall Fertility Trends: United States, 1990–2023.</em> National Vital Statistics Reports 74, no. 3. Hyattsville, MD: National Center for Health Statistics, 2025.</div>
+    <div class="bib-entry">Economic Policy Institute. <em>The U.S. Benefits from Immigration but Policy Reforms Are Needed to Maximize Gains.</em> 2024. <a href="https://www.epi.org/publication/u-s-benefits-from-immigration/" target="_blank">↗</a></div>
+    <div class="bib-entry">Hirschman, Charles, and Elizabeth Mogford. "Immigration and the American Industrial Revolution from 1880 to 1920." <em>Social Science Research</em> 38, no. 4 (2009): 897–920.</div>
+    <div class="bib-entry">Kramer, Stephanie. "In Some Countries, Immigration Accounted for All Population Growth Between 2000 and 2020." <em>Pew Research Center,</em> July 8, 2024. <a href="https://www.pewresearch.org/short-reads/2024/07/08/in-some-countries-immigration-accountedfor-all-population-growth-between-2000-and-2020" target="_blank">↗</a></div>
+    <div class="bib-entry">Mayor's Office of Immigrant Affairs. <em>2023 Annual Report on New York City's Immigrant Population.</em> New York: City of New York, 2024.</div>
+    <div class="bib-entry">Migration Policy Institute. <em>Trump at Four: Immigration Policy at the End of the Trump Administration.</em> Washington, DC, 2021. <a href="https://www.migrationpolicy.org/sites/default/files/publications/mpi-trump-at-4-report-final.pdf" target="_blank">↗</a></div>
+    <div class="bib-entry">National Park Service. <em>American Labor History Theme Study.</em> Washington, DC: U.S. Department of the Interior, 2003.</div>
+    <div class="bib-entry">New York City Department of City Planning. <em>New York City's Population Estimates and Trends: March 2025 Release.</em> March 2025.</div>
+    <div class="bib-entry">New York State Office of the State Comptroller. <em>New York City's Uneven Recovery: Foreign-Born in the Workforce.</em> 2024. <a href="https://www.osc.ny.gov/files/reports/osdc/pdf/immigrants-labor-force-one-pager.pdf" target="_blank">↗</a></div>
+    <div class="bib-entry">Passel, Jeffrey S., Daniel T. Lichter, and Janelle Wong. "How the Origins of America's Immigrants Have Changed since 1850." <em>Pew Research Center,</em> July 22, 2024.</div>
+    <div class="bib-entry">Siena Research Institute. "82% of NYers: Recent Influx of Migrants Is a Serious Problem." Siena College, August 22, 2023.</div>
+    <div class="bib-entry">U.S. Census Bureau. <em>Historical Census Statistics on the Foreign-Born Population of the United States: 1850–1990.</em> Washington, DC, 1999.</div>
+    <div class="bib-entry">U.S. Citizenship and Immigration Services. "Deferred Action for Childhood Arrivals (DACA)." Last modified October 2025. <a href="https://www.uscis.gov/DACA" target="_blank">↗</a></div>
+  </div>
+
+</div>
+
+<script>
+// Active TOC link on scroll
+const sections = document.querySelectorAll('.paper-section[id]');
+const links = document.querySelectorAll('.toc-link');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
