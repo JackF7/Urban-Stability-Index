@@ -154,12 +154,12 @@ body {
   opacity: .85;
 }
 .ph h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 3.5vw, 46px);
-  font-weight: 800;
-  letter-spacing: -.03em;
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 600;
+  letter-spacing: -.01em;
   color: var(--text);
-  line-height: 1.08;
+  line-height: 1.1;
   margin-bottom: 14px;
 }
 .ph p {
@@ -173,9 +173,9 @@ body {
 
 /* ── TYPOGRAPHY ── */
 h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
+  font-family: 'Crimson Pro', serif;
+  font-size: 22px;
+  font-weight: 600;
   color: var(--text);
   letter-spacing: -.02em;
   margin-bottom: 16px;

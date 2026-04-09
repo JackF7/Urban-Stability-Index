@@ -21,9 +21,9 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
   </div>
   <div class="g2" style="margin-bottom:24px">
     <div>
-      <h2>El argumento central</h2>
-      <p>El crecimiento de la ciudad de Nueva York ha dependido durante mucho tiempo de factores que trascienden su cambio demográfico natural. Durante años, el número de personas que se mudan a otros estados ha superado el incremento neto de nacimientos sobre defunciones; en consecuencia, la inmigración internacional ha desempeñado un papel fundamental en el mantenimiento de la población de la ciudad.</p>
-      <p>Esta tesis explora dicha dinámica utilizando datos de la US Census Bureau y analiza cómo diversos escenarios de política federal de inmigración podrían influir en la población, la fuerza laboral y el panorama habitacional de la ciudad.</p>
+      <h2>De qué trata este proyecto</h2>
+      <p>Nueva York nunca ha crecido por su cuenta. Cada año salen más personas hacia otros estados de las que se ganan por el exceso de nacimientos sobre defunciones. La inmigración internacional es lo que mantiene la población de la ciudad, y así ha sido durante décadas.</p>
+      <p>Esta tesis cuantifica esa relación con datos de la Oficina del Censo y proyecta lo que ocurriría con la población, la fuerza laboral y la vivienda de NYC bajo cuatro escenarios distintos de política migratoria federal.</p>
       <button onclick="goPage('argument')" style="margin-top:6px;padding:9px 18px;background:var(--accent);color:var(--bg);border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Crimson Pro',serif">Leer el argumento →</button>
     </div>
     <div>
@@ -38,23 +38,23 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
   </div>
   <div class="g3">
     <button onclick="goPage('model')" class="card" style="cursor:pointer;text-align:left"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;font-weight:600">El modelo</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px">Fórmula IEU</div><div style="font-size:12px;color:var(--text3)">Población · Trabajo · Vivienda en un índice</div></button>
-    <button onclick="goPage('scenarios')" class="card" style="cursor:pointer;text-align:left"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;font-weight:600">Escenarios</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px">Cuatro Trayectorias</div><div style="font-size:12px;color:var(--text3)">Desde alta inmigración hasta restricción</div></button>
-    <button onclick="goPage('map')" class="card" style="cursor:pointer;text-align:left"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;font-weight:600">Mapa + Datos</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px">Mapa Interactivo y Proyecciones</div><div style="font-size:12px;color:var(--text3)">Todos los datos en un solo lugar</div></button>
+    <button onclick="goPage('scenarios')" class="card" style="cursor:pointer;text-align:left"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;font-weight:600">Escenarios</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px">Cuatro trayectorias de política</div><div style="font-size:12px;color:var(--text3)">Proyecciones desde alta inmigración hasta restricción sostenida</div></button>
+    <button onclick="goPage('map')" class="card" style="cursor:pointer;text-align:left"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:8px;font-weight:600">Mapa + Datos</div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:5px">Mapa interactivo</div><div style="font-size:12px;color:var(--text3)">IEU por distrito comunitario, con proyecciones por escenario</div></button>
   </div>
 </div>`),
 // ARGUMENTO
 mkPage('argument',false,`<div class="ph">
   <div class="ph-label">El argumento</div>
-  <h1>La inmigración no es uno entre muchos factores. Es el factor decisivo.</h1>
-  <p>NYC ha dependido de llegadas internacionales continuas durante casi dos siglos. El modelo demuestra esto matemáticamente.</p>
+  <h1>Por qué la inmigración es<br>la variable determinante</h1>
+  <p>Nueva York registra más nacimientos que defunciones cada año. El problema demográfico es otra cosa.</p>
 </div>
 <div class="pc">
   <div class="g2" style="margin-bottom:32px">
     <div>
-      <h2>Datos de referencia</h2>
-      <p><strong>El crecimiento natural de NYC es positivo</strong>: 89.851 nacimientos vs. 55.224 muertes. La amenaza demográfica es la emigración doméstica: 91.239 residentes abandonan la ciudad hacia otros estados cada año.</p>
-      <p>La inmigración internacional (144.098 en 2023–24) no solo compensó las pérdidas domésticas; cubrió toda la salida y produjo un crecimiento neto de 87.184 personas.</p>
-      <div class="callout"><p>Sin inmigración internacional, la ciudad habría perdido <strong>56.612 residentes</strong> en 2023–24, a pesar de que los nacimientos superaron a las muertes.</p></div>
+      <h2>Lo que muestran los datos</h2>
+      <p>El crecimiento natural de NYC es positivo: aproximadamente 89.851 nacimientos frente a 55.224 defunciones en 2023-24, una ganancia de 34.627. El problema es que 91.239 residentes se mudaron a otros estados ese mismo año, eliminando esa ganancia y algo más.</p>
+      <p>La inmigración internacional añadió 144.098 personas, cubrió la salida doméstica y produjo un aumento neto de población de 87.184. Sin ella, la ciudad habría perdido 56.612 residentes a pesar de tener más nacimientos que defunciones.</p>
+      <div class="callout"><p>La aritmética es directa: las pérdidas domésticas menos el crecimiento natural dejan una brecha de 56.612 personas al año que solo las llegadas internacionales pueden cubrir.</p></div>
     </div>
     <div class="card" style="overflow-x:auto">
       <h3 style="margin-bottom:14px">Componentes de Población NYC · 2023–2024</h3>
@@ -75,7 +75,7 @@ mkPage('argument',false,`<div class="ph">
     </div>
   </div>
   <h2>El umbral de equilibrio</h2>
-  <p>NYC necesita al menos <strong>56.612 llegadas internacionales netas por año</strong> para evitar el declive poblacional: salida doméstica (91.239) menos crecimiento natural (34.627).</p>
+  <p>El número mínimo de llegadas internacionales netas necesarias para evitar la pérdida de población es 56.612 al año. Esa cifra resulta de restar el crecimiento natural (34.627) de la salida doméstica (91.239). Con la trayectoria de aplicación actual, las llegadas netas han caído a unos 66.000, apenas 9.388 por encima de ese umbral.</p>
   <div class="meter-wrap">
     <div class="meter-title">Migración internacional neta vs. umbral de equilibrio</div>
     <div class="meter-track"><div class="meter-fill" id="mFill" style="width:0%"></div><div class="meter-thresh" id="mThresh" style="left:22.6%"><span>Equilibrio: 56.612</span></div></div>
@@ -88,7 +88,7 @@ mkPage('argument',false,`<div class="ph">
 mkPage('model',false,`<div class="ph">
   <div class="ph-label">El modelo</div>
   <h1>Índice de Estabilidad Urbana</h1>
-  <p>Tres ecuaciones (población, fuerza laboral, vivienda) combinadas en un solo número. IEU = 0 es estasis. Todos los componentes escalados ×10.</p>
+  <p>Tres ecuaciones cubren población, fuerza laboral y presión sobre la vivienda. Cada una produce una tasa de crecimiento, y las tres se combinan en un índice ponderado único. Una puntuación de cero significa que la ciudad se mantiene estable.</p>
 </div>
 <div class="pc">
   <div class="g2" style="margin-bottom:16px">
@@ -107,12 +107,12 @@ mkPage('model',false,`<div class="ph">
     <h3>III. Modelo de Presión sobre la Vivienda</h3>
     <div class="eqbox">$$H(t) = \\frac{P_i(t) + P_n(t)}{U(t)} \\qquad H(2023) \\approx 2{,}23$$$$S_H = \\frac{H(t_f) - H(2023)}{H(2023)} \\times 10$$<div class="eqnote">U crece +22.000 unidades/año · S_H positivo = mayor densidad = penalización en el IEU</div></div>
   </div>
-  <h2 style="margin-bottom:12px">Derivación de los pesos</h2>
-  <p style="margin-bottom:16px">Cada peso = proporción empírica de la inmigración en esa dimensión, normalizada a 1,0 (80,6 + 44,3 + 25,0 = 149,9).</p>
+  <h2 style="margin-bottom:12px">De dónde vienen los pesos</h2>
+  <p style="margin-bottom:16px">Cada peso refleja la participación medida de la inmigración en esa dimensión. Las tres cifras brutas (80,6, 44,3, 25,0) se normalizan para sumar 1,0 dividiendo cada una entre su total de 149,9.</p>
   <div class="g3" style="margin-bottom:16px">
-    <div class="wcard"><div class="wcard-num">0,54</div><div class="wcard-dim">wₚ — Población</div><div class="wcard-desc">La inmigración internacional aportó el 80,6% de todos los insumos positivos de población en 2023–24. Cuatro de cada cinco personas añadidas vinieron de la inmigración.</div><div class="wcard-src">80,6 / 149,9 = 0,54 · Census Vintage 2024</div></div>
-    <div class="wcard"><div class="wcard-num">0,30</div><div class="wcard-dim">wₗ — Fuerza laboral</div><div class="wcard-desc">Trabajadores nacidos en el extranjero = 44,3% de la fuerza laboral de NYC, más del doble del promedio nacional del 18,6%.</div><div class="wcard-src">44,3 / 149,9 = 0,30 · Contralor del Estado de NY 2024</div></div>
-    <div class="wcard"><div class="wcard-num">0,17</div><div class="wcard-dim">wₕ — Vivienda (penalización)</div><div class="wcard-desc">Hogares inmigrantes = 25% del crecimiento de hogares en EE. UU. 2019–2023. Mayor densidad es un costo, por lo que este término se resta.</div><div class="wcard-src">25,0 / 149,9 = 0,17 · Harvard JCHS 2024</div></div>
+    <div class="wcard"><div class="wcard-num">0,54</div><div class="wcard-dim">wₚ — Población</div><div class="wcard-desc">En 2023-24, la inmigración internacional representó el 80,6% de todos los aportes positivos de población: 144.098 de (144.098 + 34.627). Esa proporción se normaliza a 0,54.</div><div class="wcard-src">80,6 / 149,9 = 0,54 · Census Vintage 2024</div></div>
+    <div class="wcard"><div class="wcard-num">0,30</div><div class="wcard-dim">wₗ — Fuerza laboral</div><div class="wcard-desc">Los trabajadores nacidos en el extranjero representan el 44,3% de la fuerza laboral de NYC, más del doble del promedio nacional del 18,6%. Los inmigrantes son desproporcionadamente jóvenes y tienen tasas de participación más altas.</div><div class="wcard-src">44,3 / 149,9 = 0,30 · Contralor del Estado de NY 2024</div></div>
+    <div class="wcard"><div class="wcard-num">0,17</div><div class="wcard-dim">wₕ — Vivienda (penalización)</div><div class="wcard-desc">Los hogares inmigrantes representaron el 25% de la formación de hogares en EE.UU. entre 2019 y 2023. Dado que el aumento de densidad es un costo, este componente se resta en lugar de sumarse.</div><div class="wcard-src">25,0 / 149,9 = 0,17 · Harvard JCHS 2024</div></div>
   </div>
   <div class="card" style="text-align:center;border-color:rgba(232,197,71,.2)">
     <div class="eqbox" style="border:none;background:transparent;padding:6px 0 0;margin:0"><div class="eqlabel" style="text-align:center">El Índice de Estabilidad Urbana · escalado ×10</div>$$\\text{IEU} = \\underbrace{5{,}4}_{\\mathclap{w_p}} \\cdot S_p \\;+\\; \\underbrace{3{,}0}_{\\mathclap{w_l}} \\cdot S_l \\;-\\; \\underbrace{1{,}7}_{\\mathclap{w_h}} \\cdot S_H$$<div class="eqnote">IEU &gt; 0 = crecimiento &nbsp;·&nbsp; IEU = 0 = estasis &nbsp;·&nbsp; IEU &lt; 0 = declive</div></div>
@@ -121,8 +121,8 @@ mkPage('model',false,`<div class="ph">
 // ESCENARIOS
 mkPage('scenarios',false,`<div class="ph">
   <div class="ph-label">Escenarios</div>
-  <h1>Cuatro trayectorias políticas, cuatro futuros</h1>
-  <p>Todos los escenarios mantienen constantes la emigración doméstica y el crecimiento natural. La migración internacional neta es la única variable de política.</p>
+  <h1>Cuatro niveles de inmigración,<br>cuatro resultados</h1>
+  <p>La emigración doméstica y el crecimiento natural se mantienen constantes en los cuatro escenarios. Solo cambia la migración internacional neta anual.</p>
 </div>
 <div class="pc">
   <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===1)).join('')}</div>
@@ -156,9 +156,9 @@ mkPage('scenarios',false,`<div class="ph">
 </div>`),
 // EXPLORADOR
 mkPage('explorer',false,`<div class="ph">
-  <div class="ph-label">Explorador · Modelo en Vivo</div>
+  <div class="ph-label">Explorador · Modelo en vivo</div>
   <h1>Construye tu propio escenario</h1>
-  <p>Ajusta migración, flujo doméstico, vivienda y pesos del IEU. Recalcula en tiempo real.</p>
+  <p>Cambia los niveles de migración, el flujo doméstico, la construcción de vivienda y los pesos del IEU. El índice se recalcula al mover los controles deslizantes.</p>
 </div>
 <div class="pc">
   <div class="usi-big" style="margin-bottom:24px">
@@ -189,8 +189,8 @@ mkPage('explorer',false,`<div class="ph">
 // MAPA + PROYECCIONES
 mkPage('map',false,`<div class="ph">
   <div class="ph-label">Mapa y proyecciones</div>
-  <h1>Todos los datos en una sola vista</h1>
-  <p>Mapa interactivo de distritos comunitarios junto con proyecciones por borough y resultados de escenarios.</p>
+  <h1>Distribución geográfica</h1>
+  <p>IEU estimado para cada distrito comunitario según su proporción de nacidos en el extranjero y densidad habitacional. Las proyecciones por escenario se muestran junto al mapa.</p>
 </div>
 <div class="pc" style="padding-top:24px">
   <div class="map-layout" style="margin-bottom:24px">
@@ -236,13 +236,13 @@ mkPage('map',false,`<div class="ph">
 mkPage('history',false,`<div class="ph">
   <div class="ph-label">Validación histórica · 1990–2000</div>
   <h1>La misma dinámica,<br>treinta años antes</h1>
-  <p>El modelo se prueba con una década cuyos componentes se conocen con precisión. La población de NYC aumentó de 7.322.564 a 8.008.278 entre 1990 y 2000.</p>
+  <p>El modelo puede verificarse con una década en la que todas las cifras subyacentes se conocen con exactitud. La población de NYC creció de 7.322.564 a 8.008.278 entre 1990 y 2000.</p>
 </div>
 <div class="pc">
   <div class="g2">
     <div>
       <div class="eqbox"><div class="eqlabel">Resolviendo la Migración Neta, 1990–2000</div>$$S_p(1990,2000) = \\frac{8{,}008{,}278}{7{,}322{,}564} \\approx 1{,}094 \\quad (+9{,}4\\%)$$$$8{,}008{,}278 = 7{,}322{,}564 + 1{,}185{,}987 - 685{,}282 + M \\implies M = 185{,}009$$</div>
-      <div class="callout" style="margin-top:16px"><p>El aumento de población nacida en el extranjero (+788.101) <em>supera</em> el crecimiento neto total (+685.714). La inmigración compensó con creces la emigración doméstica — exactamente la misma dinámica estructural que en los años 2020.</p></div>
+      <div class="callout" style="margin-top:16px"><p>La población nacida en el extranjero creció 788.101 esa década, una cifra mayor que el crecimiento neto total de población de 685.714. Las llegadas internacionales compensaron con creces la emigración doméstica.</p></div>
     </div>
     <div>
       <div class="card">
@@ -250,8 +250,8 @@ mkPage('history',false,`<div class="ph">
         <table class="dt"><thead><tr><th>Métrica</th><th>1990–2000</th><th>2023–24</th></tr></thead><tbody><tr><td>Crecimiento poblacional</td><td class="pos">+685.714</td><td class="pos">+87.184</td></tr><tr><td>Aumento nacidos en extranjero</td><td class="pos">+788.101</td><td class="pos">+~144.098</td></tr><tr><td>¿Extranjeros &gt; crecimiento total?</td><td class="pos">Sí</td><td class="pos">Sí</td></tr><tr><td>Patrón</td><td colspan="2" style="color:var(--text2);font-size:11px">La inmigración absorbe la emigración doméstica</td></tr></tbody></table>
       </div>
       <div class="card" style="margin-top:12px">
-        <h3>Conclusión</h3>
-        <p style="font-size:13px;margin-bottom:0">El patrón de los años noventa es idéntico al de los años veinte: los inmigrantes no se suman simplemente a la población de NYC: <strong>absorben la persistente salida doméstica</strong> que ha caracterizado a la ciudad durante décadas. <strong>Las matemáticas del momento presente no son una desviación de la historia. Son su continuación.</strong></p>
+        <h3>Lo que esto nos dice</h3>
+        <p style="font-size:13px;margin-bottom:0">La misma estructura que define la demografía de NYC hoy ya estaba presente hace treinta años. Los residentes domésticos llevan décadas marchándose en grandes números, y la inmigración internacional ha sido consistentemente lo que evita que la población caiga. La situación actual no es nueva.</p>
       </div>
     </div>
   </div>
@@ -260,13 +260,13 @@ mkPage('history',false,`<div class="ph">
 mkPage('about',false,`<div class="ph">
   <div class="ph-label">Acerca de</div>
   <h1>Acerca de este trabajo</h1>
-  <p>Una tesis de honor en Matemáticas, Ciencias Computacionales y Español, Universidad de Fordham, Primavera de 2026.</p>
+  <p>Tesis de honor, Universidad de Fordham, Primavera de 2026. Disciplinas: Matemáticas, Ciencias Computacionales y Español.</p>
 </div>
 <div class="pc">
   <div class="g2">
     <div class="card"><h3 style="margin-bottom:14px">Información de la tesis</h3><table class="dt"><tbody><tr><td>Título completo</td><td style="font-style:italic;font-size:11px">Motores de estabilidad: Inmigración y transformación demográfica en la ciudad de Nueva York</td></tr><tr><td>Autor</td><td>Jack Forester</td></tr><tr><td>Asesora</td><td>Dr. Carey Kasten</td></tr><tr><td>Institución</td><td>Universidad de Fordham</td></tr><tr><td>Año</td><td>Primavera de 2026</td></tr><tr><td>Disciplinas</td><td>Matemáticas · Ciencias Computacionales · Español</td></tr></tbody></table></div>
     <div class="card"><h3 style="margin-bottom:14px">Fuentes de datos primarias</h3><table class="dt"><tbody><tr><td>Línea de base poblacional</td><td>Census Bureau Vintage 2024 y 2025</td></tr><tr><td>Datos de componentes</td><td style="font-size:11px">NYC DCP, mayo 2025, Apéndice A, Tabla 2</td></tr><tr><td>Participación laboral</td><td style="font-size:11px">Contralor del Estado de NY, marzo 2024</td></tr><tr><td>Contribución fiscal</td><td style="font-size:11px">American Immigration Council / ITEP 2023</td></tr><tr><td>Demanda de vivienda</td><td style="font-size:11px">Harvard JCHS, 2024</td></tr><tr><td>Oferta de vivienda</td><td style="font-size:11px">NYC Building Congress, 2025–27</td></tr><tr><td>Dato de política actual</td><td style="font-size:11px">The CITY, 26 de marzo de 2026</td></tr></tbody></table></div>
   </div>
-  <div class="callout" style="margin-top:16px"><p>Todas las proyecciones y cálculos del IEU son del propio autor. Este modelo interactivo acompaña la tesis escrita, no la reemplaza. El modelo está diseñado para hacer las matemáticas explorables y accesibles.</p></div>
+  <div class="callout" style="margin-top:16px"><p>Todos los cálculos y proyecciones del IEU son del propio autor. Este sitio es un complemento de la tesis escrita. El objetivo era hacer el modelo interactivo para que los números pudieran explorarse directamente en lugar de solo leerse.</p></div>
 </div>`)
 ];}

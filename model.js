@@ -67,12 +67,12 @@ const PAGES={
   ],
   es:[
     {id:'home',     label:'Inicio',                icon:'home'},
-    {id:'argument', label:'El Argumento',           icon:'info',  badge:'Clave'},
-    {id:'model',    label:'Fórmula IEU',            icon:'wave',  group:'El Modelo'},
+    {id:'argument', label:'El argumento',           icon:'info',  badge:'Clave'},
+    {id:'model',    label:'Fórmula IEU',            icon:'wave',  group:'El modelo'},
     {id:'scenarios',label:'Escenarios',             icon:'bars'},
     {id:'explorer', label:'Explorador',             icon:'search',badge:'Live'},
-    {id:'map',      label:'Mapa y Proyecciones',    icon:'map',   group:'Geografía'},
-    {id:'history',  label:'Validación Histórica',   icon:'clock', group:'Contexto'},
+    {id:'map',      label:'Mapa y proyecciones',    icon:'map',   group:'Geografía'},
+    {id:'history',  label:'Validación histórica',   icon:'clock', group:'Contexto'},
     {id:'about',    label:'Acerca de',              icon:'users'},
   ]
 };
