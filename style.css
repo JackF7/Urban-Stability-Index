@@ -5,19 +5,19 @@
 
 /* ── TOKENS ── */
 :root {
-  --bg:       #77C3EC;
-  --surface:  #89CFF0;
-  --surface2: #9DD4F5;
-  --surface3: #B8E1F3;
-  --border:   rgba(30,80,130,0.15);
-  --border2:  rgba(20,60,110,0.25);
-  --accent:   #1a4a7a;
+  --bg:       #A8D8F0;
+  --surface:  #B8E2F5;
+  --surface2: #CBE9F8;
+  --surface3: #DCF0FA;
+  --border:   rgba(30,80,130,0.12);
+  --border2:  rgba(20,60,110,0.2);
+  --accent:   #1e5a96;
   --green:    #1a7a4a;
   --red:      #a03030;
   --orange:   #8a5010;
-  --text:     #0d2a45;
-  --text2:    #2c5070;
-  --text3:    #5a80a0;
+  --text:     #133050;
+  --text2:    #2c5878;
+  --text3:    #6090b8;
   --sw:       240px;
 }
 
