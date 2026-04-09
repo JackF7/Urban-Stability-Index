@@ -17,7 +17,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
     <div class="stat-cell"><div class="sv">3,1M</div><div class="sl">Residentes nacidos en el extranjero en NYC</div><div class="ss">ACS 2023 · 36,8% de la población</div></div>
     <div class="stat-cell"><div class="sv">44,3%</div><div class="sl">Proporción de la fuerza laboral nacida en el extranjero</div><div class="ss">2,38 veces el promedio nacional</div></div>
     <div class="stat-cell"><div class="sv">$103B</div><div class="sl">Impuestos pagados por inmigrantes anualmente</div><div class="ss">Área metropolitana · American Immigration Council 2023</div></div>
-    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">IEU actual — proyección a 10 años</div><div class="ss">Bajo la trayectoria de aplicación actual</div></div>
+    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">IEU — proyección a 10 años</div><div class="ss">Basado en los controles del modelo personalizado</div></div>
   </div>
   <div class="g2" style="margin-bottom:24px">
     <div>
