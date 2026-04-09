@@ -16,7 +16,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
     <div class="stat-cell"><div class="sv">3.1M</div><div class="sl">Foreign-born residents in NYC</div><div class="ss">ACS 2023 · 36.8% of population</div></div>
     <div class="stat-cell"><div class="sv">44.3%</div><div class="sl">of NYC's labor force is foreign-born</div><div class="ss">2.38x the national average</div></div>
     <div class="stat-cell"><div class="sv">$103B</div><div class="sl">Taxes paid by immigrants each year</div><div class="ss">NYC metro area · American Immigration Council 2023</div></div>
-    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">Current USI — 10-year projection</div><div class="ss">Based on 2025 enforcement levels</div></div>
+    <div class="stat-cell"><div class="sv" id="home-usi" style="color:var(--orange)">+0.05</div><div class="sl">USI — 10-year projection</div><div class="ss">Based on the custom model controls</div></div>
   </div>
   <div class="g2" style="margin-bottom:24px">
     <div>
