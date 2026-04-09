@@ -148,11 +148,11 @@ function goPage(id){
 }
 
 function setLang(l){
-  const base = window.location.pathname.replace(/\/index(-es)?\.html$/, '').replace(/\/$/, '');
-  if(l==='es' && !window.location.pathname.includes('index-es')){
-    window.location.href = base + '/index-es.html';
-  } else if(l==='en' && window.location.pathname.includes('index-es')){
-    window.location.href = base + '/index.html';
+  const path = window.location.pathname;
+  if(l==='es' && !path.includes('index-es')){
+    window.location.href = path.replace(/index\.html$/, 'index-es.html').replace(/\/$/, '/index-es.html');
+  } else if(l==='en' && path.includes('index-es')){
+    window.location.href = path.replace('index-es.html', 'index.html');
   }
 }
 function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}

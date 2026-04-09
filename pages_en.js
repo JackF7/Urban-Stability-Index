@@ -9,7 +9,7 @@ function buildPagesEN(){return[
 mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-direction:column;justify-content:flex-end">
   <div class="ph-label">Fordham University · Spring 2026</div>
   <h1>Urban Stability<br>Index</h1>
-  <p>A mathematical model of immigration's role in New York City's demographic future. Built as an honors thesis in Mathematics, Computer Science, and Spanish.</p>
+  <p>A mathematical model of immigration's role in New York City's demographic future. Built as an honors thesis in mathematics, computer science, and Spanish.</p>
 </div>
 <div class="pc">
   <div class="stat-row">
@@ -254,7 +254,7 @@ mkPage('history',false,`<div class="ph">
 mkPage('about',false,`<div class="ph">
   <div class="ph-label">About</div>
   <h1>About this project</h1>
-  <p>Honors senior thesis, Fordham University, Spring 2026. Disciplines: Mathematics, Computer Science, and Spanish.</p>
+  <p>Honors senior thesis, Fordham University, Spring 2026. Disciplines: mathematics, computer science, and Spanish.</p>
 </div>
 <div class="pc">
   <div class="g2">
