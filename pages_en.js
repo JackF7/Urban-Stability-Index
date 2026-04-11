@@ -135,7 +135,7 @@ mkPage('scenarios',false,`<div class="ph">
   <p>Each scenario projects 10 years forward. Domestic out-migration and natural increase are held constant. Only net annual international migration changes.</p>
 </div>
 <div class="pc">
-  <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===1)).join('')}</div>
+  <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===2)).join('')}</div>
   <div class="g4" id="compGrid" style="margin-bottom:20px"></div>
   <div style="margin-bottom:18px">
     <div class="tab-row">
@@ -151,8 +151,8 @@ mkPage('scenarios',false,`<div class="ph">
         <tbody>
           <tr><td>Net intl. migration/yr</td><td class="col-high">200,000</td><td class="col-pre2025">144,098</td><td class="col-current">66,000</td><td class="col-restrict">20,000</td></tr>
           <tr><td>Net total migration/yr</td><td class="col-high pos">+108,761</td><td class="col-pre2025 pos">+52,859</td><td class="col-current neg">-25,239</td><td class="col-restrict neg">-71,239</td></tr>
-          <tr><td>2034 population</td><td class="col-high">9,637,915</td><td class="col-pre2025">9,078,895</td><td class="col-current">8,297,915</td><td class="col-restrict">7,837,915</td></tr>
-          <tr><td>2034 labor force</td><td class="col-high">4,879,070</td><td class="col-pre2025">4,487,756</td><td class="col-current">3,941,070</td><td class="col-restrict">3,619,070</td></tr>
+          <tr><td>2023–2033 population</td><td class="col-high">9,637,915</td><td class="col-pre2025">9,078,895</td><td class="col-current">8,297,915</td><td class="col-restrict">7,837,915</td></tr>
+          <tr><td>2023–2033 labor force</td><td class="col-high">4,879,070</td><td class="col-pre2025">4,487,756</td><td class="col-current">3,941,070</td><td class="col-restrict">3,619,070</td></tr>
           <tr><td>Sₚ 10-yr population growth</td><td class="col-high pos">+17.48%</td><td class="col-pre2025 pos">+10.66%</td><td class="col-current pos">+1.14%</td><td class="col-restrict neg">-4.46%</td></tr>
           <tr><td>Sₗ 10-yr labor force growth</td><td class="col-high pos">+20.09%</td><td class="col-pre2025 pos">+10.45%</td><td class="col-current neg">-3.00%</td><td class="col-restrict neg">-10.93%</td></tr>
           <tr class="hl"><td>USI — 10-yr projection (x10)</td><td class="col-high pos">+1.36</td><td class="col-pre2025 pos">+0.82</td><td class="col-current neu">+0.05</td><td class="col-restrict neg">-0.40</td></tr>

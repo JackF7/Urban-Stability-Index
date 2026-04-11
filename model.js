@@ -224,8 +224,8 @@ function updateLiveUSI(){
   if(pe){pe.textContent=fmt(pd);pe.className='icard-val '+(pd>=0?'pos':'neg');}
   if(le){le.textContent=fmt(ld);le.className='icard-val '+(ld>=0?'pos':'neg');}
   if(he){he.textContent=(r.Sh>=0?'+':'')+(r.Sh*100).toFixed(1)+'%';he.className='icard-val '+(r.Sh>0?'neg':'pos');}
-  if(ps)ps.textContent=pd>=0?(isES?'residentes ganados en 2034':'residents gained by 2034'):(isES?'residentes perdidos en 2034':'residents lost by 2034');
-  if(ls)ls.textContent=ld>=0?(isES?'trabajadores ganados en 2034':'workers gained by 2034'):(isES?'trabajadores perdidos en 2034':'workers lost by 2034');
+  if(ps)ps.textContent=pd>=0?(isES?'residentes ganados 2023–2033':'residents gained 2023–2033'):(isES?'residentes perdidos 2023–2033':'residents lost 2023–2033');
+  if(ls)ls.textContent=ld>=0?(isES?'trabajadores ganados 2023–2033':'workers gained 2023–2033'):(isES?'trabajadores perdidos 2023–2033':'workers lost 2023–2033');
   // Home stat
   const hs=document.getElementById('home-usi');if(hs){hs.textContent=sign+r.usi.toFixed(2);hs.style.color=usiColor(r.usi);}
   const dynBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);
@@ -248,7 +248,7 @@ function renderCompCards(ak){
     c.innerHTML=`<div class="cc-name">${lang==='es'?sc.labelES:sc.label}</div><div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${lang==='es'?'Proyección 10 años':'10-yr projection'}</div>
       <div class="cc-usi ${cls}" style="color:${usiColor(r.usi)}">${sign}${r.usi.toFixed(2)}</div>
       <div class="cc-mi">${(sc.mi/1000).toFixed(0)}k ${lang==='es'?'llegadas/año':'arrivals/yr'}</div>
-      <div class="cc-detail">2034 pop: ${(r.pop/1e6).toFixed(2)}M<br>2034 LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
+      <div class="cc-detail">2023–2033 pop: ${(r.pop/1e6).toFixed(2)}M<br>2023–2033 LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
     g.appendChild(c);
   });
 }

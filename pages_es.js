@@ -137,7 +137,7 @@ mkPage('scenarios',false,`<div class="ph">
   <p>Cada escenario proyecta 10 años hacia adelante. La emigración doméstica y el crecimiento natural se mantienen constantes. Solo cambia la migración internacional neta anual.</p>
 </div>
 <div class="pc">
-  <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===1)).join('')}</div>
+  <div class="pills" id="scenPills">${['high','pre2025','current','restrict'].map((k,i)=>pill(k,i===2)).join('')}</div>
   <div class="g4" id="compGrid" style="margin-bottom:20px"></div>
   <div style="margin-bottom:18px">
     <div class="tab-row">
@@ -153,8 +153,8 @@ mkPage('scenarios',false,`<div class="ph">
         <tbody>
           <tr><td>Migración intl. neta/año</td><td class="col-high">200.000</td><td class="col-pre2025">144.098</td><td class="col-current">66.000</td><td class="col-restrict">20.000</td></tr>
           <tr><td>Migración total neta/año</td><td class="col-high pos">+108.761</td><td class="col-pre2025 pos">+52.859</td><td class="col-current neg">−25.239</td><td class="col-restrict neg">−71.239</td></tr>
-          <tr><td>Población 2034</td><td class="col-high">9.637.915</td><td class="col-pre2025">9.078.895</td><td class="col-current">8.297.915</td><td class="col-restrict">7.837.915</td></tr>
-          <tr><td>Fuerza laboral 2034</td><td class="col-high">4.879.070</td><td class="col-pre2025">4.487.756</td><td class="col-current">3.941.070</td><td class="col-restrict">3.619.070</td></tr>
+          <tr><td>Población 2023–2033</td><td class="col-high">9.637.915</td><td class="col-pre2025">9.078.895</td><td class="col-current">8.297.915</td><td class="col-restrict">7.837.915</td></tr>
+          <tr><td>Fuerza laboral 2023–2033</td><td class="col-high">4.879.070</td><td class="col-pre2025">4.487.756</td><td class="col-current">3.941.070</td><td class="col-restrict">3.619.070</td></tr>
           <tr><td>Sₚ crecimiento 10 años</td><td class="col-high pos">+17,48%</td><td class="col-pre2025 pos">+10,66%</td><td class="col-current pos">+1,14%</td><td class="col-restrict neg">−4,46%</td></tr>
           <tr><td>Sₗ crecimiento laboral 10 años</td><td class="col-high pos">+20,09%</td><td class="col-pre2025 pos">+10,45%</td><td class="col-current neg">−3,00%</td><td class="col-restrict neg">−10,93%</td></tr>
           <tr class="hl"><td>IEU — proy. 10 años (×10)</td><td class="col-high pos">+1,36</td><td class="col-pre2025 pos">+0,82</td><td class="col-current neu">+0,05</td><td class="col-restrict neg">−0,40</td></tr>
