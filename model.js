@@ -175,7 +175,6 @@ function updateMeter(mi,fillId,threshId,statusId,beven){
     else{aboveEl.style.display='none';}
   }
   if(dotEl){dotEl.style.left=pct+'%';}
-  // Update threshold marker line + label if IDs given
   if(threshId){
     const lineEl=document.getElementById(threshId+'Line');
     const labelEl=document.getElementById(threshId+'Label');
