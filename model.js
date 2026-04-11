@@ -161,7 +161,26 @@ function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 // METER
 // ═══════════════════════════════════════════════════
 const BEVEN=56612,MAXMI=250000;
-function updateMeter(mi,fillId,threshId,statusId){
+function updateDomMeter(dom){
+  // dom is negative (e.g. -91239). 0 = no outflow (right), -150000 = max outflow (left)
+  const MAXDOM=150000;
+  const pct=Math.min(100,Math.abs(dom)/MAXDOM*100); // 0% = no outflow, 100% = -150k
+  const fillEl=document.getElementById('domFill');
+  const dotEl=document.getElementById('domFill_dot');
+  const statusEl=document.getElementById('domStatus');
+  const isES=lang==='es';
+  if(fillEl) fillEl.style.width=pct+'%';
+  if(dotEl)  dotEl.style.right=pct+'%';
+  if(statusEl){
+    const abs=Math.abs(dom).toLocaleString();
+    const col=pct>70?'var(--red)':pct>40?'var(--orange)':'var(--green)';
+    const bg=pct>70?'rgba(212,112,106,.08)':pct>40?'rgba(201,168,76,.08)':'rgba(106,191,122,.08)';
+    statusEl.style.color=col; statusEl.style.background=bg; statusEl.style.borderLeftColor=col;
+    statusEl.textContent=isES
+      ?`Actual: −${abs} residentes domésticos se van/año`
+      :`Current: −${abs} domestic residents leave/yr`;
+  }
+}
   const belowEl=document.getElementById(fillId+'_below'),aboveEl=document.getElementById(fillId+'_above'),dotEl=document.getElementById(fillId+'_dot'),status=document.getElementById(statusId);
   if(!belowEl)return;
   const pct=Math.min(100,mi/MAXMI*100);
@@ -219,6 +238,7 @@ function updateLiveUSI(){
   const hs=document.getElementById('home-usi');if(hs){hs.textContent=sign+r.usi.toFixed(2);hs.style.color=usiColor(r.usi);}
   updateMeter(P.mi,'mFill','mThresh','mStatus');
   updateMeter(P.mi,'hMFill','hMThresh','hMStatus');
+  updateDomMeter(P.dom);
   if(mapInited&&geoLayer&&mapObj)buildLayer(cachedGeo);
   renderBoroMini();
 }
@@ -334,35 +354,33 @@ function bindSliders(){
 // ═══════════════════════════════════════════════════
 let fpOpen=false;
 function toggleFP(){fpOpen=!fpOpen;document.getElementById('floatPanel').classList.toggle('open',fpOpen);document.getElementById('floatBtn').classList.toggle('open',fpOpen);}
+document.addEventListener('click',e=>{if(fpOpen&&!document.getElementById('floatPanel').contains(e.target)&&!document.getElementById('floatBtn').contains(e.target)){fpOpen=false;document.getElementById('floatPanel').classList.remove('open');document.getElementById('floatBtn').classList.remove('open');}});
 
-const DEFAULTS = {
-  mi: 144098, dom: -91239, units: 22000,
-  wp: 0.53, wl: 0.30, wh: 0.17
-};
+const DEFAULTS={mi:144098,dom:-91239,units:22000,wp:0.53,wl:0.30,wh:0.17};
+
 function resetControls(){
+  // Reset state
   P.mi=DEFAULTS.mi; P.dom=DEFAULTS.dom; P.units=DEFAULTS.units;
   W.p=DEFAULTS.wp; W.l=DEFAULTS.wl; W.h=DEFAULTS.wh;
   activeSC='pre2025';
-  document.querySelectorAll('.fp-sb').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
-  document.querySelectorAll('.pill').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
-  const map={
-    'fp-s-mi':DEFAULTS.mi,'fp-v-mi':Math.round(DEFAULTS.mi).toLocaleString(),
-    'fp-s-dom':DEFAULTS.dom,'fp-v-dom':DEFAULTS.dom.toLocaleString(),
-    'fp-s-units':DEFAULTS.units,'fp-v-units':DEFAULTS.units.toLocaleString(),
-    'fp-s-wp':DEFAULTS.wp,'fp-v-wp':DEFAULTS.wp.toFixed(2),
-    'fp-s-wl':DEFAULTS.wl,'fp-v-wl':DEFAULTS.wl.toFixed(2),
-    'fp-s-wh':DEFAULTS.wh,'fp-v-wh':DEFAULTS.wh.toFixed(2),
-    's-mi':DEFAULTS.mi,'v-mi':Math.round(DEFAULTS.mi).toLocaleString(),
-    's-dom':DEFAULTS.dom,'v-dom':DEFAULTS.dom.toLocaleString(),
-    's-units':DEFAULTS.units,'v-units':DEFAULTS.units.toLocaleString(),
-    's-wp':DEFAULTS.wp,'v-wp':DEFAULTS.wp.toFixed(2),
-    's-wl':DEFAULTS.wl,'v-wl':DEFAULTS.wl.toFixed(2),
-    's-wh':DEFAULTS.wh,'v-wh':DEFAULTS.wh.toFixed(2)
-  };
-  Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el){if(el.tagName==='INPUT')el.value=val;else el.textContent=val;}});
-  updateLiveUSI(); renderCompCards(activeSC);
+  // Reset all slider inputs and display values — both main page and float panel
+  const fields=[
+    ['s-mi','fp-s-mi','v-mi','fp-v-mi', DEFAULTS.mi, v=>Math.round(v).toLocaleString()],
+    ['s-dom','fp-s-dom','v-dom','fp-v-dom', DEFAULTS.dom, v=>(+v).toLocaleString()],
+    ['s-units','fp-s-units','v-units','fp-v-units', DEFAULTS.units, v=>(+v).toLocaleString()],
+    ['s-wp','fp-s-wp','v-wp','fp-v-wp', DEFAULTS.wp, v=>(+v).toFixed(2)],
+    ['s-wl','fp-s-wl','v-wl','fp-v-wl', DEFAULTS.wl, v=>(+v).toFixed(2)],
+    ['s-wh','fp-s-wh','v-wh','fp-v-wh', DEFAULTS.wh, v=>(+v).toFixed(2)],
+  ];
+  fields.forEach(([sId,fpSId,vId,fpVId,val,fmt])=>{
+    [sId,fpSId].forEach(id=>{const e=document.getElementById(id);if(e)e.value=val;});
+    [vId,fpVId].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmt(val);});
+  });
+  // Reset scenario pills
+  document.querySelectorAll('.fp-sb,.pill').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
+  updateLiveUSI();
+  renderCompCards('pre2025');
 }
-document.addEventListener('click',e=>{if(fpOpen&&!document.getElementById('floatPanel').contains(e.target)&&!document.getElementById('floatBtn').contains(e.target)){fpOpen=false;document.getElementById('floatPanel').classList.remove('open');document.getElementById('floatBtn').classList.remove('open');}});
 
 // ═══════════════════════════════════════════════════
 // MAP
