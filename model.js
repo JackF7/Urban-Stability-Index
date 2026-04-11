@@ -334,6 +334,34 @@ function bindSliders(){
 // ═══════════════════════════════════════════════════
 let fpOpen=false;
 function toggleFP(){fpOpen=!fpOpen;document.getElementById('floatPanel').classList.toggle('open',fpOpen);document.getElementById('floatBtn').classList.toggle('open',fpOpen);}
+
+const DEFAULTS = {
+  mi: 144098, dom: -91239, units: 22000,
+  wp: 0.53, wl: 0.30, wh: 0.17
+};
+function resetControls(){
+  P.mi=DEFAULTS.mi; P.dom=DEFAULTS.dom; P.units=DEFAULTS.units;
+  W.p=DEFAULTS.wp; W.l=DEFAULTS.wl; W.h=DEFAULTS.wh;
+  activeSC='pre2025';
+  document.querySelectorAll('.fp-sb').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
+  document.querySelectorAll('.pill').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
+  const map={
+    'fp-s-mi':DEFAULTS.mi,'fp-v-mi':Math.round(DEFAULTS.mi).toLocaleString(),
+    'fp-s-dom':DEFAULTS.dom,'fp-v-dom':DEFAULTS.dom.toLocaleString(),
+    'fp-s-units':DEFAULTS.units,'fp-v-units':DEFAULTS.units.toLocaleString(),
+    'fp-s-wp':DEFAULTS.wp,'fp-v-wp':DEFAULTS.wp.toFixed(2),
+    'fp-s-wl':DEFAULTS.wl,'fp-v-wl':DEFAULTS.wl.toFixed(2),
+    'fp-s-wh':DEFAULTS.wh,'fp-v-wh':DEFAULTS.wh.toFixed(2),
+    's-mi':DEFAULTS.mi,'v-mi':Math.round(DEFAULTS.mi).toLocaleString(),
+    's-dom':DEFAULTS.dom,'v-dom':DEFAULTS.dom.toLocaleString(),
+    's-units':DEFAULTS.units,'v-units':DEFAULTS.units.toLocaleString(),
+    's-wp':DEFAULTS.wp,'v-wp':DEFAULTS.wp.toFixed(2),
+    's-wl':DEFAULTS.wl,'v-wl':DEFAULTS.wl.toFixed(2),
+    's-wh':DEFAULTS.wh,'v-wh':DEFAULTS.wh.toFixed(2)
+  };
+  Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el){if(el.tagName==='INPUT')el.value=val;else el.textContent=val;}});
+  updateLiveUSI(); renderCompCards(activeSC);
+}
 document.addEventListener('click',e=>{if(fpOpen&&!document.getElementById('floatPanel').contains(e.target)&&!document.getElementById('floatBtn').contains(e.target)){fpOpen=false;document.getElementById('floatPanel').classList.remove('open');document.getElementById('floatBtn').classList.remove('open');}});
 
 // ═══════════════════════════════════════════════════
