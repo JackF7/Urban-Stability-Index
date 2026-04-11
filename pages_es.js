@@ -186,7 +186,7 @@ mkPage('explorer',false,`<div class="ph">
   <div class="ctrl-grid">
     <div class="ctrl-section">
       <h3>Variables de política</h3>
-      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Migración Internacional Neta / año</span><span class="ctrl-val" id="v-mi">144.098</span></div><input type="range" id="s-mi" min="0" max="250000" step="1000" value="144098"><div class="ctrl-marks"><span>0</span><span>125k</span><span>250k</span></div></div>
+      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Migración Internacional Neta / año</span><span class="ctrl-val" id="v-mi">66.000</span></div><input type="range" id="s-mi" min="0" max="250000" step="1000" value="66000"><div class="ctrl-marks"><span>0</span><span>125k</span><span>250k</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Migración Doméstica Neta / año</span><span class="ctrl-val" id="v-dom">−91.239</span></div><input type="range" id="s-dom" min="-150000" max="0" step="1000" value="-91239"><div class="ctrl-marks"><span>−150k</span><span>−75k</span><span>0</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Nuevas Unidades de Vivienda / año</span><span class="ctrl-val" id="v-units">22.000</span></div><input type="range" id="s-units" min="5000" max="60000" step="1000" value="20000"><div class="ctrl-marks"><span>5k</span><span>30k</span><span>60k</span></div></div>
     </div>

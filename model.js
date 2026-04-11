@@ -9,13 +9,13 @@ const BASE={pop:8204035,lf:4063000,units:3706562,Pi:3093845,Pn:5164190,H0:(30938
 let W={p:.53,l:.30,h:.17};
 const SCALE=10;
 const SC={
-  high:   {mi:200000,label:'High Immigration',      labelES:'Alta Inmigración',   color:'#3ecf8e'},
-  pre2025:{mi:144098,label:'Pre-2025 Trend',         labelES:'Tendencia Pre-2025', color:'#e8c547'},
-  current:{mi:66000, label:'Current Policy',         labelES:'Política Actual',    color:'#f5a623'},
-  restrict:{mi:20000,label:'Sustained Restriction',  labelES:'Restricción Sost.',  color:'#f16060'}
+  high:   {mi:200000,label:'High Immigration',      labelES:'Alta inmigración',   color:'#3ecf8e'},
+  pre2025:{mi:144098,label:'Pre-2025 Trend',         labelES:'Tendencia pre-2025', color:'#e8c547'},
+  current:{mi:66000, label:'Current Policy',         labelES:'Política actual',    color:'#f5a623'},
+  restrict:{mi:20000,label:'Sustained Restriction',  labelES:'Restricción sost.',  color:'#f16060'}
 };
-let P={mi:144098,dom:-91239,units:20000};
-let activeSC='pre2025';
+let P={mi:66000,dom:-91239,units:20000};
+let activeSC='current';
 
 // City-level 10-year projection (correct formula)
 function project(mi,dom,newU,yrs=10){
@@ -348,11 +348,11 @@ let fpOpen=false;
 function toggleFP(){fpOpen=!fpOpen;document.getElementById('floatPanel').classList.toggle('open',fpOpen);document.getElementById('floatBtn').classList.toggle('open',fpOpen);}
 document.addEventListener('click',e=>{if(fpOpen&&!document.getElementById('floatPanel').contains(e.target)&&!document.getElementById('floatBtn').contains(e.target)){fpOpen=false;document.getElementById('floatPanel').classList.remove('open');document.getElementById('floatBtn').classList.remove('open');}});
 
-const DEFAULTS={mi:144098,dom:-91239,units:22000,wp:0.53,wl:0.30,wh:0.17};
+const DEFAULTS={mi:66000,dom:-91239,units:20000,wp:0.53,wl:0.30,wh:0.17};
 function resetControls(){
   P.mi=DEFAULTS.mi; P.dom=DEFAULTS.dom; P.units=DEFAULTS.units;
   W.p=DEFAULTS.wp; W.l=DEFAULTS.wl; W.h=DEFAULTS.wh;
-  activeSC='pre2025';
+  activeSC='current';
   const fields=[
     ['s-mi','fp-s-mi','v-mi','fp-v-mi', DEFAULTS.mi, v=>Math.round(v).toLocaleString()],
     ['s-dom','fp-s-dom','v-dom','fp-v-dom', DEFAULTS.dom, v=>(+v).toLocaleString()],
@@ -365,9 +365,9 @@ function resetControls(){
     [sId,fpSId].forEach(id=>{const e=document.getElementById(id);if(e)e.value=val;});
     [vId,fpVId].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmt(val);});
   });
-  document.querySelectorAll('.fp-sb,.pill').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
+  document.querySelectorAll('.fp-sb,.pill').forEach(b=>b.classList.toggle('active',b.dataset.sc==='current'));
   updateLiveUSI();
-  renderCompCards('pre2025');
+  renderCompCards('current');
 }
 
 // ═══════════════════════════════════════════════════
