@@ -161,56 +161,49 @@ function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 // METER
 // ═══════════════════════════════════════════════════
 const BEVEN=56612,MAXMI=250000;
-function updateDomMeter(dom){
-  // dom is negative (e.g. -91239). 0 = no outflow (right), -150000 = max outflow (left)
-  const MAXDOM=150000;
-  const pct=Math.min(100,Math.abs(dom)/MAXDOM*100); // 0% = no outflow, 100% = -150k
-  const fillEl=document.getElementById('domFill');
-  const dotEl=document.getElementById('domFill_dot');
-  const statusEl=document.getElementById('domStatus');
-  const isES=lang==='es';
-  if(fillEl) fillEl.style.width=pct+'%';
-  if(dotEl)  dotEl.style.right=pct+'%';
-  if(statusEl){
-    const abs=Math.abs(dom).toLocaleString();
-    const col=pct>70?'var(--red)':pct>40?'var(--orange)':'var(--green)';
-    const bg=pct>70?'rgba(212,112,106,.08)':pct>40?'rgba(201,168,76,.08)':'rgba(106,191,122,.08)';
-    statusEl.style.color=col; statusEl.style.background=bg; statusEl.style.borderLeftColor=col;
-    statusEl.textContent=isES
-      ?`Actual: −${abs} residentes domésticos se van/año`
-      :`Current: −${abs} domestic residents leave/yr`;
-  }
-}
+function updateMeter(mi,fillId,threshId,statusId,beven){
+  if(beven===undefined)beven=BEVEN;
   const belowEl=document.getElementById(fillId+'_below'),aboveEl=document.getElementById(fillId+'_above'),dotEl=document.getElementById(fillId+'_dot'),status=document.getElementById(statusId);
   if(!belowEl)return;
   const pct=Math.min(100,mi/MAXMI*100);
-  const tPct=BEVEN/MAXMI*100;
-  const above=mi-BEVEN;
+  const tPct=Math.min(100,beven/MAXMI*100);
+  const above=mi-beven;
   const isES=lang==='es';
-  // Below portion always fills up to threshold or current, whichever is less
   belowEl.style.width=Math.min(pct,tPct)+'%';
-  // Above portion only if mi > BEVEN
   if(aboveEl){
-    if(mi>BEVEN){aboveEl.style.width=(pct-tPct)+'%';aboveEl.style.left=tPct+'%';aboveEl.style.display='block';}
+    if(mi>beven){aboveEl.style.width=(pct-tPct)+'%';aboveEl.style.left=tPct+'%';aboveEl.style.display='block';}
     else{aboveEl.style.display='none';}
   }
-  // Dot position
   if(dotEl){dotEl.style.left=pct+'%';}
-  if(mi>=BEVEN){
+  // Update threshold marker line + label if IDs given
+  if(threshId){
+    const lineEl=document.getElementById(threshId+'Line');
+    const labelEl=document.getElementById(threshId+'Label');
+    const pctStr=tPct.toFixed(2)+'%';
+    if(lineEl){lineEl.style.left=pctStr;}
+    if(labelEl){
+      labelEl.style.left=pctStr;
+      const bevenFmt=Math.round(beven).toLocaleString();
+      labelEl.textContent=isES?`Mín. necesario: ${bevenFmt}`:`Min. needed: ${bevenFmt}`;
+    }
+  }
+  if(mi>=beven){
     if(status){
       const col=above>50000?'var(--green)':'var(--orange)';
       const bg=above>50000?'rgba(106,191,122,.08)':'rgba(201,168,76,.08)';
       status.style.background=bg;status.style.color=col;status.style.borderLeftColor=col;
+      const surplus=Math.round(above).toLocaleString();
       status.innerHTML=isES
-        ?`${mi.toLocaleString()} <span style="opacity:.6">(2025)</span> llegadas/año`
-        :`${mi.toLocaleString()} <span style="opacity:.6">(2025)</span> arrivals/yr`;
+        ?`${mi.toLocaleString()} llegadas/año — <strong>+${surplus}</strong> sobre el mínimo`
+        :`${mi.toLocaleString()} arrivals/yr — <strong>+${surplus}</strong> above minimum`;
     }
   } else {
     if(status){
+      const deficit=Math.round(beven-mi).toLocaleString();
       status.style.background='rgba(212,112,106,.08)';status.style.color='var(--red)';status.style.borderLeftColor='var(--red)';
       status.innerHTML=isES
-        ?`${mi.toLocaleString()} llegadas/año`
-        :`${mi.toLocaleString()} arrivals/yr`;
+        ?`${mi.toLocaleString()} llegadas/año — <strong>${deficit}</strong> por debajo del mínimo`
+        :`${mi.toLocaleString()} arrivals/yr — <strong>${deficit}</strong> short of minimum`;
     }
   }
 }
@@ -236,10 +229,10 @@ function updateLiveUSI(){
   if(ls)ls.textContent=ld>=0?(isES?'trabajadores ganados en 2034':'workers gained by 2034'):(isES?'trabajadores perdidos en 2034':'workers lost by 2034');
   // Home stat
   const hs=document.getElementById('home-usi');if(hs){hs.textContent=sign+r.usi.toFixed(2);hs.style.color=usiColor(r.usi);}
-  updateMeter(P.mi,'mFill','mThresh','mStatus');
-  updateMeter(P.mi,'hMFill','hMThresh','hMStatus');
-  updateDomMeter(P.dom);
-  if(mapInited&&geoLayer&&mapObj)buildLayer(cachedGeo);
+  const dynBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);
+  updateMeter(P.mi,'mFill','mThresh','mStatus',dynBeven);
+  updateMeter(P.mi,'hMFill','hMThresh','hMStatus',dynBeven);
+  if(mapInited&&geoLayer&&mapObj){buildLayer(cachedGeo);updateMapMeter();}
   renderBoroMini();
 }
 
@@ -357,13 +350,10 @@ function toggleFP(){fpOpen=!fpOpen;document.getElementById('floatPanel').classLi
 document.addEventListener('click',e=>{if(fpOpen&&!document.getElementById('floatPanel').contains(e.target)&&!document.getElementById('floatBtn').contains(e.target)){fpOpen=false;document.getElementById('floatPanel').classList.remove('open');document.getElementById('floatBtn').classList.remove('open');}});
 
 const DEFAULTS={mi:144098,dom:-91239,units:22000,wp:0.53,wl:0.30,wh:0.17};
-
 function resetControls(){
-  // Reset state
   P.mi=DEFAULTS.mi; P.dom=DEFAULTS.dom; P.units=DEFAULTS.units;
   W.p=DEFAULTS.wp; W.l=DEFAULTS.wl; W.h=DEFAULTS.wh;
   activeSC='pre2025';
-  // Reset all slider inputs and display values — both main page and float panel
   const fields=[
     ['s-mi','fp-s-mi','v-mi','fp-v-mi', DEFAULTS.mi, v=>Math.round(v).toLocaleString()],
     ['s-dom','fp-s-dom','v-dom','fp-v-dom', DEFAULTS.dom, v=>(+v).toLocaleString()],
@@ -376,7 +366,6 @@ function resetControls(){
     [sId,fpSId].forEach(id=>{const e=document.getElementById(id);if(e)e.value=val;});
     [vId,fpVId].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmt(val);});
   });
-  // Reset scenario pills
   document.querySelectorAll('.fp-sb,.pill').forEach(b=>b.classList.toggle('active',b.dataset.sc==='pre2025'));
   updateLiveUSI();
   renderCompCards('pre2025');
@@ -524,7 +513,7 @@ function renderMapCompCards(){
     g.appendChild(c);
   });
 }
-function updateMapMeter(){updateMeter(P.mi,'mapMFill',null,null);}
+function updateMapMeter(){const dynBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);updateMeter(P.mi,'mapMFill','mapMThresh',null,dynBeven);}
 
 
 // ═══════════════════════════════════════════════════
@@ -539,7 +528,8 @@ window.addEventListener('load',()=>{
   updateLiveUSI();
   initCharts();
   setTimeout(()=>{
-    updateMeter(66000,'mFill','mThresh','mStatus');
-    updateMeter(66000,'hMFill','hMThresh','hMStatus');
+    const initBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);
+    updateMeter(P.mi,'mFill','mThresh','mStatus',initBeven);
+    updateMeter(P.mi,'hMFill','hMThresh','hMStatus',initBeven);
   },500);
 });
