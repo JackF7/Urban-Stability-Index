@@ -19,6 +19,16 @@
   <script>window.SITE_LANG = 'es';</script>
 </head>
 <body>
+<div id="page-transition"></div>
+<style>
+#page-transition{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg,#0e0e18);
+  opacity:0;pointer-events:none;
+  transition:opacity .45s ease;
+}
+#page-transition.active{opacity:1;pointer-events:all;}
+</style>
 
 <!-- Barra superior móvil -->
 <div id="mob-bar">
@@ -45,7 +55,7 @@
       Universidad de Fordham · 2026<br>
       Asesora: Dr. Carey Kasten
     </div>
-    <a href="paper-es.html" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">&#128196; Leer la tesis</a>
+    <a href="paper-es.html" onclick="event.preventDefault();navigateOut('paper-es.html')" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">&#128196; Leer la tesis</a>
     <div class="lang-row">
       <button class="lb" onclick="setLang('en')">EN</button>
       <button class="lb active" onclick="setLang('es')">ES</button>
@@ -83,7 +93,7 @@
     <div class="fp-scen-row">
       <button class="fp-sb" data-sc="high"     onclick="loadSc('high')">Alta</button>
       <button class="fp-sb" data-sc="pre2025"  onclick="loadSc('pre2025')">Pre-2025</button>
-      <button class="fp-sb" data-sc="current"  onclick="loadSc('current')">Actual</button>
+      <button class="fp-sb active" data-sc="current"  onclick="loadSc('current')">Actual</button>
       <button class="fp-sb" data-sc="restrict" onclick="loadSc('restrict')">Restricción</button>
     </div>
   </div>
@@ -140,5 +150,18 @@
 
 
 
+
+<script>
+function navigateOut(url){
+  var overlay=document.getElementById('page-transition');
+  // also scale-down the main content
+  var main=document.getElementById('main');
+  var sidebar=document.getElementById('sidebar');
+  if(main){main.style.transition='transform .45s ease, opacity .45s ease';main.style.transform='scale(.96)';main.style.opacity='0';}
+  if(sidebar){sidebar.style.transition='opacity .45s ease';sidebar.style.opacity='0';}
+  overlay.classList.add('active');
+  setTimeout(function(){window.location.href=url;},460);
+}
+</script>
 </body>
 </html>

@@ -248,7 +248,7 @@ function renderCompCards(ak){
     c.innerHTML=`<div class="cc-name">${lang==='es'?sc.labelES:sc.label}</div><div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${lang==='es'?'Proyección 10 años':'10-yr projection'}</div>
       <div class="cc-usi ${cls}" style="color:${usiColor(r.usi)}">${sign}${r.usi.toFixed(2)}</div>
       <div class="cc-mi">${(sc.mi/1000).toFixed(0)}k ${lang==='es'?'llegadas/año':'arrivals/yr'}</div>
-      <div class="cc-detail">2023–2033 pop: ${(r.pop/1e6).toFixed(2)}M<br>2023–2033 LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
+      <div class="cc-detail">2033 pop: ${(r.pop/1e6).toFixed(2)}M<br>2033 LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
     g.appendChild(c);
   });
 }
