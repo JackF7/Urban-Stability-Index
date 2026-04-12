@@ -19,15 +19,14 @@
   <script>window.SITE_LANG = 'es';</script>
 </head>
 <body>
-<div id="page-transition"></div>
 <style>
-#page-transition{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--bg,#0e0e18);
-  opacity:0;pointer-events:none;
-  transition:opacity .45s ease;
+.slide-out-up {
+  animation: slideOutUp .5s cubic-bezier(.4,0,.6,1) forwards;
 }
-#page-transition.active{opacity:1;pointer-events:all;}
+@keyframes slideOutUp {
+  from { transform: translateY(0);   opacity: 1; }
+  to   { transform: translateY(-60px); opacity: 0; }
+}
 </style>
 
 <!-- Barra superior móvil -->
@@ -153,14 +152,15 @@
 
 <script>
 function navigateOut(url){
-  var overlay=document.getElementById('page-transition');
-  // also scale-down the main content
   var main=document.getElementById('main');
   var sidebar=document.getElementById('sidebar');
-  if(main){main.style.transition='transform .45s ease, opacity .45s ease';main.style.transform='scale(.96)';main.style.opacity='0';}
-  if(sidebar){sidebar.style.transition='opacity .45s ease';sidebar.style.opacity='0';}
-  overlay.classList.add('active');
-  setTimeout(function(){window.location.href=url;},460);
+  var btn=document.getElementById('floatBtn');
+  var panel=document.getElementById('floatPanel');
+  [main,sidebar,btn,panel].forEach(function(el){
+    if(el){el.style.transition='transform .5s cubic-bezier(.4,0,.6,1), opacity .5s cubic-bezier(.4,0,.6,1)';
+    el.style.transform='translateY(-60px)';el.style.opacity='0';}
+  });
+  setTimeout(function(){window.location.href=url;},520);
 }
 </script>
 </body>

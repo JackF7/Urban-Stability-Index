@@ -153,8 +153,8 @@ mkPage('scenarios',false,`<div class="ph">
         <tbody>
           <tr><td>Migración intl. neta/año</td><td class="col-high">200.000</td><td class="col-pre2025">144.098</td><td class="col-current">66.000</td><td class="col-restrict">20.000</td></tr>
           <tr><td>Migración total neta/año</td><td class="col-high pos">+108.761</td><td class="col-pre2025 pos">+52.859</td><td class="col-current neg">−25.239</td><td class="col-restrict neg">−71.239</td></tr>
-          <tr><td>Población 2033</td><td class="col-high">9.637.915</td><td class="col-pre2025">9.078.895</td><td class="col-current">8.297.915</td><td class="col-restrict">7.837.915</td></tr>
-          <tr><td>Fuerza laboral 2033</td><td class="col-high">4.879.070</td><td class="col-pre2025">4.487.756</td><td class="col-current">3.941.070</td><td class="col-restrict">3.619.070</td></tr>
+          <tr><td>Población en 2033</td><td class="col-high">9.637.915</td><td class="col-pre2025">9.078.895</td><td class="col-current">8.297.915</td><td class="col-restrict">7.837.915</td></tr>
+          <tr><td>Fuerza laboral en 2033</td><td class="col-high">4.879.070</td><td class="col-pre2025">4.487.756</td><td class="col-current">3.941.070</td><td class="col-restrict">3.619.070</td></tr>
           <tr><td>Sₚ crecimiento 10 años</td><td class="col-high pos">+17,48%</td><td class="col-pre2025 pos">+10,66%</td><td class="col-current pos">+1,14%</td><td class="col-restrict neg">−4,46%</td></tr>
           <tr><td>Sₗ crecimiento laboral 10 años</td><td class="col-high pos">+20,09%</td><td class="col-pre2025 pos">+10,45%</td><td class="col-current neg">−3,00%</td><td class="col-restrict neg">−10,93%</td></tr>
           <tr class="hl"><td>IEU — proy. 10 años (×10)</td><td class="col-high pos">+1,36</td><td class="col-pre2025 pos">+0,82</td><td class="col-current neu">+0,05</td><td class="col-restrict neg">−0,40</td></tr>
@@ -246,8 +246,8 @@ mkPage('map',false,`<div class="ph">
   <h2 style="margin-bottom:16px">Proyecciones por escenario</h2>
   <div class="g4" id="mapCompGrid" style="margin-bottom:20px"></div>
   <div class="chart-row">
-    <div class="cbox"><div class="cbox-label">Población 2033 por escenario</div><div class="cwrap"><canvas id="mapPopChart"></canvas></div></div>
-    <div class="cbox"><div class="cbox-label">Fuerza laboral 2033 por escenario</div><div class="cwrap"><canvas id="mapLFChart"></canvas></div></div>
+    <div class="cbox"><div class="cbox-label">Población en 2033 por escenario</div><div class="cwrap"><canvas id="mapPopChart"></canvas></div></div>
+    <div class="cbox"><div class="cbox-label">Fuerza laboral en 2033 por escenario</div><div class="cwrap"><canvas id="mapLFChart"></canvas></div></div>
   </div>
   <p class="footnote">El mapa utiliza los límites reales de los distritos comunitarios de NYC. Los valores del IEU se calculan distribuyendo la migración proporcional a la población y proporción de nacidos en el extranjero de cada distrito. Fuentes: ACS 2023; Census Bureau Vintage 2024/2025.</p>
 </div>`),
