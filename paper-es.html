@@ -126,6 +126,8 @@
     }
     .toc-link:hover { background: var(--surface2); color: var(--text); }
     .toc-link.active { background: rgba(232,197,71,.1); color: var(--accent); }
+    .toc-meta { font-size: 11px; color: var(--text3); line-height: 1.7; }
+    .toc-meta strong { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 12px; }
     .toc-footer {
       padding: 14px 18px;
       border-top: 1px solid var(--border);
@@ -485,15 +487,16 @@ body {
     <a href="#bibliography" class="toc-link">Bibliografía</a>
   </div>
   <div class="toc-footer">
-    <a href="index-es.html" onclick="event.preventDefault();navigateBack('index-es.html')" style="display:flex;align-items:center;gap:6px;margin-bottom:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">🗺 Volver al modelo</a>
-    <div class="lang-row">
+    <div class="toc-meta">
+      <strong>Jack Forester</strong><br>
+      Universidad de Fordham · 2026<br>
+      Asesora: Dr. Carey Kasten
+    </div>
+    <a href="index-es.html" onclick="event.preventDefault();navigateBack('index-es.html')" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">&#128506; Volver al modelo</a>
+    <div class="lang-row" style="margin-top:10px">
       <button class="lb" onclick="window.location.href='paper.html'">EN</button>
       <button class="lb active" onclick="window.location.href='paper-es.html'">ES</button>
     </div>
-    <a href="Senior_Thesis_Draft__Forester_.pdf" target="_blank" class="dl-btn">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Descargar PDF
-    </a>
   </div>
 </nav>
 
