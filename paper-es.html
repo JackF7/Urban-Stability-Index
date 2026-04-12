@@ -766,6 +766,10 @@ sections.forEach(s => observer.observe(s));
 
 
 
+<button id="backBtn" onclick="navigateBack('index-es.html')">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+  ← Volver al modelo
+</button>
 <script>
 function navigateBack(url){
   document.body.style.transition='transform .5s cubic-bezier(.4,0,.6,1),opacity .5s cubic-bezier(.4,0,.6,1)';
@@ -779,10 +783,5 @@ window.addEventListener('pageshow',function(e){
   if(e.persisted){document.body.style.animation='none';document.body.style.opacity='1';}
 });
 </script>
-
-<button id="backBtn" onclick="navigateBack('index-es.html')">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-  ← Volver al modelo
-</button>
 </body>
 </html>

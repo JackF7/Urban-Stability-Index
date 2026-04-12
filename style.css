@@ -25,7 +25,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { height: 100%; overflow: hidden; }
 body {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 17px;
   background: var(--bg);
   color: var(--text);
@@ -154,7 +154,7 @@ body {
   opacity: .85;
 }
 .ph h1 {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(32px, 4vw, 54px);
   font-weight: 600;
   letter-spacing: -.01em;
@@ -173,7 +173,7 @@ body {
 
 /* ── TYPOGRAPHY ── */
 h2 {
-  font-family: 'Crimson Pro', serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: var(--text);
@@ -447,12 +447,12 @@ input[type="range"]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 5px rgba(232
   border: 1px solid var(--border2);
   box-shadow: 0 8px 32px rgba(0,0,0,.4);
 }
-.leaflet-popup-content { margin: 0; padding: 16px; font-family: 'Crimson Pro', serif; min-width: 190px; }
+.leaflet-popup-content { margin: 0; padding: 16px; font-family: 'Space Grotesk', sans-serif; min-width: 190px; }
 .leaflet-popup-tip { background: rgba(28,31,30,.97); }
-.pop-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.pop-title { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 .pop-usi { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; text-align: center; padding: 9px; border-radius: 6px; margin-bottom: 10px; letter-spacing: -.02em; }
 .pop-row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; }
-.pop-label { color: var(--text3); }
+.pop-label { color: rgba(255,255,255,.6); }
 .pop-val { font-family: 'DM Mono', monospace; color: var(--accent); font-size: 10px; }
 
 /* ── FLOATING BUTTON + PANEL ── */
