@@ -169,7 +169,7 @@ body {
   line-height: 1.72;
   font-weight: 300;
 }
-.pc { padding: 40px 56px 56px; }
+.pc { padding: 40px 56px 110px; }
 
 /* ── TYPOGRAPHY ── */
 h2 {
@@ -649,7 +649,7 @@ input[type="range"].fpr::-webkit-slider-thumb {
   #mob-bar { display: flex; }
   #main { height: 100vh; padding-top: 50px; }
   .ph { padding: 28px 20px 24px; }
-  .pc { padding: 28px 20px 40px; }
+  .pc { padding: 28px 20px 110px; }
   .stat-row { grid-template-columns: 1fr 1fr; }
   .g2, .g3, .g4, .chart-row, .ctrl-grid, .interp-row { grid-template-columns: 1fr; }
   .map-layout { grid-template-columns: 1fr; height: auto; }

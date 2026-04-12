@@ -768,12 +768,10 @@ function navigateBack(url){
   document.body.style.transition='transform .5s cubic-bezier(.4,0,.6,1),opacity .5s cubic-bezier(.4,0,.6,1)';
   document.body.style.transform='translateY(60px)';
   document.body.style.opacity='0';
-  var btn=document.getElementById('backBtn');
-  if(btn){btn.style.transition='transform .5s,opacity .5s';btn.style.transform='translateY(60px)';btn.style.opacity='0';}
   setTimeout(function(){window.location.href=url;},520);
 }
 window.addEventListener('pageshow',function(e){
-  if(e.persisted){document.body.style.animation='none';document.body.style.opacity='1';}
+  if(e.persisted){document.body.style.animation='none';document.body.style.transform='none';document.body.style.opacity='1';}
 });
 </script>
 </body>
