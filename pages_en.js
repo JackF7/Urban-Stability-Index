@@ -149,13 +149,13 @@ mkPage('scenarios',false,`<div class="ph">
       <table class="dt" id="scenTable">
         <thead><tr><th>Metric</th><th class="col-high">High</th><th class="col-pre2025">Pre-2025</th><th class="col-current">Current ⁴</th><th class="col-restrict">Restricted</th></tr></thead>
         <tbody>
-          <tr><td>Net intl. migration/yr</td><td class="col-high">200,000</td><td class="col-pre2025">144,098</td><td class="col-current">66,000</td><td class="col-restrict">20,000</td></tr>
-          <tr><td>Net total migration/yr</td><td class="col-high pos">+108,761</td><td class="col-pre2025 pos">+52,859</td><td class="col-current neg">-25,239</td><td class="col-restrict neg">-71,239</td></tr>
-          <tr><td>2033 population</td><td class="col-high">9,637,915</td><td class="col-pre2025">9,078,895</td><td class="col-current">8,297,915</td><td class="col-restrict">7,837,915</td></tr>
-          <tr><td>2033 labor force</td><td class="col-high">4,879,070</td><td class="col-pre2025">4,487,756</td><td class="col-current">3,941,070</td><td class="col-restrict">3,619,070</td></tr>
-          <tr><td>Sₚ 10-yr population growth</td><td class="col-high pos">+17.48%</td><td class="col-pre2025 pos">+10.66%</td><td class="col-current pos">+1.14%</td><td class="col-restrict neg">-4.46%</td></tr>
-          <tr><td>Sₗ 10-yr labor force growth</td><td class="col-high pos">+20.09%</td><td class="col-pre2025 pos">+10.45%</td><td class="col-current neg">-3.00%</td><td class="col-restrict neg">-10.93%</td></tr>
-          <tr class="hl"><td>USI — 10-yr projection (x10)</td><td class="col-high pos">+1.36</td><td class="col-pre2025 pos">+0.82</td><td class="col-current neu">+0.05</td><td class="col-restrict neg">-0.40</td></tr>
+          <tr><td>Net Intl. Migration / Yr</td><td class="col-high">200,000</td><td class="col-pre2025">144,098</td><td class="col-current">66,000</td><td class="col-restrict">20,000</td></tr>
+          <tr><td>Net Total Migration / Yr</td><td class="col-high pos">+108,761</td><td class="col-pre2025 pos">+52,859</td><td class="col-current neg">-25,239</td><td class="col-restrict neg">-71,239</td></tr>
+          <tr><td>2033 Population</td><td class="col-high">9,637,915</td><td class="col-pre2025">9,078,895</td><td class="col-current">8,297,915</td><td class="col-restrict">7,837,915</td></tr>
+          <tr><td>2033 Labor Force</td><td class="col-high">4,879,070</td><td class="col-pre2025">4,487,756</td><td class="col-current">3,941,070</td><td class="col-restrict">3,619,070</td></tr>
+          <tr><td>Sₚ 10-Yr Population Growth</td><td class="col-high pos">+17.48%</td><td class="col-pre2025 pos">+10.66%</td><td class="col-current pos">+1.14%</td><td class="col-restrict neg">-4.46%</td></tr>
+          <tr><td>Sₗ 10-Yr Labor Force Growth</td><td class="col-high pos">+20.09%</td><td class="col-pre2025 pos">+10.45%</td><td class="col-current neg">-3.00%</td><td class="col-restrict neg">-10.93%</td></tr>
+          <tr class="hl"><td>USI — 10-Yr Projection (×10)</td><td class="col-high pos">+1.36</td><td class="col-pre2025 pos">+0.82</td><td class="col-current neu">+0.05</td><td class="col-restrict neg">-0.40</td></tr>
         </tbody>
       </table>
     </div>
@@ -221,7 +221,7 @@ mkPage('map',false,`<div class="ph">
       <div class="mrp-section">
         <div class="mrp-title">Current Scenario</div>
         <div id="mapScenInfo" style="font-size:12px;color:var(--text2)">
-          <div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:var(--text3)">Net intl. migration/yr</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent)">144,098</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:var(--text3)">Net Intl. Migration / Yr</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--accent)">144,098</span></div>
           <div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="color:var(--text3)">Break-even</span><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">56,612</span></div>
           <div style="display:flex;justify-content:space-between"><span style="color:var(--text3)">Margin</span><span style="font-family:'DM Mono',monospace;font-size:11px" class="pos">+87,486</span></div>
         </div>
