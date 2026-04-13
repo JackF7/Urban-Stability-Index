@@ -92,7 +92,7 @@
       line-height: 1.3; margin-bottom: 3px;
     }
     .toc-sub { font-size: 10px; color: var(--text3); }
-    .toc-nav { padding: 10px 8px; flex: 1; }
+    .toc-nav { padding: 10px 8px; flex: 1; overflow-y: auto; min-height: 0; }
     .toc-section {
       font-size: 9px; font-weight: 600;
       text-transform: uppercase; letter-spacing: .1em;
@@ -110,7 +110,7 @@
     .toc-link.active { background: rgba(184,212,168,.1); color: var(--accent); font-weight: 500; }
     .toc-meta { font-size: 11px; color: var(--text3); line-height: 1.7; }
     .toc-meta strong { color: var(--text); font-family: 'Space Grotesk', sans-serif; font-size: 12px; }
-    .toc-footer { padding: 14px 16px; border-top: 1px solid var(--border2); }
+    .toc-footer { padding: 14px 16px; border-top: 1px solid var(--border2); flex-shrink: 0; }
     .lang-row {
       display: flex; border: 1px solid var(--border2);
       border-radius: 5px; overflow: hidden; margin-bottom: 10px;
