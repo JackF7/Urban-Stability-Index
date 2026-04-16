@@ -19,15 +19,6 @@
   <script>window.SITE_LANG = 'es';</script>
 </head>
 <body>
-<style>
-.slide-out-up {
-  animation: slideOutUp .5s cubic-bezier(.4,0,.6,1) forwards;
-}
-@keyframes slideOutUp {
-  from { transform: translateY(0);   opacity: 1; }
-  to   { transform: translateY(-60px); opacity: 0; }
-}
-</style>
 
 <!-- Barra superior móvil -->
 <div id="mob-bar">
@@ -54,7 +45,7 @@
       Universidad de Fordham · 2026<br>
       Asesora: Dr. Carey Kasten
     </div>
-    <a href="paper-es.html" onclick="event.preventDefault();navigateOut('paper-es.html')" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:500;">&#128196; Leer la tesis</a>
+    <a href="paper-es.html" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">&#128196; Leer la tesis</a>
     <div class="lang-row">
       <button class="lb" onclick="setLang('en')">EN</button>
       <button class="lb active" onclick="setLang('es')">ES</button>
@@ -74,7 +65,7 @@
     <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
     <line x1="17" y1="16" x2="23" y2="16"/>
   </svg>
-  <span class="btn-label">Controles del modelo</span>
+    <span class="btn-label">Controles del modelo</span>
   <svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
@@ -91,7 +82,7 @@
     Ajusta migración, vivienda y pesos para ver cómo cada escenario cambia el Índice de Estabilidad Urbana a 10 años en tiempo real.
   </div>
   <div class="fp-sec">
-    <div class="fp-sec-t" id="fp-scen-title">Escenarios rápidos</div>
+    <div class="fp-sec-t" id="fp-scen-title">Escenarios Rápidos</div>
     <div class="fp-scen-row">
       <button class="fp-sb" data-sc="high"     onclick="loadSc('high')">Alta</button>
       <button class="fp-sb" data-sc="pre2025"  onclick="loadSc('pre2025')">Pre-2025</button>
@@ -100,24 +91,24 @@
     </div>
   </div>
   <div class="fp-sec">
-    <div class="fp-sec-t" id="fp-policy-title">Variables de política</div>
+    <div class="fp-sec-t" id="fp-policy-title">Variables de Política</div>
     <div class="fp-ctrl">
       <div class="fp-ctrl-row">
-        <span class="fp-ctrl-n" id="fp-mi-label">Migración intl. neta/año</span>
+        <span class="fp-ctrl-n" id="fp-mi-label">Migración Intl. Neta/año</span>
         <span class="fp-ctrl-v" id="fp-v-mi">66.000</span>
       </div>
       <input type="range" class="fpr" id="fp-s-mi" min="0" max="250000" step="1000" value="66000">
     </div>
     <div class="fp-ctrl">
       <div class="fp-ctrl-row">
-        <span class="fp-ctrl-n" id="fp-dom-label">Migración doméstica neta/año</span>
+        <span class="fp-ctrl-n" id="fp-dom-label">Migración Doméstica Neta/año</span>
         <span class="fp-ctrl-v" id="fp-v-dom">−91.239</span>
       </div>
       <input type="range" class="fpr" id="fp-s-dom" min="-150000" max="0" step="1000" value="-91239">
     </div>
     <div class="fp-ctrl" style="margin-bottom:0">
       <div class="fp-ctrl-row">
-        <span class="fp-ctrl-n" id="fp-units-label">Nuevas unidades de vivienda/año</span>
+        <span class="fp-ctrl-n" id="fp-units-label">Nuevas Unidades de Vivienda/año</span>
         <span class="fp-ctrl-v" id="fp-v-units">22.000</span>
       </div>
       <input type="range" class="fpr" id="fp-s-units" min="5000" max="60000" step="1000" value="20000">
@@ -130,7 +121,7 @@
       <input type="range" class="fpr" id="fp-s-wp" min="0.1" max="0.8" step="0.01" value="0.53">
     </div>
     <div class="fp-ctrl">
-      <div class="fp-ctrl-row"><span class="fp-ctrl-n">wₗ Fuerza laboral</span><span class="fp-ctrl-v" id="fp-v-wl">0,30</span></div>
+      <div class="fp-ctrl-row"><span class="fp-ctrl-n">wₗ Fuerza Laboral</span><span class="fp-ctrl-v" id="fp-v-wl">0,30</span></div>
       <input type="range" class="fpr" id="fp-s-wl" min="0.1" max="0.7" step="0.01" value="0.30">
     </div>
     <div class="fp-ctrl" style="margin-bottom:0">
@@ -152,19 +143,5 @@
 
 
 
-
-<script>
-function navigateOut(url){
-  var main=document.getElementById('main');
-  var sidebar=document.getElementById('sidebar');
-  var btn=document.getElementById('floatBtn');
-  var panel=document.getElementById('floatPanel');
-  [main,sidebar,btn,panel].forEach(function(el){
-    if(el){el.style.transition='transform .5s cubic-bezier(.4,0,.6,1), opacity .5s cubic-bezier(.4,0,.6,1)';
-    el.style.transform='translateY(-60px)';el.style.opacity='0';}
-  });
-  setTimeout(function(){window.location.href=url;},520);
-}
-</script>
 </body>
 </html>

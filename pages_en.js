@@ -282,4 +282,58 @@ mkPage('about',false,`<div class="ph">
   </div>
   <div class="callout" style="margin-top:16px"><p>All USI calculations and projections are the author's own. This site is a companion to the written thesis. The goal was to make the model interactive so the numbers could be explored directly rather than just read about.</p></div>
 </div>`)
+,
+mkPage('links',false,`<div class="ph">
+  <div class="ph-label">Resources</div>
+  <h1>Helpful Links</h1>
+  <p>Key data sources, research, and journalism on immigration and New York City demographics.</p>
+</div>
+<div class="pc">
+  <div class="card" style="margin-bottom:16px">
+    <h3 style="margin-bottom:14px">Data &amp; Research</h3>
+    <div class="link-list">
+      <a class="link-item" href="https://cmsny.org/publications/data-briefing-on-new-york-city-immigrants" target="_blank">
+        <div class="link-title">Data Briefing on New York City Immigrants</div>
+        <div class="link-src">Center for Migration Studies of New York</div>
+      </a>
+      <a class="link-item" href="https://www.pewresearch.org/short-reads/2025/08/21/key-findings-about-us-immigrants/" target="_blank">
+        <div class="link-title">Key Findings About U.S. Immigrants</div>
+        <div class="link-src">Pew Research Center</div>
+      </a>
+      <a class="link-item" href="https://www.census.gov/newsroom/press-releases/2024/population-estimates-international-migration.html" target="_blank">
+        <div class="link-title">Net International Migration Drives Highest U.S. Population Growth in Decades</div>
+        <div class="link-src">U.S. Census Bureau</div>
+      </a>
+      <a class="link-item" href="https://www.census.gov/newsroom/blogs/random-samplings/2026/01/historic-decline-in-net-international-migration.html" target="_blank">
+        <div class="link-title">New Population Estimates Show Historic Decline in Net International Migration</div>
+        <div class="link-src">U.S. Census Bureau</div>
+      </a>
+      <a class="link-item" href="https://www.niskanencenter.org/mapping-americas-immigration-needs-a-county-level-model-for-matching-migrants-to-local-economies/" target="_blank">
+        <div class="link-title">Mapping America's Immigration Needs: A County-Level Model for Matching Migrants to Local Economies</div>
+        <div class="link-src">Niskanen Center</div>
+      </a>
+      <a class="link-item" href="https://deportationdata.org/" target="_blank">
+        <div class="link-title">Deportation Data Project</div>
+        <div class="link-src">deportationdata.org</div>
+      </a>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:14px">Journalism &amp; Analysis</h3>
+    <div class="link-list">
+      <a class="link-item" href="https://austinkocher.substack.com" target="_blank">
+        <div class="link-title">Austin Kocher — Decoding the U.S. Immigration System</div>
+        <div class="link-src">Substack</div>
+      </a>
+      <a class="link-item" href="https://www.wsj.com/us-news/americans-leaving-the-us-migration-a5795bfa" target="_blank">
+        <div class="link-title">Americans Are Leaving the U.S. in Growing Numbers</div>
+        <div class="link-src">The Wall Street Journal</div>
+      </a>
+      <a class="link-item" href="https://www.nytimes.com/2025/08/21/us/immigration-decline-united-states-trump.html" target="_blank">
+        <div class="link-title">Immigration to the U.S. Has Fallen Sharply Under Trump</div>
+        <div class="link-src">The New York Times</div>
+      </a>
+    </div>
+  </div>
+</div>`)
 ];}

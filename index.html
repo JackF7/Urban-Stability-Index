@@ -19,15 +19,6 @@
   <script>window.SITE_LANG = 'en';</script>
 </head>
 <body>
-<style>
-.slide-out-up {
-  animation: slideOutUp .5s cubic-bezier(.4,0,.6,1) forwards;
-}
-@keyframes slideOutUp {
-  from { transform: translateY(0);   opacity: 1; }
-  to   { transform: translateY(-60px); opacity: 0; }
-}
-</style>
 
 <!-- Mobile topbar -->
 <div id="mob-bar">
@@ -43,7 +34,7 @@
 <nav id="sidebar">
   <div class="sb-brand">
     <div class="sb-title">Urban Stability<br>Index</div>
-    <div class="sb-sub">An Honors Thesis</div>
+    <div class="sb-sub">NYC Urban Stability Index</div>
   </div>
   <div class="sb-nav" id="sb-nav">
     <!-- Injected by model.js buildNav() -->
@@ -54,7 +45,7 @@
       Fordham University · 2026<br>
       Advisor: Dr. Carey Kasten
     </div>
-    <a href="paper.html" onclick="event.preventDefault();navigateOut('paper.html')" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:500;">&#128196; Read the paper</a>
+    <a href="paper.html" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">&#128196; Read the paper</a>
     <div class="lang-row">
       <button class="lb active" onclick="setLang('en')">EN</button>
       <button class="lb" onclick="setLang('es')">ES</button>
@@ -74,7 +65,7 @@
     <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
     <line x1="17" y1="16" x2="23" y2="16"/>
   </svg>
-  <span class="btn-label">Model Controls</span>
+    <span class="btn-label">Model Controls</span>
   <svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
@@ -96,7 +87,7 @@
       <button class="fp-sb" data-sc="high"     onclick="loadSc('high')">High</button>
       <button class="fp-sb" data-sc="pre2025"  onclick="loadSc('pre2025')">Pre-2025</button>
       <button class="fp-sb active" data-sc="current"  onclick="loadSc('current')">Current</button>
-      <button class="fp-sb" data-sc="restrict" onclick="loadSc('restrict')">Restrict</button>
+      <button class="fp-sb" data-sc="restrict" onclick="loadSc('restrict')">Restricted</button>
     </div>
   </div>
   <div class="fp-sec">
@@ -152,19 +143,5 @@
 
 
 
-
-<script>
-function navigateOut(url){
-  var main=document.getElementById('main');
-  var sidebar=document.getElementById('sidebar');
-  var btn=document.getElementById('floatBtn');
-  var panel=document.getElementById('floatPanel');
-  [main,sidebar,btn,panel].forEach(function(el){
-    if(el){el.style.transition='transform .5s cubic-bezier(.4,0,.6,1), opacity .5s cubic-bezier(.4,0,.6,1)';
-    el.style.transform='translateY(-60px)';el.style.opacity='0';}
-  });
-  setTimeout(function(){window.location.href=url;},520);
-}
-</script>
 </body>
 </html>

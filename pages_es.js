@@ -246,8 +246,8 @@ mkPage('map',false,`<div class="ph">
   <h2 style="margin-bottom:16px">Proyecciones por escenario</h2>
   <div class="g4" id="mapCompGrid" style="margin-bottom:20px"></div>
   <div class="chart-row">
-    <div class="cbox"><div class="cbox-label">Población en 2033 por escenario</div><div class="cwrap"><canvas id="mapPopChart"></canvas></div></div>
-    <div class="cbox"><div class="cbox-label">Fuerza laboral en 2033 por escenario</div><div class="cwrap"><canvas id="mapLFChart"></canvas></div></div>
+    <div class="cbox"><div class="cbox-label">Población 2023–2033 por escenario</div><div class="cwrap"><canvas id="mapPopChart"></canvas></div></div>
+    <div class="cbox"><div class="cbox-label">Fuerza laboral 2023–2033 por escenario</div><div class="cwrap"><canvas id="mapLFChart"></canvas></div></div>
   </div>
   <p class="footnote">El mapa utiliza los límites reales de los distritos comunitarios de NYC. Los valores del IEU se calculan distribuyendo la migración proporcional a la población y proporción de nacidos en el extranjero de cada distrito. Fuentes: ACS 2023; Census Bureau Vintage 2024/2025.</p>
 </div>`),
