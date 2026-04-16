@@ -769,5 +769,21 @@ sections.forEach(s => observer.observe(s));
 
 
 
+
+<script>
+function navigateBack(url){
+  var c=document.getElementById('content');
+  var s=document.getElementById('sidebar');
+  if(c){c.style.transition='transform .5s cubic-bezier(.4,0,.6,1),opacity .5s cubic-bezier(.4,0,.6,1)';c.style.transform='translateY(60px)';c.style.opacity='0';}
+  if(s){s.style.transition='opacity .5s';s.style.opacity='0';}
+  setTimeout(function(){window.location.href=url;},520);
+}
+window.addEventListener('pageshow',function(e){
+  if(e.persisted){
+    var c=document.getElementById('content');
+    if(c){c.style.animation='none';c.style.transform='none';c.style.opacity='1';}
+  }
+});
+</script>
 </body>
 </html>
