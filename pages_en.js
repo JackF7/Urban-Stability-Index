@@ -51,7 +51,7 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
 </div>`),
 mkPage('argument',false,`<div class="ph">
   <div class="ph-label">The Argument</div>
-  <h1>Why immigration is the<br>deciding variable</h1>
+  <h1>Why Immigration Is the<br>Deciding Variable</h1>
   <p>New York City records more births than deaths every year. The population problem is something else entirely.</p>
 </div>
 <div class="pc">
@@ -98,7 +98,7 @@ mkPage('argument',false,`<div class="ph">
 </div>`),
 mkPage('model',false,`<div class="ph">
   <div class="ph-label">The Model</div>
-  <h1>How the USI is calculated</h1>
+  <h1>How the USI Is Calculated</h1>
   <p>Three equations cover population, labor force, and housing pressure. Each produces a growth rate, and the three are combined into a single weighted index. A score of zero means the city is holding steady.</p>
 </div>
 <div class="pc">
@@ -131,7 +131,7 @@ mkPage('model',false,`<div class="ph">
 </div>`),
 mkPage('scenarios',false,`<div class="ph">
   <div class="ph-label">Scenarios</div>
-  <h1>Four immigration levels,<br>four outcomes</h1>
+  <h1>Four Immigration Levels,<br>Four Outcomes</h1>
   <p>Each scenario projects 10 years forward. Domestic out-migration and natural increase are held constant. Only net annual international migration changes.</p>
 </div>
 <div class="pc">
@@ -166,7 +166,7 @@ mkPage('scenarios',false,`<div class="ph">
 </div>`),
 mkPage('explorer',false,`<div class="ph">
   <div class="ph-label">Explorer · Live Model</div>
-  <h1>Adjust the parameters</h1>
+  <h1>Adjust the Parameters</h1>
   <p>Change migration levels, domestic flow, housing construction, and the USI weights. The index recalculates as you move the sliders.</p>
 </div>
 <div class="pc">
@@ -197,7 +197,7 @@ mkPage('explorer',false,`<div class="ph">
 </div>`),
 mkPage('map',false,`<div class="ph">
   <div class="ph-label">Map & Projections</div>
-  <h1>Geographic distribution</h1>
+  <h1>Geographic Distribution</h1>
   <p>10-year USI projection estimated for each community district based on its foreign-born share and housing density. Scenario projections are shown alongside.</p>
 </div>
 <div class="pc" style="padding-top:24px">
@@ -249,7 +249,7 @@ mkPage('map',false,`<div class="ph">
 </div>`),
 mkPage('history',false,`<div class="ph">
   <div class="ph-label">Historical Validation · 1990-2000</div>
-  <h1>The 1990s show the same pattern</h1>
+  <h1>The 1990s Show the Same Pattern</h1>
   <p>The model can be checked against a decade where all the underlying figures are known. NYC's population grew from 7,322,564 to 8,008,278 between 1990 and 2000.</p>
 </div>
 <div class="pc">
@@ -272,13 +272,13 @@ mkPage('history',false,`<div class="ph">
 </div>`),
 mkPage('about',false,`<div class="ph">
   <div class="ph-label">About</div>
-  <h1>About this project</h1>
+  <h1>About This Project</h1>
   <p>Honors senior thesis, Fordham University, Spring 2026. Disciplines: mathematics, computer science, and Spanish.</p>
 </div>
 <div class="pc">
   <div class="g2">
-    <div class="card"><h3 style="margin-bottom:14px">Thesis Information</h3><table class="dt"><tbody><tr><td>Full Title</td><td style="font-style:italic;font-size:11px">Engines of Stability: Immigration and Demographic Transformation in New York City</td></tr><tr><td>Author</td><td>Jack Forester</td></tr><tr><td>Advisor</td><td>Dr. Carey Kasten</td></tr><tr><td>Institution</td><td>Fordham University</td></tr><tr><td>Year</td><td>Spring 2026</td></tr><tr><td>Disciplines</td><td>Mathematics · Computer Science · Spanish</td></tr></tbody></table></div>
-    <div class="card"><h3 style="margin-bottom:14px">Data Sources</h3><table class="dt"><tbody><tr><td>Population Baseline</td><td>Census Bureau Vintage 2024 and 2025</td></tr><tr><td>Component Data</td><td style="font-size:11px">NYC DCP, May 2025, App. A, Table 2</td></tr><tr><td>Labor Force Share</td><td style="font-size:11px">NYS Comptroller, March 2024</td></tr><tr><td>Tax Figures</td><td style="font-size:11px">American Immigration Council / ITEP 2023</td></tr><tr><td>Housing Demand</td><td style="font-size:11px">Harvard JCHS, 2024</td></tr><tr><td>Housing Supply</td><td style="font-size:11px">NYC Building Congress, 2025-27</td></tr><tr><td>Current Policy Figure</td><td style="font-size:11px">The CITY, March 26, 2026</td></tr></tbody></table></div>
+    <div class="card"><h3 style="margin-bottom:14px">Thesis Information</h3><table class="dt"><tbody><tr><td>Full title</td><td style="font-style:italic;font-size:11px">Urban Stability Index: Immigration and Demographic Transformation in New York City</td></tr><tr><td>Author</td><td>Jack Forester</td></tr><tr><td>Advisor</td><td>Dr. Carey Kasten</td></tr><tr><td>Institution</td><td>Fordham University</td></tr><tr><td>Year</td><td>Spring 2026</td></tr><tr><td>Disciplines</td><td>Mathematics · Computer Science · Spanish</td></tr></tbody></table></div>
+    <div class="card"><h3 style="margin-bottom:14px">Data Sources</h3><table class="dt"><tbody><tr><td>Population baseline</td><td>Census Bureau Vintage 2024 and 2025</td></tr><tr><td>Component data</td><td style="font-size:11px">NYC DCP, May 2025, App. A, Table 2</td></tr><tr><td>Labor force share</td><td style="font-size:11px">NYS Comptroller, March 2024</td></tr><tr><td>Tax figures</td><td style="font-size:11px">American Immigration Council / ITEP 2023</td></tr><tr><td>Housing demand</td><td style="font-size:11px">Harvard JCHS, 2024</td></tr><tr><td>Housing supply</td><td style="font-size:11px">NYC Building Congress, 2025-27</td></tr><tr><td>Current policy figure</td><td style="font-size:11px">The CITY, March 26, 2026</td></tr></tbody></table></div>
   </div>
   <div class="callout" style="margin-top:16px"><p>All USI calculations and projections are the author's own. This site is a companion to the written thesis. The goal was to make the model interactive so the numbers could be explored directly rather than just read about.</p></div>
 </div>`)
