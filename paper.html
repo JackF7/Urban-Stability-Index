@@ -400,7 +400,7 @@
     <div class="section-title">Introduction</div>
     <div class="prose">
       <p>New York City has never been a demographically self-sustaining metropolis. From the moment the city became a destination for mass migration in the nineteenth century, its population growth, its expansion of the labor force, and its economic development have been dependent upon the constant inflow of people from someplace else. This constant immigration is the key factor that has enabled New York City to become the most economically productive and the most resilient urban center in the United States. As immigration has been allowed to flow freely into the city, the city has grown. As federal policy has restricted immigration through the quota system of 1924, through the enforcement surges of the latter twentieth century, and now through the crackdowns of the second Trump administration, the city has shrunk or stagnated, only recovering when the flow of immigrants resumed.</p>
-      <p>This thesis considers the relationship between immigration and urban stability in New York City through three theoretical frameworks. The first two sections provide the historical and economic context that supports the thesis's central argument. Starting with the industrial immigration waves of the 1840s and continuing through the twentieth and twenty-first centuries, they demonstrate how each new generation of foreign-born New Yorkers has supplied the labor force, the entrepreneurial spirit, and the tax base that has sustained the city through periods of both economic boom and bust. The third section develops the thesis mathematically. Using primary source data supplied by the U.S. Census Bureau, the 2023 American Community Survey, and the most recent population analysis supplied by the New York City Department of City Planning,<sup>44</sup> the thesis develops the Urban Stability Index — a composite statistic that measures the simultaneous contribution of immigration to New York's population growth, labor force vitality, and housing pressure, and that projects each of these variables forward under four different sets of federal immigration policy.</p>
+      <p>This thesis considers the relationship between immigration and urban stability in New York City through three theoretical frameworks. The first two sections provide the historical and economic context that supports the thesis's central argument. Starting with the industrial immigration waves of the 1840s and continuing through the twentieth and twenty-first centuries, they demonstrate how each new generation of foreign-born New Yorkers has supplied the labor force, the entrepreneurial spirit, and the tax base that has sustained the city through periods of both economic boom and bust. The third section develops the thesis mathematically. Using primary source data supplied by the U.S. Census Bureau, the 2023 American Community Survey, and the most recent population analysis supplied by the New York City Department of City Planning, the thesis develops the Urban Stability Index — a composite statistic that measures the simultaneous contribution of immigration to New York's population growth, labor force vitality, and housing pressure, and that projects each of these variables forward under four different sets of federal immigration policy.</p>
       <p>The numbers produced by the Urban Stability Index are not arbitrary. Rather, they are the mathematical manifestation of the pattern that has dominated New York City for nearly two centuries: the pattern in which the city grows when immigrants arrive and shrinks when they do not. Under the current enforcement policy of the Trump Administration, net international migration to New York City has fallen to just 66,000 per year. The central argument of this thesis is that this is no coincidence. It is a policy decision with quantified demographic effects that are already apparent.</p>
     </div>
   </div>
@@ -558,7 +558,7 @@
     <div class="section-title">Mathematical Analysis and Stability</div>
     <div class="prose">
       <p>We can translate historical and current demographic data and patterns into formal mathematical models to analyze how immigration has played various stabilizing roles with regard to New York's population, labor force, and housing. The preceding sections of this thesis have established that immigration has been a stabilizing force for New York City for multiple centuries. This section formalizes that argument mathematically.</p>
-      <p>To visualize the effect immigration has on New York both economically and demographically, I have created the Urban Stability Index (USI) — a system of differential equations and a composite index — to quantify immigration's contributions to population, labor, and housing stability in the city. The model draws on three core equations: a population equation derived from census and migration statistics, a labor force equation that measures the effects of new workers, and a housing pressure equation that imposes a penalty on the USI when population growth outpaces housing supply. The three equations are then combined into a single number, the USI, which allows us to interpret the overall stability of New York based on changing factors.<sup>52</sup></p>
+      <p>To visualize the effect immigration has on New York both economically and demographically, I have created the Urban Stability Index (USI) — a system of differential equations and a composite index — to quantify immigration's contributions to population, labor, and housing stability in the city. The model draws on three core equations: a population equation derived from census and migration statistics, a labor force equation that measures the effects of new workers, and a housing pressure equation that imposes a penalty on the USI when population growth outpaces housing supply. The three equations are then combined into a single number, the USI, which allows us to interpret the overall stability of New York based on changing factors.<sup>45</sup></p>
     </div>
 
     <div class="subsection-title">The Population Model</div>
@@ -574,7 +574,7 @@
     <table class="data-table">
       <thead><tr><th>Component</th><th>Definition</th><th>Baseline (2024)</th></tr></thead>
       <tbody>
-        <tr><td>P(t₀)</td><td>Total population of NYC</td><td>8,204,035</td></tr>
+        <tr><td>P(t₀)</td><td>Total population of NYC<sup>52</sup></td><td>8,204,035</td></tr>
         <tr><td>bₙ / bᵢ</td><td>Native-born / Foreign-born birth rates</td><td>1.24% / 1.39%</td></tr>
         <tr><td>Pᵢ / Pₙ</td><td>Foreign-born / Native-born population</td><td>3,093,845 / 5,164,190</td></tr>
         <tr><td>B / D</td><td>Annual births / deaths</td><td>89,851 / 55,224</td></tr>
@@ -600,12 +600,12 @@
       $$8{,}008{,}278 = 7{,}322{,}564 + 1{,}185{,}987 - 685{,}282 + M \implies M = 185{,}009$$
     </div>
     <div class="prose">
-      <p>At the same time, the foreign-born population in New York grew by 788,101, from 2,082,931 to 2,871,032.<sup>45</sup> Because the foreign-born increase exceeded the total net population increase, immigration more than offset substantial domestic out-migration. Immigration was not simply a contributing factor, but rather the primary driver of population growth in New York toward the end of the twentieth century.</p>
+      <p>At the same time, the foreign-born population in New York grew by 788,101, from 2,082,931 to 2,871,032.<sup>47</sup> Because the foreign-born increase exceeded the total net population increase, immigration more than offset substantial domestic out-migration. Immigration was not simply a contributing factor, but rather the primary driver of population growth in New York toward the end of the twentieth century.</p>
     </div>
 
     <div class="subsection-title">The Labor Model</div>
     <div class="prose">
-      <p>New York's overall stability depends on more than just its population. The city can grow in population while simultaneously losing economic power if there are more people who stop working than those who begin working. We can represent New York's labor force using data provided by the New York State Comptroller:<sup>47</sup></p>
+      <p>New York's overall stability depends on more than just its population. The city can grow in population while simultaneously losing economic power if there are more people who stop working than those who begin working. We can represent New York's labor force using data provided by the New York State Comptroller:<sup>48</sup></p>
     </div>
     <div class="eqbox">
       <div class="eqlabel">Labor Force Equation</div>
@@ -630,16 +630,16 @@
 
     <div class="subsection-title">The Housing Model</div>
     <div class="prose">
-      <p>The final part of the USI model revolves around housing demand. More immigrants means more workers, but it also requires the city to find homes for the new population. The following equation represents housing pressure by measuring the ratio of residents to occupied housing units.<sup>48</sup></p>
+      <p>The final part of the USI model revolves around housing demand. More immigrants means more workers, but it also requires the city to find homes for the new population. The following equation represents housing pressure by measuring the ratio of residents to occupied housing units.<sup>49</sup></p>
     </div>
     <div class="eqbox">
       $$H(t) = \frac{P_i(t) + P_n(t)}{U(t)} \qquad H(2023) \approx 2.2$$
-      <div class="eqnote">U grows at +20,000 new units/yr (NYC Construction Outlook Report historical average).<sup>49</sup> Rising H(t) = more people per unit = penalty term.</div>
+      <div class="eqnote">U grows at +20,000 new units/yr (NYC Construction Outlook Report historical average).<sup>50</sup> Rising H(t) = more people per unit = penalty term.</div>
     </div>
 
     <div class="subsection-title">The Urban Stability Index</div>
     <div class="prose">
-      <p>To calculate the Urban Stability Index, we combine the three components into a single composite measure. The weights each reflect immigration's measured share of that dimension in New York City, normalized so the weights sum to 1.0. In 2023–2024, international immigration accounted for 144,098 out of 178,725 total positive population inputs (80.6%). Foreign-born workers constitute 44.3% of the labor force. Harvard's Joint Center for Housing Studies finds that immigrant households account for 25% of household growth nationally.<sup>50</sup><sup>51</sup></p>
+      <p>To calculate the Urban Stability Index, we combine the three components into a single composite measure. The weights each reflect immigration's measured share of that dimension in New York City, normalized so the weights sum to 1.0. In 2023–2024, international immigration accounted for 144,098 out of 178,725 total positive population inputs (80.6%). Foreign-born workers constitute 44.3% of the labor force. Harvard's Joint Center for Housing Studies finds that immigrant households account for 25% of household growth nationally.<sup>51</sup></p>
     </div>
     <div class="eqbox">
       <div class="eqlabel">Weight derivation: 80.6 + 44.3 + 25.0 = 149.9</div>
@@ -654,14 +654,15 @@
     <div class="footnotes">
       <div class="footnotes-title">Notes</div>
       <div class="fn-entry"><span class="fn-num">44</span><span>NYC Department of City Planning, <em>New York City Population Estimates and Trends, May 2025</em> (New York: NYC Department of City Planning, 2025), <a href="https://www.nyc.gov/assets/planning/downloads/pdf/our-work/reports/new-york-city-population-estimates-and-trends_may-2025.pdf" target="_blank">nyc.gov ↗</a></span></div>
-    <div class="fn-entry"><span class="fn-num">45</span><span>New York City Department of City Planning, <em>1790–2000 NYC Total and Foreign-Born Population,</em> <a href="https://www.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/historical-population/1790-2000_nyc_total_foreign_birth.pdf" target="_blank">nyc.gov ↗</a></span></div>
+    <div class="fn-entry"><span class="fn-num">47</span><span>New York City Department of City Planning, <em>1790–2000 NYC Total and Foreign-Born Population,</em> <a href="https://www.nyc.gov/assets/planning/download/pdf/data-maps/nyc-population/historical-population/1790-2000_nyc_total_foreign_birth.pdf" target="_blank">nyc.gov ↗</a></span></div>
       <div class="fn-entry"><span class="fn-num">46</span><span>New York City Department of Health and Mental Hygiene, Bureau of Vital Statistics, <em>Summary of Vital Statistics, 2021</em> (New York, NY, 2022), 67, <a href="https://www.nyc.gov/assets/doh/downloads/pdf/vs/2021sum.pdf" target="_blank">nyc.gov ↗</a></span></div>
-    <div class="fn-entry"><span class="fn-num">47</span><span>New York State Office of the State Comptroller, "DiNapoli: NYC Immigrant Workforce Below 2015 Peak," press release, March 2024, <a href="https://www.osc.ny.gov/press/releases/2024/03/dinapoli-nyc-immigrant-workforce-below-2015-peak" target="_blank">osc.ny.gov ↗</a></span></div>
-    <div class="fn-entry"><span class="fn-num">48</span><span>New York City Department of City Planning, <em>American Community Survey 2023 1-Year Data,</em> <a href="https://www.nyc.gov/content/planning/pages/resources/datasets/american-community-survey" target="_blank">nyc.gov ↗</a></span></div>
-    <div class="fn-entry"><span class="fn-num">49</span><span>New York Building Congress, <em>2025–2027 New York City Construction Outlook Report</em> (New York: New York Building Congress, 2025).</span></div>
-    <div class="fn-entry"><span class="fn-num">50</span><span>Riordan Frost, "The Role of the Recent Immigrant Surge in Housing Costs," Joint Center for Housing Studies of Harvard University, October 29, 2024.</span></div>
+    <div class="fn-entry"><span class="fn-num">48</span><span>New York State Office of the State Comptroller, "DiNapoli: NYC Immigrant Workforce Below 2015 Peak," press release, March 2024, <a href="https://www.osc.ny.gov/press/releases/2024/03/dinapoli-nyc-immigrant-workforce-below-2015-peak" target="_blank">osc.ny.gov ↗</a></span></div>
+    <div class="fn-entry"><span class="fn-num">49</span><span>New York City Department of City Planning, <em>American Community Survey 2023 1-Year Data,</em> <a href="https://www.nyc.gov/content/planning/pages/resources/datasets/american-community-survey" target="_blank">nyc.gov ↗</a></span></div>
+    <div class="fn-entry"><span class="fn-num">50</span><span>New York Building Congress, <em>2025–2027 New York City Construction Outlook Report</em> (New York: New York Building Congress, 2025).</span></div>
+    <div class="fn-entry"><span class="fn-num">51</span><span>Riordan Frost, "The Role of the Recent Immigrant Surge in Housing Costs," Joint Center for Housing Studies of Harvard University, October 29, 2024.</span></div>
+    <div class="fn-entry"><span class="fn-num">52</span><span>NYC Department of City Planning, <em>New York City Population Estimates and Trends, May 2025.</em></span></div>
     <div class="fn-entry"><span class="fn-num">51</span><span>Harvard Joint Center for Housing Studies, <em>The State of the Nation's Housing 2024</em> (Cambridge: Harvard University, 2024).</span></div>
-    <div class="fn-entry"><span class="fn-num">52</span><span><em>Ibid.</em></span></div>
+    <div class="fn-entry"><span class="fn-num">45</span><span>NYC Department of City Planning, <em>New York City Population Estimates and Trends, May 2025</em> (New York: NYC Department of City Planning, 2025), <a href="https://www.nyc.gov/assets/planning/downloads/pdf/our-work/reports/new-york-city-population-estimates-and-trends_may-2025.pdf" target="_blank">nyc.gov ↗</a></span></div>
     </div>
   </div>
 
