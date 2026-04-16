@@ -35,6 +35,9 @@ function projectSeries(mi,dom,newU,yrs=10){
 // calcDistrictUSI defined after CD data below
 
 // ── COLORS ──────────────────────────────────────────────────────
+function fmtUSI(v){const s=v.toFixed(2);return lang==='es'?s.replace('.',','):s;}
+function fmtPct(v){const s=v.toFixed(1);return lang==='es'?s.replace('.',','):s;}
+function fmtDec(v){const s=(+v).toFixed(2);return lang==='es'?s.replace('.',','):s;}
 function usiColor(v){if(v>=0.8)return'#2d8653';if(v>=0.4)return'#9acd32';if(v>=0)return'#e67e22';if(v>=-0.4)return'#e74c3c';return'#8b0000';}
 function usiLabel(v,es=false){
   if(es){
@@ -213,7 +216,7 @@ function updateMeter(mi,fillId,threshId,statusId,beven){
 function updateLiveUSI(){
   const r=project(P.mi,P.dom,P.units);
   const sign=r.usi>=0?'+':'';
-  ['liveUSI','fpUSI'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=sign+r.usi.toFixed(2);e.style.color=usiColor(r.usi);}});
+  ['liveUSI','fpUSI'].forEach(id=>{const e=document.getElementById(id);if(e){e.textContent=sign+fmtUSI(r.usi);e.style.color=usiColor(r.usi);}});
   const dl=document.getElementById('liveDesc');if(dl)dl.textContent=usiLabel(r.usi,lang==='es');
   // Interp
   const pd=Math.round(r.pop-BASE.pop),ld=Math.round(r.lf-BASE.lf);
@@ -223,11 +226,11 @@ function updateLiveUSI(){
   const ps=document.getElementById('ip-pop-sub'),ls=document.getElementById('ip-lf-sub');
   if(pe){pe.textContent=fmt(pd);pe.className='icard-val '+(pd>=0?'pos':'neg');}
   if(le){le.textContent=fmt(ld);le.className='icard-val '+(ld>=0?'pos':'neg');}
-  if(he){he.textContent=(r.Sh>=0?'+':'')+(r.Sh*100).toFixed(1)+'%';he.className='icard-val '+(r.Sh>0?'neg':'pos');}
+  if(he){he.textContent=(r.Sh>=0?'+':'')+fmtPct(r.Sh*100)+'%';he.className='icard-val '+(r.Sh>0?'neg':'pos');}
   if(ps)ps.textContent=pd>=0?(isES?'residentes ganados 2023–2033':'residents gained 2023–2033'):(isES?'residentes perdidos 2023–2033':'residents lost 2023–2033');
   if(ls)ls.textContent=ld>=0?(isES?'trabajadores ganados 2023–2033':'workers gained 2023–2033'):(isES?'trabajadores perdidos 2023–2033':'workers lost 2023–2033');
   // Home stat
-  const hs=document.getElementById('home-usi');if(hs){hs.textContent=sign+r.usi.toFixed(2);hs.style.color=usiColor(r.usi);}
+  const hs=document.getElementById('home-usi');if(hs){hs.textContent=sign+fmtUSI(r.usi);hs.style.color=usiColor(r.usi);}
   const dynBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);
   updateMeter(P.mi,'mFill','mThresh','mStatus',dynBeven);
   updateMeter(P.mi,'hMFill','hMThresh','hMStatus',dynBeven);
@@ -246,9 +249,9 @@ function renderCompCards(ak){
     const sign=r.usi>=0?'+':'',cls=r.usi>0?'pos':r.usi<0?'neg':'neu';
     const c=document.createElement('div');c.className='cc'+(k===ak?' sel':'');
     c.innerHTML=`<div class="cc-name">${lang==='es'?sc.labelES:sc.label}</div><div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${lang==='es'?'Proyección 10 años':'10-yr projection'}</div>
-      <div class="cc-usi ${cls}" style="color:${usiColor(r.usi)}">${sign}${r.usi.toFixed(2)}</div>
+      <div class="cc-usi ${cls}" style="color:${usiColor(r.usi)}">${sign}${fmtUSI(r.usi)}</div>
       <div class="cc-mi">${(sc.mi/1000).toFixed(0)}k ${lang==='es'?'llegadas/año':'arrivals/yr'}</div>
-      <div class="cc-detail">2033 pop: ${(r.pop/1e6).toFixed(2)}M<br>2033 LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
+      <div class="cc-detail">2033 pop: ${fmtDec(r.pop/1e6)}M<br>2033 LF: ${fmtDec(r.lf/1e6)}M</div>`;
     g.appendChild(c);
   });
 }
@@ -299,7 +302,7 @@ function renderBoroMini(){
     const d=document.createElement('div');d.className='boro-mini';
     d.innerHTML=`<div class="boro-mini-name">${displayName}</div>
       <div class="boro-mini-row">
-        <div class="boro-mini-usi ${cls}" style="color:${usiColor(b.usi)}">${sign}${b.usi.toFixed(2)}</div>
+        <div class="boro-mini-usi ${cls}" style="color:${usiColor(b.usi)}">${sign}${fmtUSI(b.usi)}</div>
         <div class="boro-mini-bar"><div class="boro-mini-fill" style="width:${Math.max(0,barPct)}%;background:${usiColor(b.usi)}"></div></div>
         <div class="boro-mini-fb">${(b.fb/b.pop*100).toFixed(0)}% ${isES?'ext.':'fb'}</div>
       </div>`;
@@ -330,9 +333,9 @@ function bindSliders(){
   [['s-mi','v-mi','fp-s-mi','fp-v-mi',v=>Math.round(v).toLocaleString(),v=>{P.mi=+v;}],
    ['s-dom','v-dom','fp-s-dom','fp-v-dom',v=>(+v).toLocaleString(),v=>{P.dom=+v;}],
    ['s-units','v-units','fp-s-units','fp-v-units',v=>(+v).toLocaleString(),v=>{P.units=+v;}],
-   ['s-wp','v-wp','fp-s-wp','fp-v-wp',v=>(+v).toFixed(2),v=>{W.p=+v;}],
-   ['s-wl','v-wl','fp-s-wl','fp-v-wl',v=>(+v).toFixed(2),v=>{W.l=+v;}],
-   ['s-wh','v-wh','fp-s-wh','fp-v-wh',v=>(+v).toFixed(2),v=>{W.h=+v;}],
+   ['s-wp','v-wp','fp-s-wp','fp-v-wp',v=>fmtDec(+v),v=>{W.p=+v;}],
+   ['s-wl','v-wl','fp-s-wl','fp-v-wl',v=>fmtDec(+v),v=>{W.l=+v;}],
+   ['s-wh','v-wh','fp-s-wh','fp-v-wh',v=>fmtDec(+v),v=>{W.h=+v;}],
   ].forEach(([mId,mVId,fId,fVId,fmt,setter])=>{
     const m=document.getElementById(mId),f=document.getElementById(fId);
     function sync(val){setter(val);[mId,fId].forEach(id=>{const e=document.getElementById(id);if(e)e.value=val;});[mVId,fVId].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=fmt(val);});updateLiveUSI();}
@@ -357,9 +360,9 @@ function resetControls(){
     ['s-mi','fp-s-mi','v-mi','fp-v-mi', DEFAULTS.mi, v=>Math.round(v).toLocaleString()],
     ['s-dom','fp-s-dom','v-dom','fp-v-dom', DEFAULTS.dom, v=>(+v).toLocaleString()],
     ['s-units','fp-s-units','v-units','fp-v-units', DEFAULTS.units, v=>(+v).toLocaleString()],
-    ['s-wp','fp-s-wp','v-wp','fp-v-wp', DEFAULTS.wp, v=>(+v).toFixed(2)],
-    ['s-wl','fp-s-wl','v-wl','fp-v-wl', DEFAULTS.wl, v=>(+v).toFixed(2)],
-    ['s-wh','fp-s-wh','v-wh','fp-v-wh', DEFAULTS.wh, v=>(+v).toFixed(2)],
+    ['s-wp','fp-s-wp','v-wp','fp-v-wp', DEFAULTS.wp, v=>fmtDec(+v)],
+    ['s-wl','fp-s-wl','v-wl','fp-v-wl', DEFAULTS.wl, v=>fmtDec(+v)],
+    ['s-wh','fp-s-wh','v-wh','fp-v-wh', DEFAULTS.wh, v=>fmtDec(+v)],
   ];
   fields.forEach(([sId,fpSId,vId,fpVId,val,fmt])=>{
     [sId,fpSId].forEach(id=>{const e=document.getElementById(id);if(e)e.value=val;});
@@ -392,7 +395,7 @@ function buildLayer(geo){
       const bc=BOROCD_KEY(feat.properties);if(!bc)return;
       const cd=parseInt(bc),d=CD[cd];if(!d)return;
       const usi=calcDistrictUSI(d),sign=usi>=0?'+':'';
-      layer.bindPopup(`<div class="pop-title">${d.name}</div><div class="pop-usi" style="background:${usiColor(usi)};color:#fff">${sign}${usi.toFixed(2)}</div><div class="pop-row"><span class="pop-label">${isES?'Población':'Population'}</span><span class="pop-val">${d.pop.toLocaleString()}</span></div><div class="pop-row"><span class="pop-label">${isES?'Nac. extranjero':'Foreign-Born'}</span><span class="pop-val">${(d.fb/d.pop*100).toFixed(1)}%</span></div><div class="pop-row"><span class="pop-label">${isES?'Personas/unidad':'People/Unit'}</span><span class="pop-val">${(d.pop/d.units).toFixed(2)}</span></div>`);
+      layer.bindPopup(`<div class="pop-title">${d.name}</div><div class="pop-usi" style="background:${usiColor(usi)};color:#fff">${sign}${fmtUSI(usi)}</div><div class="pop-row"><span class="pop-label">${isES?'Población':'Population'}</span><span class="pop-val">${d.pop.toLocaleString()}</span></div><div class="pop-row"><span class="pop-label">${isES?'Nac. extranjero':'Foreign-Born'}</span><span class="pop-val">${(d.fb/d.pop*100).toFixed(1)}%</span></div><div class="pop-row"><span class="pop-label">${isES?'Personas/unidad':'People/Unit'}</span><span class="pop-val">${(d.pop/d.units).toFixed(2)}</span></div>`);
       layer.on('mouseover',()=>layer.setStyle({weight:2,color:'rgba(232,197,71,.5)',fillOpacity:.9}));
       layer.on('mouseout',()=>geoLayer.resetStyle(layer));
     }
@@ -508,7 +511,7 @@ function renderMapCompCards(){
     const r=project(sc.mi,BASE.domOut,BASE.newUnits);
     const sign=r.usi>=0?'+':'',cls=r.usi>0?'pos':r.usi<0?'neg':'neu';
     const c=document.createElement('div');c.className='cc'+(k===activeSC?' sel':'');
-    c.innerHTML=`<div class="cc-name">${lang==='es'?sc.labelES:sc.label}</div><div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${lang==='es'?'Proyección 10 años':'10-yr projection'}</div><div class="cc-usi ${cls}" style="color:${usiColor(r.usi)}">${sign}${r.usi.toFixed(2)}</div><div class="cc-mi">${(sc.mi/1000).toFixed(0)}k/yr</div><div class="cc-detail">Pop: ${(r.pop/1e6).toFixed(2)}M · LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
+    c.innerHTML=`<div class="cc-name">${lang==='es'?sc.labelES:sc.label}</div><div style="font-size:9px;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">${lang==='es'?'Proyección 10 años':'10-yr projection'}</div><div class="cc-usi ${cls}" style="color:${usiColor(r.usi)}">${sign}${fmtUSI(r.usi)}</div><div class="cc-mi">${(sc.mi/1000).toFixed(0)}k/yr</div><div class="cc-detail">Pop: ${(r.pop/1e6).toFixed(2)}M · LF: ${(r.lf/1e6).toFixed(2)}M</div>`;
     g.appendChild(c);
   });
 }

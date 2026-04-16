@@ -174,7 +174,7 @@
 
     /* ── MAIN CONTENT ── */
     #content {
-      margin-left: var(--toc-w);
+      margin-left: 230px;
       flex: 1;
       max-width: calc(var(--toc-w) + var(--content-w) + 80px);
     }
@@ -466,34 +466,36 @@ body {
   </button>
 </div>
 
-<nav id="toc">
-  <div class="toc-header">
-    <div class="toc-title">Índice de<br>Estabilidad Urbana</div>
-    <div class="toc-sub">Forester · Fordham · 2026</div>
+<nav id="sidebar">
+  <div class="sb-brand">
+    <div class="sb-title">Índice de<br>Estabilidad Urbana</div>
+    <div class="sb-sub">Tesis de honor universitaria</div>
   </div>
-  <div class="toc-nav">
-    <div class="toc-section">La Tesis</div>
-    <a href="#abstract" class="toc-link active">Resumen</a>
-    <a href="#intro" class="toc-link">Introducción</a>
-    <div class="toc-section">Historia</div>
-    <a href="#industrial" class="toc-link">Nueva York industrial</a>
-    <a href="#twentieth" class="toc-link">Siglo XX</a>
-    <div class="toc-section">Contemporáneo</div>
-    <a href="#economic" class="toc-link">Estabilización económica</a>
-    <a href="#fertility" class="toc-link">Fertilidad y crecimiento</a>
-    <a href="#policy" class="toc-link">Política y deportaciones</a>
-    <div class="toc-section">El modelo</div>
-    <a href="#math" class="toc-link">Análisis matemático</a>
-    <a href="#bibliography" class="toc-link">Bibliografía</a>
+  <div class="sb-nav">
+    <div class="nav-group">La tesis</div>
+    <a href="#abstract" class="ni active">Resumen</a>
+    <a href="#intro" class="ni">Introducción</a>
+    <div class="nav-group">Historia</div>
+    <a href="#industrial" class="ni">Nueva York industrial</a>
+    <a href="#twentieth" class="ni">Siglo XX</a>
+    <div class="nav-group">Contemporáneo</div>
+    <a href="#economic" class="ni">Estabilización económica</a>
+    <a href="#fertility" class="ni">Fertilidad y crecimiento</a>
+    <a href="#policy" class="ni">Política y deportaciones</a>
+    <div class="nav-group">El modelo</div>
+    <a href="#math" class="ni">Análisis matemático</a>
+    <a href="#scenarios" class="ni">Proyecciones de escenarios</a>
+    <a href="#conclusion" class="ni">Conclusión</a>
+    <a href="#bibliography" class="ni">Bibliografía</a>
   </div>
-  <div class="toc-footer">
-    <div class="toc-meta">
+  <div class="sb-footer">
+    <div class="sb-meta">
       <strong>Jack Forester</strong><br>
       Universidad de Fordham · 2026<br>
       Asesora: Dr. Carey Kasten
     </div>
     <a href="index-es.html" onclick="event.preventDefault();navigateBack('index-es.html')" style="display:flex;align-items:center;gap:6px;margin-top:10px;padding:7px 10px;background:rgba(26,74,122,.08);border:1px solid rgba(26,74,122,.2);border-radius:6px;font-size:11px;color:var(--accent);text-decoration:none;font-family:'Crimson Pro',serif;font-weight:500;">&#128506; Volver al modelo</a>
-    <div class="lang-row" style="margin-top:10px">
+    <div class="lang-row">
       <button class="lb" onclick="window.location.href='paper.html'">EN</button>
       <button class="lb active" onclick="window.location.href='paper-es.html'">ES</button>
     </div>
