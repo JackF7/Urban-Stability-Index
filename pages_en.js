@@ -166,7 +166,7 @@ mkPage('scenarios',false,`<div class="ph">
 </div>`),
 mkPage('explorer',false,`<div class="ph">
   <div class="ph-label">Explorer · Live Model</div>
-  <h1>Adjust the Parameters</h1>
+  <h1>Construct Your Own Scenario</h1>
   <p>Change migration levels, domestic flow, housing construction, and the USI weights. The index recalculates as you move the sliders.</p>
 </div>
 <div class="pc">
