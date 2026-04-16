@@ -90,8 +90,7 @@ const ICONS={
   search:`<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>`,
   map:`<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>`,
   clock:`<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
-  users:`<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>`,
-  link:`<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>`
+  users:`<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>`
 };
 
 // ═══════════════════════════════════════════════════
@@ -102,6 +101,7 @@ let lang = (typeof window.SITE_LANG !== 'undefined') ? window.SITE_LANG : 'en';
 let curPage='home';
 let mapInited=false, mapObj=null, geoLayer=null, cachedGeo=null;
 
+function linkIcon(){return`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;}
 function buildNav(){
   const nav=document.getElementById('sb-nav');
   nav.innerHTML='';
@@ -167,48 +167,37 @@ function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v;}
 // METER
 // ═══════════════════════════════════════════════════
 const BEVEN=56612,MAXMI=250000;
-function updateMeter(mi,fillId,threshId,statusId,beven){
-  if(beven===undefined)beven=BEVEN;
+function updateMeter(mi,fillId,threshId,statusId){
   const belowEl=document.getElementById(fillId+'_below'),aboveEl=document.getElementById(fillId+'_above'),dotEl=document.getElementById(fillId+'_dot'),status=document.getElementById(statusId);
   if(!belowEl)return;
   const pct=Math.min(100,mi/MAXMI*100);
-  const tPct=Math.min(100,beven/MAXMI*100);
-  const above=mi-beven;
+  const tPct=BEVEN/MAXMI*100;
+  const above=mi-BEVEN;
   const isES=lang==='es';
+  // Below portion always fills up to threshold or current, whichever is less
   belowEl.style.width=Math.min(pct,tPct)+'%';
+  // Above portion only if mi > BEVEN
   if(aboveEl){
-    if(mi>beven){aboveEl.style.width=(pct-tPct)+'%';aboveEl.style.left=tPct+'%';aboveEl.style.display='block';}
+    if(mi>BEVEN){aboveEl.style.width=(pct-tPct)+'%';aboveEl.style.left=tPct+'%';aboveEl.style.display='block';}
     else{aboveEl.style.display='none';}
   }
+  // Dot position
   if(dotEl){dotEl.style.left=pct+'%';}
-  if(threshId){
-    const lineEl=document.getElementById(threshId+'Line');
-    const labelEl=document.getElementById(threshId+'Label');
-    const pctStr=tPct.toFixed(2)+'%';
-    if(lineEl){lineEl.style.left=pctStr;}
-    if(labelEl){
-      labelEl.style.left=pctStr;
-      const bevenFmt=Math.round(beven).toLocaleString();
-      labelEl.textContent=isES?`Mín. necesario: ${bevenFmt}`:`Min. needed: ${bevenFmt}`;
-    }
-  }
-  if(mi>=beven){
+  if(mi>=BEVEN){
     if(status){
       const col=above>50000?'var(--green)':'var(--orange)';
       const bg=above>50000?'rgba(106,191,122,.08)':'rgba(201,168,76,.08)';
       status.style.background=bg;status.style.color=col;status.style.borderLeftColor=col;
-      const surplus=Math.round(above).toLocaleString();
       status.innerHTML=isES
-        ?`${mi.toLocaleString()} llegadas/año — <strong>+${surplus}</strong> sobre el mínimo`
-        :`${mi.toLocaleString()} arrivals/yr — <strong>+${surplus}</strong> above minimum`;
+        ?`${mi.toLocaleString()} <span style="opacity:.6">(2025)</span> llegadas/año`
+        :`${mi.toLocaleString()} <span style="opacity:.6">(2025)</span> arrivals/yr`;
     }
   } else {
     if(status){
-      const deficit=Math.round(beven-mi).toLocaleString();
       status.style.background='rgba(212,112,106,.08)';status.style.color='var(--red)';status.style.borderLeftColor='var(--red)';
       status.innerHTML=isES
-        ?`${mi.toLocaleString()} llegadas/año — <strong>${deficit}</strong> por debajo del mínimo`
-        :`${mi.toLocaleString()} arrivals/yr — <strong>${deficit}</strong> short of minimum`;
+        ?`${mi.toLocaleString()} llegadas/año`
+        :`${mi.toLocaleString()} arrivals/yr`;
     }
   }
 }
@@ -234,10 +223,9 @@ function updateLiveUSI(){
   if(ls)ls.textContent=ld>=0?(isES?'trabajadores ganados en 2034':'workers gained by 2034'):(isES?'trabajadores perdidos en 2034':'workers lost by 2034');
   // Home stat
   const hs=document.getElementById('home-usi');if(hs){hs.textContent=sign+fmtUSI(r.usi);hs.style.color=usiColor(r.usi);}
-  const dynBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);
-  updateMeter(P.mi,'mFill','mThresh','mStatus',dynBeven);
-  updateMeter(P.mi,'hMFill','hMThresh','hMStatus',dynBeven);
-  if(mapInited&&geoLayer&&mapObj){buildLayer(cachedGeo);updateMapMeter();}
+  updateMeter(P.mi,'mFill','mThresh','mStatus');
+  updateMeter(P.mi,'hMFill','hMThresh','hMStatus');
+  if(mapInited&&geoLayer&&mapObj)buildLayer(cachedGeo);
   renderBoroMini();
 }
 
@@ -398,7 +386,7 @@ function buildLayer(geo){
       const bc=BOROCD_KEY(feat.properties);if(!bc)return;
       const cd=parseInt(bc),d=CD[cd];if(!d)return;
       const usi=calcDistrictUSI(d),sign=usi>=0?'+':'';
-      layer.bindPopup(`<div class="pop-title">${d.name}</div><div class="pop-usi" style="background:${usiColor(usi)};color:#fff">${sign}${fmtUSI(usi)}</div><div class="pop-row"><span class="pop-label">${isES?'Población':'Population'}</span><span class="pop-val">${d.pop.toLocaleString()}</span></div><div class="pop-row"><span class="pop-label">${isES?'Nac. extranjero':'Foreign-Born'}</span><span class="pop-val">${(d.fb/d.pop*100).toFixed(1)}%</span></div><div class="pop-row"><span class="pop-label">${isES?'Personas/unidad':'People/Unit'}</span><span class="pop-val">${(d.pop/d.units).toFixed(2)}</span></div>`);
+      layer.bindPopup(`<div class="pop-title">${d.name}</div><div class="pop-usi" style="background:${usiColor(usi)};color:#fff">${sign}${usi.toFixed(2)}</div><div class="pop-row"><span class="pop-label">${isES?'Población':'Population'}</span><span class="pop-val">${d.pop.toLocaleString()}</span></div><div class="pop-row"><span class="pop-label">${isES?'Nac. extranjero':'Foreign-Born'}</span><span class="pop-val">${(d.fb/d.pop*100).toFixed(1)}%</span></div><div class="pop-row"><span class="pop-label">${isES?'Personas/unidad':'People/Unit'}</span><span class="pop-val">${(d.pop/d.units).toFixed(2)}</span></div>`);
       layer.on('mouseover',()=>layer.setStyle({weight:2,color:'rgba(232,197,71,.5)',fillOpacity:.9}));
       layer.on('mouseout',()=>geoLayer.resetStyle(layer));
     }
@@ -518,7 +506,7 @@ function renderMapCompCards(){
     g.appendChild(c);
   });
 }
-function updateMapMeter(){const dynBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);updateMeter(P.mi,'mapMFill','mapMThresh',null,dynBeven);}
+function updateMapMeter(){updateMeter(P.mi,'mapMFill',null,null);}
 
 
 // ═══════════════════════════════════════════════════
@@ -533,8 +521,7 @@ window.addEventListener('load',()=>{
   updateLiveUSI();
   initCharts();
   setTimeout(()=>{
-    const initBeven=Math.max(0,Math.abs(P.dom)-BASE.natInc);
-    updateMeter(P.mi,'mFill','mThresh','mStatus',initBeven);
-    updateMeter(P.mi,'hMFill','hMThresh','hMStatus',initBeven);
+    updateMeter(66000,'mFill','mThresh','mStatus');
+    updateMeter(66000,'hMFill','hMThresh','hMStatus');
   },500);
 });

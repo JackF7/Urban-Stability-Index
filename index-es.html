@@ -34,7 +34,7 @@
 <nav id="sidebar">
   <div class="sb-brand">
     <div class="sb-title">Índice de<br>Estabilidad Urbana</div>
-    <div class="sb-sub">Índice de Estabilidad Urbana de NYC</div>
+    <div class="sb-sub">Tesis de honor universitaria</div>
   </div>
   <div class="sb-nav" id="sb-nav">
     <!-- Inyectado por model.js buildNav() -->
@@ -65,6 +65,7 @@
     <line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/>
     <line x1="17" y1="16" x2="23" y2="16"/>
   </svg>
+  <span class="btn-label">Controles del modelo</span>
   <svg class="ic-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
     <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
   </svg>
@@ -73,15 +74,19 @@
 <!-- Panel de controles flotante -->
 <div id="floatPanel">
   <div class="fp-head">
-    <span class="fp-head-t" id="fp-label">Controles del Modelo</span>
+    <span class="fp-head-t" id="fp-label">Controles del modelo</span>
+    <button class="fp-reset" onclick="resetControls()">↺ restablecer</button>
     <span class="fp-head-u" id="fpUSI" style="color:var(--accent)">+0,82</span>
+  </div>
+  <div class="fp-explainer">
+    Ajusta migración, vivienda y pesos para ver cómo cada escenario cambia el Índice de Estabilidad Urbana a 10 años en tiempo real.
   </div>
   <div class="fp-sec">
     <div class="fp-sec-t" id="fp-scen-title">Escenarios Rápidos</div>
     <div class="fp-scen-row">
       <button class="fp-sb" data-sc="high"     onclick="loadSc('high')">Alta</button>
-      <button class="fp-sb active" data-sc="pre2025"  onclick="loadSc('pre2025')">Pre-2025</button>
-      <button class="fp-sb" data-sc="current"  onclick="loadSc('current')">Actual</button>
+      <button class="fp-sb" data-sc="pre2025"  onclick="loadSc('pre2025')">Pre-2025</button>
+      <button class="fp-sb active" data-sc="current"  onclick="loadSc('current')">Actual</button>
       <button class="fp-sb" data-sc="restrict" onclick="loadSc('restrict')">Restricción</button>
     </div>
   </div>
@@ -90,9 +95,9 @@
     <div class="fp-ctrl">
       <div class="fp-ctrl-row">
         <span class="fp-ctrl-n" id="fp-mi-label">Migración Intl. Neta/año</span>
-        <span class="fp-ctrl-v" id="fp-v-mi">144.098</span>
+        <span class="fp-ctrl-v" id="fp-v-mi">66.000</span>
       </div>
-      <input type="range" class="fpr" id="fp-s-mi" min="0" max="250000" step="1000" value="144098">
+      <input type="range" class="fpr" id="fp-s-mi" min="0" max="250000" step="1000" value="66000">
     </div>
     <div class="fp-ctrl">
       <div class="fp-ctrl-row">
@@ -138,10 +143,11 @@
 
 
 
+
 <script>
 function navigateTo(url){
-  var el = document.getElementById('main') || document.getElementById('content') || document.body;
-  if(el && el !== document.body){
+  var el=document.getElementById('main')||document.body;
+  if(el&&el!==document.body){
     el.style.transition='transform .5s cubic-bezier(.4,0,.6,1),opacity .5s cubic-bezier(.4,0,.6,1)';
     el.style.transform='translateY(60px)';
     el.style.opacity='0';
@@ -150,7 +156,7 @@ function navigateTo(url){
 }
 window.addEventListener('pageshow',function(e){
   if(e.persisted){
-    var el = document.getElementById('main') || document.getElementById('content') || document.body;
+    var el=document.getElementById('main')||document.body;
     if(el){el.style.animation='none';el.style.transform='none';el.style.opacity='1';}
   }
 });
