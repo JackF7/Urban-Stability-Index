@@ -74,7 +74,7 @@ const PAGES={
     {id:'argument', label:'El argumento',           icon:'info',  badge:'Clave'},
     {id:'model',    label:'Fórmula IEU',            icon:'wave',  group:'El modelo'},
     {id:'scenarios',label:'Escenarios',             icon:'bars'},
-    {id:'explorer', label:'Explorador',             icon:'search',badge:'Live'},
+    {id:'explorer', label:'Explorador',             icon:'search',badge:'En vivo'},
     {id:'map',      label:'Mapa y proyecciones',    icon:'map',   group:'Geografía'},
     {id:'history',  label:'Validación histórica',   icon:'clock', group:'Contexto'},
     {id:'about',    label:'Acerca de',              icon:'users'},
