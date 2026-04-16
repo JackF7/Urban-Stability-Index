@@ -21,8 +21,8 @@ mkPage('home',true,`<div class="ph" style="min-height:38vh;display:flex;flex-dir
   <div class="g2" style="margin-bottom:24px">
     <div>
       <h2>What this project argues</h2>
-      <p>New York City’s growth has long depended on forces beyond its natural population change. For years, the number of people leaving for other states has outpaced the net gain from births over deaths, leaving international immigration to play a central role in sustaining the city’s population.</p>
-      <p>This thesis explores that relationship using Census Bureau data, examining how different federal immigration policy scenarios could shape the city’s future population, labor force, and housing landscape.</p>
+      <p>New York City's growth has long depended on forces beyond its natural population change. For years, the number of people leaving for other states has outpaced the net gain from births over deaths, leaving international immigration to play a central role in sustaining the city's population.</p>
+      <p>This thesis explores that relationship using Census Bureau data, examining how different federal immigration policy scenarios could shape the city's future population, labor force, and housing landscape.</p>
       <button onclick="goPage('argument')" style="margin-top:6px;padding:9px 18px;background:var(--accent);color:var(--bg);border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Crimson Pro',serif">Read the argument</button>
     </div>
     <div>
@@ -277,12 +277,11 @@ mkPage('about',false,`<div class="ph">
 </div>
 <div class="pc">
   <div class="g2">
-    <div class="card"><h3 style="margin-bottom:14px">Thesis Information</h3><table class="dt"><tbody><tr><td>Full title</td><td style="font-style:italic;font-size:11px">Urban Stability Index: Immigration and Demographic Transformation in New York City</td></tr><tr><td>Author</td><td>Jack Forester</td></tr><tr><td>Advisor</td><td>Dr. Carey Kasten</td></tr><tr><td>Institution</td><td>Fordham University</td></tr><tr><td>Year</td><td>Spring 2026</td></tr><tr><td>Disciplines</td><td>Mathematics · Computer Science · Spanish</td></tr></tbody></table></div>
-    <div class="card"><h3 style="margin-bottom:14px">Data Sources</h3><table class="dt"><tbody><tr><td>Population baseline</td><td>Census Bureau Vintage 2024 and 2025</td></tr><tr><td>Component data</td><td style="font-size:11px">NYC DCP, May 2025, App. A, Table 2</td></tr><tr><td>Labor force share</td><td style="font-size:11px">NYS Comptroller, March 2024</td></tr><tr><td>Tax figures</td><td style="font-size:11px">American Immigration Council / ITEP 2023</td></tr><tr><td>Housing demand</td><td style="font-size:11px">Harvard JCHS, 2024</td></tr><tr><td>Housing supply</td><td style="font-size:11px">NYC Building Congress, 2025-27</td></tr><tr><td>Current policy figure</td><td style="font-size:11px">The CITY, March 26, 2026</td></tr></tbody></table></div>
+    <div class="card"><h3 style="margin-bottom:14px">Thesis Information</h3><table class="dt"><tbody><tr><td>Full Title</td><td style="font-style:italic;font-size:11px">Engines of Stability: Immigration and Demographic Transformation in New York City</td></tr><tr><td>Author</td><td>Jack Forester</td></tr><tr><td>Advisor</td><td>Dr. Carey Kasten</td></tr><tr><td>Institution</td><td>Fordham University</td></tr><tr><td>Year</td><td>Spring 2026</td></tr><tr><td>Disciplines</td><td>Mathematics · Computer Science · Spanish</td></tr></tbody></table></div>
+    <div class="card"><h3 style="margin-bottom:14px">Data Sources</h3><table class="dt"><tbody><tr><td>Population Baseline</td><td>Census Bureau Vintage 2024 and 2025</td></tr><tr><td>Component Data</td><td style="font-size:11px">NYC DCP, May 2025, App. A, Table 2</td></tr><tr><td>Labor Force Share</td><td style="font-size:11px">NYS Comptroller, March 2024</td></tr><tr><td>Tax Figures</td><td style="font-size:11px">American Immigration Council / ITEP 2023</td></tr><tr><td>Housing Demand</td><td style="font-size:11px">Harvard JCHS, 2024</td></tr><tr><td>Housing Supply</td><td style="font-size:11px">NYC Building Congress, 2025-27</td></tr><tr><td>Current Policy Figure</td><td style="font-size:11px">The CITY, March 26, 2026</td></tr></tbody></table></div>
   </div>
   <div class="callout" style="margin-top:16px"><p>All USI calculations and projections are the author's own. This site is a companion to the written thesis. The goal was to make the model interactive so the numbers could be explored directly rather than just read about.</p></div>
-</div>`)
-,
+</div>`),
 mkPage('links',false,`<div class="ph">
   <div class="ph-label">Resources</div>
   <h1>Helpful Links</h1>
