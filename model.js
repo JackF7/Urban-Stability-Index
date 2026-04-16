@@ -74,7 +74,7 @@ const PAGES={
     {id:'argument', label:'El argumento',           icon:'info',  badge:'Clave'},
     {id:'model',    label:'Fórmula IEU',            icon:'wave',  group:'El modelo'},
     {id:'scenarios',label:'Escenarios',             icon:'bars'},
-    {id:'explorer', label:'Explorador',             icon:'search',badge:'En vivo'},
+    {id:'explorer', label:'Explorador',             icon:'search',badge:'Live'},
     {id:'map',      label:'Mapa y proyecciones',    icon:'map',   group:'Geografía'},
     {id:'history',  label:'Validación histórica',   icon:'clock', group:'Contexto'},
     {id:'about',    label:'Acerca de',              icon:'users'},
@@ -90,7 +90,8 @@ const ICONS={
   search:`<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>`,
   map:`<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>`,
   clock:`<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>`,
-  users:`<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>`
+  users:`<path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>`,
+  link:`<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>`
 };
 
 // ═══════════════════════════════════════════════════

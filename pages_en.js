@@ -116,7 +116,7 @@ mkPage('model',false,`<div class="ph">
   </div>
   <div class="card" style="margin-bottom:16px">
     <h3>III. Housing Pressure Model</h3>
-    <div class="eqbox">$$H(t) = \\frac{P_i(t) + P_n(t)}{U(t)} \\qquad H(2023) \\approx 2.23$$$$S_H = \\frac{H(t_f) - H(2023)}{H(2023)} \\times 10$$<div class="eqnote">Housing stock grows at +22,000 units/yr. A rising H value means more people per unit, which counts as a cost in the final index.</div></div>
+    <div class="eqbox">$$H(t) = \\frac{P_i(t) + P_n(t)}{U(t)} \\qquad H(2023) \\approx 2.23$$$$S_H = \\frac{H(t_f) - H(2023)}{H(2023)} \\times 10$$<div class="eqnote">Housing stock grows at +20,000 units/yr. A rising H value means more people per unit, which counts as a cost in the final index.</div></div>
   </div>
   <h2 style="margin-bottom:12px">Where the weights come from</h2>
   <p style="margin-bottom:16px">Each weight reflects immigration's measured share of that dimension. The three raw figures (80.6, 44.3, 25.0) are normalized to sum to 1.0 by dividing each by their total of 149.9.</p>
@@ -185,7 +185,7 @@ mkPage('explorer',false,`<div class="ph">
       <h3>Policy Variables</h3>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Net International Migration / yr</span><span class="ctrl-val" id="v-mi">66,000</span></div><input type="range" id="s-mi" min="0" max="250000" step="1000" value="66000"><div class="ctrl-marks"><span>0</span><span>125k</span><span>250k</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Net Domestic Migration / yr</span><span class="ctrl-val" id="v-dom">-91,239</span></div><input type="range" id="s-dom" min="-150000" max="0" step="1000" value="-91239"><div class="ctrl-marks"><span>-150k</span><span>-75k</span><span>0</span></div></div>
-      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">New Housing Units / yr</span><span class="ctrl-val" id="v-units">22,000</span></div><input type="range" id="s-units" min="5000" max="60000" step="1000" value="20000"><div class="ctrl-marks"><span>5k</span><span>30k</span><span>60k</span></div></div>
+      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">New Housing Units / yr</span><span class="ctrl-val" id="v-units">20,000</span></div><input type="range" id="s-units" min="5000" max="60000" step="1000" value="20000"><div class="ctrl-marks"><span>5k</span><span>30k</span><span>60k</span></div></div>
     </div>
     <div class="ctrl-section">
       <h3>USI Weights</h3>

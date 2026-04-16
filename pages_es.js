@@ -117,7 +117,7 @@ mkPage('model',false,`<div class="ph">
   </div>
   <div class="card" style="margin-bottom:16px">
     <h3>III. Modelo de Presión sobre la Vivienda</h3>
-    <div class="eqbox">$$H(t) = \\frac{P_i(t) + P_n(t)}{U(t)} \\qquad H(2023) \\approx 2{,}23$$$$S_H = \\frac{H(t_f) - H(2023)}{H(2023)} \\times 10$$<div class="eqnote">U crece +22.000 unidades/año · S_H positivo = mayor densidad = penalización en el IEU</div></div>
+    <div class="eqbox">$$H(t) = \\frac{P_i(t) + P_n(t)}{U(t)} \\qquad H(2023) \\approx 2{,}23$$$$S_H = \\frac{H(t_f) - H(2023)}{H(2023)} \\times 10$$<div class="eqnote">U crece +20.000 unidades/año · S_H positivo = mayor densidad = penalización en el IEU</div></div>
   </div>
   <h2 style="margin-bottom:12px">De dónde vienen los pesos</h2>
   <p style="margin-bottom:16px">Cada peso refleja la participación medida de la inmigración en esa dimensión. Las tres cifras brutas (80,6, 44,3, 25,0) se normalizan para sumar 1,0 dividiendo cada una entre su total de 149,9.</p>
@@ -188,7 +188,7 @@ mkPage('explorer',false,`<div class="ph">
       <h3>Variables de política</h3>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Migración Internacional Neta / año</span><span class="ctrl-val" id="v-mi">66.000</span></div><input type="range" id="s-mi" min="0" max="250000" step="1000" value="66000"><div class="ctrl-marks"><span>0</span><span>125k</span><span>250k</span></div></div>
       <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Migración Doméstica Neta / año</span><span class="ctrl-val" id="v-dom">−91.239</span></div><input type="range" id="s-dom" min="-150000" max="0" step="1000" value="-91239"><div class="ctrl-marks"><span>−150k</span><span>−75k</span><span>0</span></div></div>
-      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Nuevas Unidades de Vivienda / año</span><span class="ctrl-val" id="v-units">22.000</span></div><input type="range" id="s-units" min="5000" max="60000" step="1000" value="20000"><div class="ctrl-marks"><span>5k</span><span>30k</span><span>60k</span></div></div>
+      <div class="ctrl"><div class="ctrl-row"><span class="ctrl-name">Nuevas Unidades de Vivienda / año</span><span class="ctrl-val" id="v-units">20.000</span></div><input type="range" id="s-units" min="5000" max="60000" step="1000" value="20000"><div class="ctrl-marks"><span>5k</span><span>30k</span><span>60k</span></div></div>
     </div>
     <div class="ctrl-section">
       <h3>Pesos del IEU</h3>
