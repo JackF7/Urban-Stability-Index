@@ -288,4 +288,58 @@ mkPage('about',false,`<div class="ph">
   </div>
   <div class="callout" style="margin-top:16px"><p>Todos los cálculos y proyecciones del IEU son del propio autor. Este sitio es un complemento de la tesis escrita. El objetivo era hacer el modelo interactivo para que los números pudieran explorarse directamente en lugar de solo leerse.</p></div>
 </div>`)
+,
+mkPage('links',false,`<div class="ph">
+  <div class="ph-label">Recursos</div>
+  <h1>Recursos útiles</h1>
+  <p>Fuentes de datos clave, investigaciones y periodismo sobre inmigración y demografía de Nueva York.</p>
+</div>
+<div class="pc">
+  <div class="card" style="margin-bottom:16px">
+    <h3 style="margin-bottom:14px">Datos e investigación</h3>
+    <div class="link-list">
+      <a class="link-item" href="https://cmsny.org/publications/data-briefing-on-new-york-city-immigrants" target="_blank">
+        <div class="link-title">Resumen de datos sobre inmigrantes de la ciudad de Nueva York</div>
+        <div class="link-src">Center for Migration Studies of New York</div>
+      </a>
+      <a class="link-item" href="https://www.pewresearch.org/short-reads/2025/08/21/key-findings-about-us-immigrants/" target="_blank">
+        <div class="link-title">Hallazgos clave sobre inmigrantes en EE.UU.</div>
+        <div class="link-src">Pew Research Center</div>
+      </a>
+      <a class="link-item" href="https://www.census.gov/newsroom/press-releases/2024/population-estimates-international-migration.html" target="_blank">
+        <div class="link-title">La migración internacional impulsa el mayor crecimiento poblacional de EE.UU. en décadas</div>
+        <div class="link-src">Oficina del Censo de los EE.UU.</div>
+      </a>
+      <a class="link-item" href="https://www.census.gov/newsroom/blogs/random-samplings/2026/01/historic-decline-in-net-international-migration.html" target="_blank">
+        <div class="link-title">Nuevas estimaciones muestran una caída histórica en la migración internacional neta</div>
+        <div class="link-src">Oficina del Censo de los EE.UU.</div>
+      </a>
+      <a class="link-item" href="https://www.niskanencenter.org/mapping-americas-immigration-needs-a-county-level-model-for-matching-migrants-to-local-economies/" target="_blank">
+        <div class="link-title">Mapeando las necesidades de inmigración de EE.UU.: Un modelo a nivel de condado</div>
+        <div class="link-src">Niskanen Center</div>
+      </a>
+      <a class="link-item" href="https://deportationdata.org/" target="_blank">
+        <div class="link-title">Proyecto de datos sobre deportaciones</div>
+        <div class="link-src">deportationdata.org</div>
+      </a>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:14px">Periodismo y análisis</h3>
+    <div class="link-list">
+      <a class="link-item" href="https://austinkocher.substack.com" target="_blank">
+        <div class="link-title">Austin Kocher — Decodificando el sistema de inmigración de EE.UU.</div>
+        <div class="link-src">Substack</div>
+      </a>
+      <a class="link-item" href="https://www.wsj.com/us-news/americans-leaving-the-us-migration-a5795bfa" target="_blank">
+        <div class="link-title">Los estadounidenses abandonan el país en número creciente</div>
+        <div class="link-src">The Wall Street Journal</div>
+      </a>
+      <a class="link-item" href="https://www.nytimes.com/2025/08/21/us/immigration-decline-united-states-trump.html" target="_blank">
+        <div class="link-title">La inmigración a EE.UU. ha caído drásticamente bajo Trump</div>
+        <div class="link-src">The New York Times</div>
+      </a>
+    </div>
+  </div>
+</div>`)
 ];}

@@ -288,6 +288,13 @@ mkPage('links',false,`<div class="ph">
   <h1>Helpful Links</h1>
   <p>Key data sources, research, and journalism on immigration and New York City demographics.</p>
 </div>
+<div class="pc" style="padding-bottom:24px">
+  <div class="stat-row">
+    <div class="stat-cell"><div class="sv">444k</div><div class="sl">Border encounters in FY 2025, down from 2.1M the year before</div><div class="ss">Migration Policy Institute, 2025</div></div>
+    <div class="stat-cell"><div class="sv">0</div><div class="sl">Likely border entries in February 2025, down from 124,000 a year earlier</div><div class="ss">Brookings Institution, 2025</div></div>
+    <div class="stat-cell"><div class="sv">3.1M</div><div class="sl">Immigrants in NYC — 36.8% of the city's population</div><div class="ss">ACS 2023</div></div>
+  </div>
+</div>
 <div class="pc">
   <div class="card" style="margin-bottom:16px">
     <h3 style="margin-bottom:14px">Data &amp; Research</h3>
