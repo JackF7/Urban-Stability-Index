@@ -180,9 +180,9 @@ mkPage('explorer',false,`<div class="ph">
     <div class="icard"><span class="icard-label">Labor Force Change (10-yr)</span><div class="icard-val pos" id="ip-lf">+424,756</div><div class="icard-sub" id="ip-lf-sub">workers gained</div></div>
     <div class="icard"><span class="icard-label">Housing Pressure (10-yr)</span><div class="icard-val" id="ip-h">+4.3%</div><div class="icard-sub">change in persons per unit</div></div>
   </div>
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-    <div style="font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--text3)">Model Controls</div>
-    <button class="fp-reset" style="font-size:10px;opacity:.7" onclick="resetControls()">↺ reset</button>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)">
+    <span style="font-size:12px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--text3)">Model Controls</span>
+    <button onclick="resetControls()" style="display:flex;align-items:center;gap:6px;padding:6px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);cursor:pointer;">↺ reset</button>
   </div>
   <div class="ctrl-grid">
     <div class="ctrl-section">
