@@ -180,6 +180,10 @@ mkPage('explorer',false,`<div class="ph">
     <div class="icard"><span class="icard-label">Labor Force Change (10-yr)</span><div class="icard-val pos" id="ip-lf">+424,756</div><div class="icard-sub" id="ip-lf-sub">workers gained</div></div>
     <div class="icard"><span class="icard-label">Housing Pressure (10-yr)</span><div class="icard-val" id="ip-h">+4.3%</div><div class="icard-sub">change in persons per unit</div></div>
   </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div style="font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--text3)">Model Controls</div>
+    <button class="fp-reset" style="font-size:10px;opacity:.7" onclick="resetControls()">↺ reset</button>
+  </div>
   <div class="ctrl-grid">
     <div class="ctrl-section">
       <h3>Policy Variables</h3>

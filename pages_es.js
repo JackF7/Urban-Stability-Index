@@ -183,6 +183,10 @@ mkPage('explorer',false,`<div class="ph">
     <div class="icard"><span class="icard-label">Cambio fuerza laboral (10 años)</span><div class="icard-val pos" id="ip-lf">+424.756</div><div class="icard-sub" id="ip-lf-sub">trabajadores ganados</div></div>
     <div class="icard"><span class="icard-label">Presión habitacional (10 años)</span><div class="icard-val" id="ip-h">+4,3%</div><div class="icard-sub">cambio en personas/unidad</div></div>
   </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div style="font-size:11px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;color:var(--text3)">Controles del modelo</div>
+    <button class="fp-reset" style="font-size:10px;opacity:.7" onclick="resetControls()">↺ restablecer</button>
+  </div>
   <div class="ctrl-grid">
     <div class="ctrl-section">
       <h3>Variables de política</h3>
